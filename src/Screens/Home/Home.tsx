@@ -5,9 +5,9 @@ export default function Home() : JSX.Element   {
         <div className="landing-container">
             <div className="quote-box">
                 <blockquote className="quote-text">
-                    <h1 className="quote">An aestetic TODO</h1>
+                    <h1 className="quote">Design todo</h1>
                     <p className="author">
-                        <small>By moxi</small>
+                        <small>By <span className="rosy">moxi</span></small>
                     </p>
                 </blockquote>
             </div>
