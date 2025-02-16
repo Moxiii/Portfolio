@@ -1,3 +1,27 @@
-.landing{
-  background-image : radial-gradient(circle , currentcolor 0% , transparent 110%);
+@import "../../const";
+.landing-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding:40px;
+  color: $secondary-color;
+  .quote-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 0 0 0 1px $secondary-color;
+    padding:130px;
+    border-radius: 5%;
+    min-height: 384px;
+    max-width: 600px;
+    background-image : radial-gradient(circle , currentcolor 0% , transparent 110%);
+  }
+  .quote-text{
+    color: $primary-color;
+    font-size: 30px;
+  }
+  min-width: 80vw;
+  min-height: 80vh;
+
 }
