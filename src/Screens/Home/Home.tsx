@@ -3,7 +3,10 @@ import "./Home.scss"
 export default function Home() : JSX.Element   {
     return(
         <>
-            Hello from home
+            <div className="landing">
+
+
+            </div>
         </>
     )
 }
