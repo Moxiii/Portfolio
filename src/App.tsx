@@ -3,9 +3,11 @@ import Layout from "./Components/Layout/Layout.tsx";
 import Home from "./Screens/Home/Home.tsx"
 import Links from "./Screens/Links/Links.tsx"
 import About from "./Screens/About/About.tsx";
-import Todo from "./Screens/Todo/Todo.tsx"
+import Contact from "./Screens/Contact/Contact.tsx"
+import Project from "./Components/Project/Project.tsx";
 import {ReactLenis , useLenis} from "lenis/react";
 import "./App.scss"
+import Admin from "./Admin/Admin.tsx";
 function App() {
 const lenis = useLenis(({scroll})=>{
 
@@ -18,7 +20,9 @@ const lenis = useLenis(({scroll})=>{
                 <Route index element={<Home /> } />
                 <Route path="/links" element={<Links /> } />
                 <Route path="/about" element={<About /> } />
-                <Route path="/todo" element={<Todo /> } />
+                <Route path="/contact" element={<Contact /> } />
+                <Route path="/project/:id" element={<Project/>}/>
+                <Route path="/admin/panel" element={<Admin/>}/>
             </Route>
         </Routes>
         </ReactLenis>

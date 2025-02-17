@@ -1,6 +1,6 @@
 import { JSX } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faLink, faAddressCard, faListUl } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faLink, faAddressCard, faUser } from '@fortawesome/free-solid-svg-icons';
 import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
 import "./Navbar.scss";
@@ -10,11 +10,8 @@ const iconHoverEffect = {
         scale: 1.2,
         y: -5,
     },
-    transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 15,
-        duration: 0.3
+    whileTap:{
+        scale:0.8
     }
 };
 
@@ -25,10 +22,10 @@ export default function Navbar(): JSX.Element {
                 <NavLink exact="true" to="/" data-title="Home">
                     <motion.div
                         whileHover={iconHoverEffect.whileHover}
-                        transition={iconHoverEffect.transition}
+                        transition={iconHoverEffect.whileTap}
                         className="dock-item-content"
                     >
-                        <FontAwesomeIcon icon={faHome} className="icon-color" />
+                        <FontAwesomeIcon icon={faHome} className="icon-color"/>
                     </motion.div>
                 </NavLink>
             </div>
@@ -37,37 +34,37 @@ export default function Navbar(): JSX.Element {
                 <NavLink exact="true" to="/links" data-title="Links">
                     <motion.div
                         whileHover={iconHoverEffect.whileHover}
-                        transition={iconHoverEffect.transition}
+                        whileTap={iconHoverEffect.whileTap}
                         className="dock-item-content"
                     >
-                        <FontAwesomeIcon icon={faLink} className="icon-color" />
+                        <FontAwesomeIcon icon={faLink} className="icon-color"/>
                     </motion.div>
                 </NavLink>
             </div>
-
             <div className="dock-item">
                 <NavLink exact="true" to="/about" data-title="About">
                     <motion.div
                         whileHover={iconHoverEffect.whileHover}
-                        transition={iconHoverEffect.transition}
+                        whileTap={iconHoverEffect.whileTap}
                         className="dock-item-content"
                     >
-                        <FontAwesomeIcon icon={faAddressCard} className="icon-color" />
+                        <FontAwesomeIcon icon={faUser} className="icon-color"/>
+                    </motion.div>
+                </NavLink>
+            </div>
+            <div className="dock-item">
+                <NavLink exact="true" to="/contact" data-title="Contact">
+                    <motion.div
+                        whileHover={iconHoverEffect.whileHover}
+                        whileTap={iconHoverEffect.whileTap}
+                        className="dock-item-content"
+                    >
+                        <FontAwesomeIcon icon={faAddressCard} className="icon-color"/>
                     </motion.div>
                 </NavLink>
             </div>
 
-            <div className="dock-item">
-                <NavLink exact="true" to="/todo" data-title="Todo">
-                    <motion.div
-                        whileHover={iconHoverEffect.whileHover}
-                        transition={iconHoverEffect.transition}
-                        className="dock-item-content"
-                    >
-                        <FontAwesomeIcon icon={faListUl} className="icon-color" />
-                    </motion.div>
-                </NavLink>
-            </div>
+
         </div>
     );
 }

@@ -1,7 +1,7 @@
-import "./Todo.scss"
+import "./Contact.scss"
 import {JSX, useEffect} from "react";
 import {useState} from "react";
-export default function Todo():JSX.Element {
+export default function Contact():JSX.Element {
     const [task , setTask] = useState('')
     const [tasks , setTasks] = useState<string[]>([])
     useEffect(()=>{
