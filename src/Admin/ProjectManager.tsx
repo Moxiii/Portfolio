@@ -129,12 +129,6 @@ export default function ProjectManager(): JSX.Element {
                   value={techno.name}
                   onChange={(e) => handleAddTechno(e, index)}
                 />
-                <input
-                  type="text"
-                  placeholder="Technology icon"
-                  value={techno.icon}
-                  onChange={(e) => handleAddTechno(e, index)}
-                />
               </div>
             ))}
           </div>

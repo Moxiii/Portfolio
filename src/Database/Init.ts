@@ -1,4 +1,4 @@
-import Project from "../Components/Project/Project.tsx";
+import { Project } from "../Types/ProjectType";
 
 const DB_NAME = "portfolioDB";
 const STORE_NAME = "projects";
@@ -23,7 +23,7 @@ function openDB(): Promise<IDBDatabase> {
   });
 }
 
-export async function addProject(project: typeof Project) {
+export async function addProject(project: Project) {
   const db = await openDB();
   return new Promise((resolve, reject) => {
     const tx = db.transaction(STORE_NAME, "readwrite");
