@@ -1,45 +1,65 @@
-import "./Contact.scss"
-import {JSX, useEffect} from "react";
-import {useState} from "react";
-export default function Contact():JSX.Element {
-    const [task , setTask] = useState('')
-    const [tasks , setTasks] = useState<string[]>([])
-    useEffect(()=>{
-    const savedTask = localStorage.getItem("tasks");
-    if (savedTask){
-        setTasks(JSON.parse(savedTask))
+import emailjs from "@emailjs/browser";
+import { useRef, JSX } from "react";
+import "./Contact.scss";
+
+export default function Contact(): JSX.Element {
+  const refForm = useRef<HTMLFormElement>(null);
+  const sendEmail = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (refForm.current) {
+      emailjs
+        .sendForm(
+          "service_grqpcg8",
+          "template_eq7kyaw",
+          refForm.current,
+          "kLjaD0rwsaIaJI6O5"
+        )
+        .then(
+          (result) => {
+            console.log("Email envoyé avec succès", result.text);
+          },
+          (error) => {
+            console.error("Erreur lors de l'envoi de l'email", error.text);
+          }
+        );
     }
-    },[])
-    useEffect(() => {
-        localStorage.setItem('tasks', JSON.stringify(tasks));
-    }, [tasks]);
-const addTask = ()=> {
-    if(task.trim()!== ''){
-        setTasks([...tasks , task])
-        setTask('');
-    }
-}
-const deleteTask = (index: number)=>{
-    const newTasks = tasks.filter((_, i ) => i !== index);
-    setTasks(newTasks);
-    }
-    return(
-        <>
-        <div className="todo-container">
-            <div className="todo-input">
-                <input type="text" value={task} onChange={(e)=> setTask(e.target.value)} placeholder="Add new task"/>
-                <button onClick={addTask}> ADD</button>
-            </div>
-            <div className="tasks">
-                <ul>
-                    {tasks.map((task, index)=>(
-                        <li key={index}>{task}
-                            <button onClick={()=> deleteTask(index)}> delete</button>
-                        </li>
-                    ))}
-                </ul>
-            </div>
+  };
+
+  return (
+    <div className="container contact-page">
+      <div className="text-zone">
+        <div className="header">
+          <h1>Contactez-moi</h1>
         </div>
-        </>
-    )
+
+        <div className="contact-form">
+          <form ref={refForm} onSubmit={sendEmail}>
+            <input
+              className="feedback-body__email"
+              type="email"
+              placeholder="Email"
+              name="user_email"
+              required
+            />
+            <input
+              className="feedback-body__email"
+              type="text"
+              placeholder="Subject"
+              name="user_subject"
+              required
+            />
+            <textarea
+              className="feedback-body__message"
+              placeholder="Message"
+              name="user_message"
+              required
+            ></textarea>
+            <button className="feedback-body__submit" type="submit">
+              SEND
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
 }
