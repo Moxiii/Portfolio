@@ -6,26 +6,13 @@ import {
   updateProject,
 } from "../Database/Init.ts";
 import { v4 as uuidv4 } from "uuid";
-interface Project {
-  id: string;
-  title: string;
-  description: string;
-  presentation: (string | { titre: string } | { liste: string[] })[];
-  techno: { name: string; icon: string }[];
-  ended: boolean;
-  deploy: boolean;
-  links: { name: string; url: string }[];
-  img: {
-    isMock: boolean;
-    src: string;
-  }[];
-}
+import { Project } from "../Types/ProjectType.ts";
 export default function ProjectManager(): JSX.Element {
   const [projects, setProjects] = useState<Project[]>([]);
   const [newProject, setNewProject] = useState<Partial<Project>>({
     title: "",
     description: "",
-    techno: [{ name: "", icon: "" }],
+    techno: [{ name: "" }],
     ended: false,
     deploy: false,
     links: [{ name: "", url: "" }],
@@ -78,9 +65,9 @@ export default function ProjectManager(): JSX.Element {
     index: number
   ) {
     const newTechno = [...(newProject.techno || [])];
-    newTechno[index] = { name: e.target.value, icon: "" };
+    newTechno[index] = { name: e.target.value };
     if (e.target.value && index === newTechno.length - 1) {
-      newTechno.push({ name: "", icon: "" });
+      newTechno.push({ name: "" });
     }
     setNewProject({ ...newProject, techno: newTechno });
   }

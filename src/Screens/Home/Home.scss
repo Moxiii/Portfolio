@@ -46,4 +46,37 @@
       color: $sr-grey;
     }
   }
+  .project-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    .modal-content {
+      background: white;
+      padding: 2%;
+      border-radius: 5%;
+      width: 80%;
+      height: 80%;
+      overflow-y: auto;
+    }
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: red;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      border-radius: 50%;
+    }
+
+    .close-btn:hover {
+      background: darkred;
+    }
+  }
 }

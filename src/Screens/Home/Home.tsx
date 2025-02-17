@@ -2,19 +2,21 @@ import { JSX, useEffect, useState } from "react";
 import { getProjects } from "../../Database/Init";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFolder } from "@fortawesome/free-solid-svg-icons";
+import { Project } from "../../Types/ProjectType";
 import "./Home.scss";
 export default function Home(): JSX.Element {
   const [projects, setProjects] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalProject, setModalProject] = useState(null);
-  const handleProjectClick = (project) => {
-    setModalProject(project);
-    setIsModalOpen(true); //
+  const [currentProject, setCurrentProject] = useState<Project | null>(null);
+  const handleProjectClick = (project: Project) => {
+    setCurrentProject(project);
+    console.log("project clicked: " + project.title);
+    setIsModalOpen(true);
   };
 
   const handleCloseModal = () => {
-    setIsModalOpen(false); //
-    setModalProject(null); //
+    setIsModalOpen(false);
+    setCurrentProject(null);
   };
   useEffect(() => {
     const fetchProjects = async () => {
@@ -22,7 +24,7 @@ export default function Home(): JSX.Element {
       setProjects(data);
     };
     fetchProjects();
-  });
+  }, []);
   return (
     <div className="landing-container">
       <div className="quote-box">
@@ -47,6 +49,35 @@ export default function Home(): JSX.Element {
           </div>
         </div>
       ))}
+      {isModalOpen && currentProject && (
+        <div className="project-modal">
+          <div className="modal-content">
+            <button className="close-btn" onClick={handleCloseModal}>
+              X
+            </button>
+            <h2>{currentProject.title}</h2>
+            <p>{currentProject.description}</p>
+            <div>
+              <h3>Technologies: </h3>
+              <ul>
+                {currentProject.techno?.map((tech, index) => (
+                  <li key={index}>{tech.name}</li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3>Links:</h3>
+              <ul>
+                {currentProject.links?.map((link, index) => (
+                  <a href={link.url}>
+                    <li key={index}>{link.name}</li>
+                  </a>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
