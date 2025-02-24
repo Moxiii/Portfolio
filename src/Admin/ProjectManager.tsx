@@ -29,16 +29,22 @@ export default function ProjectManager(): JSX.Element {
   }
   async function handleAddProject() {
     if (!newProject.title || !newProject.description) return;
+    const filteredTechno = (newProject.techno || []).filter(
+      (techno) => techno.name.trim() !== ""
+    );
+    const filteredLinks = (newProject.links || []).filter(
+      (link) => link.name.trim() !== ""
+    );
 
     const projectToAdd: Project = {
       id: uuidv4(),
       title: newProject.title,
       description: newProject.description,
       presentation: [],
-      techno: newProject.techno || [],
+      techno: filteredTechno,
       ended: newProject.ended || false,
       deploy: newProject.deploy || false,
-      links: newProject.links || [],
+      links: filteredLinks,
       img: newProject.img || [],
     };
     await addProject(projectToAdd);
