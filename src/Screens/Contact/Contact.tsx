@@ -26,7 +26,7 @@ export default function Contact(): JSX.Element {
   };
 
   return (
-    <div className="container contact-page">
+    <div className="contact-page">
       <div className="text-zone">
         <div className="header">
           <h1>Contactez-moi</h1>

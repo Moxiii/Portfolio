@@ -50,7 +50,7 @@ export async function getProjects(): Promise<unknown> {
 }
 
 export async function updateProject(
-  id: number,
+  id: string,
   updatedData: Partial<{ title: string; description: string; image: string }>
 ) {
   const db = await openDB();
