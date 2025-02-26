@@ -29,6 +29,7 @@ export default function Home(): JSX.Element {
   const handleCloseProjectDetailModal = () => {
     setIsProjectDetailModalOpen(false);
     setCurrentProject(null);
+    setIsProjectsModalOpen(true)
   };
 
   useEffect(() => {
@@ -64,7 +65,7 @@ export default function Home(): JSX.Element {
             onClose={() => setIsProjectsModalOpen(false)}
             title="Liste des projets"
             onBack={() => {
-              setIsProjectsModalOpen(false);
+              handleCloseProjectsModal()
             }}
         >
           <div className="project-list">
@@ -86,8 +87,7 @@ export default function Home(): JSX.Element {
             isOpen={isProjectDetailModalOpen}
             onClose={() => setIsProjectDetailModalOpen(false)}
             onBack={() => {
-              setIsProjectDetailModalOpen(false);
-              setIsProjectsModalOpen(true);
+              handleCloseProjectDetailModal()
             }}
             title={currentProject?.title}
         >
