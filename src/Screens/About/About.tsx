@@ -7,7 +7,7 @@ export default function About() : JSX.Element {
 
     return (
         <>
-  ABOUT
+            <h2>Presentation</h2>
         </>
     )
 }

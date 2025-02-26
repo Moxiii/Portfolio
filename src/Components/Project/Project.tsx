@@ -110,6 +110,21 @@ export default function ProjectDetails({project  }:ProjectCardProps){
                     ))}
                 </ul>
             </div>
+            <div>
+                <h3>Présentation</h3>
+                <ul>
+                    {project.presentation?.map((pres, index) => (
+                        <div key={index}>
+                            <h3>{pres.title}</h3>
+                            <ul>
+                                {pres.list?.map((item, i) => (
+                                    <li key={i}>{item}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    ))}
+                </ul>
+            </div>
         </div>
     )
 }

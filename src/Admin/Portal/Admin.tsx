@@ -1,6 +1,7 @@
 import {JSX, useState} from "react";
-import ProjectManager from "./ProjectManager.tsx"
+import ProjectManager from "../ProjectManager.tsx"
 import {useNavigate} from "react-router-dom";
+import "./Admin.scss"
 export default function Admin():JSX.Element{
     const navigate = useNavigate();
     const [isAuth , setIsAuth] = useState(false)

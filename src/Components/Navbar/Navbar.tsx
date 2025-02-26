@@ -30,17 +30,7 @@ export default function Navbar(): JSX.Element {
                 </NavLink>
             </div>
 
-            <div className="dock-item">
-                <NavLink exact="true" to="/links" data-title="Links">
-                    <motion.div
-                        whileHover={iconHoverEffect.whileHover}
-                        whileTap={iconHoverEffect.whileTap}
-                        className="dock-item-content"
-                    >
-                        <FontAwesomeIcon icon={faLink} className="icon-color"/>
-                    </motion.div>
-                </NavLink>
-            </div>
+
             <div className="dock-item">
                 <NavLink exact="true" to="/about" data-title="About">
                     <motion.div

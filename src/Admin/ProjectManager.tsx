@@ -4,7 +4,7 @@ import {
   getProjects,
   deleteProject,
   updateProject,
-} from "../Database/Init.ts";
+} from "../Database/InitProject.ts";
 import { v4 as uuidv4 } from "uuid";
 import { Project } from "../Types/ProjectType.ts";
 
@@ -13,13 +13,14 @@ export default function ProjectManager(): JSX.Element {
   const [newProject, setNewProject] = useState<Partial<Project>>({
     title: "",
     description: "",
+    presentation: [{ title: "", list: [] }],
     techno: [{ name: "" }],
     ended: false,
     deploy: false,
     links: [{ name: "", url: "" }],
     img: [],
   });
-  const [isEditing, setIsEditing] = useState(false); // Pour distinguer ajout / modification
+  const [isEditing, setIsEditing] = useState(false);
 
   async function loadProjects() {
     const data: any = await getProjects();
@@ -31,7 +32,8 @@ export default function ProjectManager(): JSX.Element {
     loadProjects();
   }
 
-  async function handleAddProject() {
+
+  async function handleSaveProject() {
 
     if (!newProject.title || !newProject.description) return;
 
@@ -43,38 +45,40 @@ export default function ProjectManager(): JSX.Element {
             link.name.trim() !== "" &&
             link.url.trim() !== ""
     );
+    const filteredPresentation = (newProject.presentation || []).filter((item)=>item !== "");
+    const projectData: {
+      presentation: (string | { title: string; list: string[] })[];
+      img: { src: string }[];
+      techno: { name: string }[];
+      ended: boolean;
+      description: string;
+      links: { name: string; url: string }[];
+      id: string | Uint8Array<ArrayBufferLike>;
+      title: string;
+      deploy: boolean
+    } = {
+      id: isEditing ? newProject.id! : uuidv4(),
+      title: newProject.title,
+      description: newProject.description,
+      presentation: filteredPresentation,
+      techno: filteredTechno,
+      ended: newProject.ended || false,
+      deploy: newProject.deploy || false,
+      links: filteredLinks,
+      img: newProject.img || [],
+    };
 
-    if (!isEditing) {
-      const projectToAdd: Project = {
-        id: uuidv4(),
-        title: newProject.title,
-        description: newProject.description,
-        presentation: [],
-        techno: filteredTechno,
-        ended: newProject.ended || false,
-        deploy: newProject.deploy || false,
-        links: filteredLinks,
-        img: newProject.img || [],
-      };
-      await addProject(projectToAdd);
+    if (isEditing) {
+
+      await updateProject(newProject.id! , projectData);
+      setIsEditing(false)
     } else {
-      const projectToUpdate: Project = {
-        id: newProject.id!,
-        title: newProject.title,
-        description: newProject.description,
-        presentation: newProject.presentation || [],
-        techno: filteredTechno,
-        ended: newProject.ended || false,
-        deploy: newProject.deploy || false,
-        links: filteredLinks,
-        img: newProject.img || [],
-      };
-      await updateProject(newProject.id as any, projectToUpdate);
-      setIsEditing(false);
+      await addProject(projectData)
     }
     setNewProject({
       title: "",
       description: "",
+      presentation:[{title:"" , list:[]}],
       techno: [{ name: "" }],
       ended: false,
       deploy: false,
@@ -105,7 +109,9 @@ export default function ProjectManager(): JSX.Element {
     newLinks[index] = { ...newLinks[index], url: e.target.value };
     setNewProject({ ...newProject, links: newLinks });
   }
-
+  function handleInputChange(field: keyof Project, value: boolean) {
+    setNewProject({ ...newProject, [field]: value });
+  }
   function handleAddTechno(
       e: React.ChangeEvent<HTMLInputElement>,
       index: number
@@ -117,7 +123,33 @@ export default function ProjectManager(): JSX.Element {
     }
     setNewProject({ ...newProject, techno: newTechno });
   }
+  function handlePresentationTitleChange(
+      e: React.ChangeEvent<HTMLInputElement>,
+      index: number
+  ) {
+    const newPresentation = [...(newProject.presentation || [])];
+    newPresentation[index] = {
+      ...newPresentation[index],
+      title: e.target.value
+    };
+    if (e.target.value && index === newPresentation.length - 1) {
+      newPresentation.push({ title: "", list: [] });
+    }
 
+    setNewProject({ ...newProject, presentation: newPresentation });
+  }
+  function handlePresentationListChange(
+      e: React.ChangeEvent<HTMLTextAreaElement>,
+      index: number
+  ) {
+    const newPresentation = [...(newProject.presentation || [])];
+    newPresentation[index] = {
+      ...newPresentation[index],
+      list: e.target.value.split("\n")
+    };
+
+    setNewProject({ ...newProject, presentation: newPresentation });
+  }
   function handleImageUpload(e: React.ChangeEvent<HTMLInputElement>) {
     if (e.target.files) {
       const filesArray = Array.from(e.target.files);
@@ -160,8 +192,30 @@ export default function ProjectManager(): JSX.Element {
                   setNewProject({ ...newProject, description: e.target.value })
               }
           />
-          <input type="file" multiple onChange={handleImageUpload} />
           <div>
+
+            <div>
+              <h3>Présentation</h3>
+              {newProject.presentation?.map((presentation, index) => (
+                  <div key={index}>
+                    <input
+                        type="text"
+                        placeholder="Titre"
+                        value={typeof presentation === "string" ? presentation : presentation?.title || ""}
+                        onChange={(e) => handlePresentationTitleChange(e , index)}
+                    />
+
+                    <textarea
+                        placeholder="Détails (séparez les points par des retours à la ligne)"
+                        value={typeof presentation === "string" ? presentation : presentation?.list?.join("\n") || ""}
+                        onChange={(e) =>
+                            handlePresentationListChange(e , index)
+                        }
+                    />
+                  </div>
+              ))}
+            </div>
+
             <h3>Technologies</h3>
             {newProject.techno?.map((techno, index) => (
                 <div key={index}>
@@ -169,7 +223,7 @@ export default function ProjectManager(): JSX.Element {
                       type="text"
                       placeholder="Technology name"
                       value={techno.name}
-                      onChange={(e) => handleAddTechno(e, index)}
+                      onChange={(e) =>  handleAddTechno(e, index)}
                   />
                 </div>
             ))}
@@ -193,7 +247,26 @@ export default function ProjectManager(): JSX.Element {
                 </div>
             ))}
           </div>
-          <button onClick={handleAddProject}>
+          <div>
+            <label>
+              <input
+                  type="checkbox"
+                  checked={newProject.ended}
+                  onChange={(e) => handleInputChange("ended", e.target.checked)}
+              />
+              Projet terminé
+            </label>
+            <label>
+              <input
+                  type="checkbox"
+                  checked={newProject.deploy}
+                  onChange={(e) => handleInputChange("deploy", e.target.checked)}
+              />
+              Projet déployé
+            </label>
+          </div>
+          <input type="file" multiple onChange={handleImageUpload}/>
+          <button onClick={handleSaveProject}>
             {isEditing ? "Mettre à jour le projet" : "Ajouter un projet"}
           </button>
         </div>
@@ -203,7 +276,7 @@ export default function ProjectManager(): JSX.Element {
                 <h3>{project.title}</h3>
                 <p>{project.description}</p>
                 {project.img && project.img.length > 0 && (
-                    <img src={project.img[0].src} alt={project.title} />
+                    <img src={project.img[0].src} alt={project.title}/>
                 )}
                 <button onClick={() => handleDelete(project.id)}>
                   Supprimer

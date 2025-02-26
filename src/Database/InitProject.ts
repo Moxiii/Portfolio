@@ -1,5 +1,3 @@
-import { Project } from "../Types/ProjectType";
-
 const DB_NAME = "portfolioDB";
 const STORE_NAME = "projects";
 const DB_VERSION = 1;
@@ -23,7 +21,17 @@ function openDB(): Promise<IDBDatabase> {
   });
 }
 
-export async function addProject(project: Project) {
+export async function addProject(project: {
+  presentation: (string | { title: string; list: string[] })[];
+  img: { src: string }[];
+  techno: { name: string }[];
+  ended: boolean;
+  description: string;
+  links: { name: string; url: string }[];
+  id: string | Uint8Array<ArrayBufferLike>;
+  title: string;
+  deploy: boolean
+}) {
   const db = await openDB();
   return new Promise((resolve, reject) => {
     const tx = db.transaction(STORE_NAME, "readwrite");

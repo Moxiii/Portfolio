@@ -1,5 +1,5 @@
 import { JSX, useEffect, useState } from "react";
-import { getProjects } from "../../Database/Init";
+import { getProjects } from "../../Database/initProject";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFolder } from "@fortawesome/free-solid-svg-icons";
 import { Project } from "../../Types/ProjectType";
