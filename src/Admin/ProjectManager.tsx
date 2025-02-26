@@ -32,10 +32,9 @@ export default function ProjectManager(): JSX.Element {
   }
 
   async function handleAddProject() {
-    // Vérification des champs obligatoires
+
     if (!newProject.title || !newProject.description) return;
 
-    // Filtrer les tableaux pour ne garder que les valeurs non vides
     const filteredTechno = (newProject.techno || []).filter(
         (tech) => tech.name.trim() !== ""
     );
@@ -45,7 +44,6 @@ export default function ProjectManager(): JSX.Element {
             link.url.trim() !== ""
     );
 
-    // Si on est en mode ajout
     if (!isEditing) {
       const projectToAdd: Project = {
         id: uuidv4(),
@@ -81,7 +79,7 @@ export default function ProjectManager(): JSX.Element {
       ended: false,
       deploy: false,
       links: [{ name: "", url: "" }],
-      img: [],
+      img: [{src:""}],
     });
     loadProjects();
   }

@@ -8,7 +8,6 @@ export interface Project {
   deploy: boolean;
   links: { name: string; url: string }[];
   img: {
-    isMock: boolean;
     src: string;
   }[];
 }
