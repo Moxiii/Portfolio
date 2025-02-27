@@ -3,6 +3,7 @@
   position: fixed;
   bottom: 2%;
   left: 50%;
+  z-index: 1000;
   transform: translateX(-50%);
   background: $primary-color;
   padding: 10px 20px;

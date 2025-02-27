@@ -1,17 +1,19 @@
 import { Routes, Route } from "react-router-dom";
 import Layout from "./Components/Layout/Layout.tsx";
 import Home from "./Screens/Home/Home.tsx";
-import Links from "./Screens/Links/Links.tsx";
 import About from "./Screens/About/About.tsx";
 import Contact from "./Screens/Contact/Contact.tsx";
-import { ReactLenis, useLenis } from "lenis/react";
+import { ReactLenis  } from "lenis/react";
+import type { LenisRef } from 'lenis/react';
 import "./App.scss";
 import Admin from "./Admin/Portal/Admin.tsx";
+import { useRef} from "react";
 function App() {
-  const lenis = useLenis(({ scroll }) => {});
+const lenisRef = useRef<LenisRef>(null)
+
   return (
     <>
-      <ReactLenis root>
+      <ReactLenis root ref={lenisRef}>
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />

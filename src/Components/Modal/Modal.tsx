@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import {useRef} from "react";
 import {faTimes , faArrowLeft} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import "./Modal.scss"
 interface ModalProps{
     isOpen: boolean;
     onClose: ()=> void;

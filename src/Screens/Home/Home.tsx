@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFolder } from "@fortawesome/free-solid-svg-icons";
 import { Project } from "../../Types/ProjectType";
 import "./Home.scss";
-import Modal from "../../Components/Modal.tsx";
+import Modal from "../../Components/Modal/Modal.tsx";
 import ProjectDetails from "../../Components/Project/Project.tsx"
 export default function Home(): JSX.Element {
   const [projects, setProjects] = useState<Project[]>([]);
