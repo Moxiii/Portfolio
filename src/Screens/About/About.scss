@@ -1,15 +1,18 @@
 .about-page {
 
-.text-zone{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  img{
-    width: 50%;
-    height: 50%;
+  .text-zone {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    img {
+      aspect-ratio: 1/1;
+    }
   }
-}
+
   .progress-bar {
     position: fixed;
     top: 0;
@@ -55,7 +58,7 @@
     height: 20vh;
     flex: 0 0 auto;
     flex-shrink: 0;
-    padding:5%;
+    padding: 5%;
     align-items: center;
     justify-content: center;
     flex-direction: column;
@@ -82,28 +85,5 @@
     }
   }
 
-  .extra-section {
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #121212;
-    color: white;
-
-    h2 {
-      font-size: 36px;
-      margin-bottom: 10px;
-    }
-
-    p {
-      font-size: 24px;
-    }
-  }
 }
-.sticky-card {
-  position: sticky;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10;
-}
+

@@ -38,15 +38,16 @@ export default function ProjectDetails({project  }:ProjectCardProps){
     useEffect(() => {
         if (project && typedElement.current) {
             const techNames = project.techno.map((tech) => tech.name);
+            const shouldLoop = techNames.length > 1;
             const options = {
                 strings: techNames,
-                typeSpeed: 75,
+                typeSpeed: 50,
                 backSpeed: 100,
-                loop: true,
+                loop: shouldLoop,
                 backDelay: 200,
                 preStringTyped: (index: number) => {
                     const tech = project.techno[index % techNames.length];
-                    setCurrentIcon(getTechIcon(tech?.name));
+                    setCurrentIcon(getTechIcon(tech.name));
                 },
             };
             typedInstance.current = new Typed(typedElement.current, options);
@@ -57,8 +58,7 @@ export default function ProjectDetails({project  }:ProjectCardProps){
     }, [project]);
     return (
         <div className="project-detail">
-            <p>{project.description}</p>
-            <div>
+            <div className="project-tech">
                 <p>
                     Développé en : <span ref={typedElement} style={{fontWeight: "bold"}}></span>
                     {currentIcon && (
@@ -67,9 +67,13 @@ export default function ProjectDetails({project  }:ProjectCardProps){
                             style={{marginRight: "5px", fontSize: "150%"}}
                         />
                     )}
-
                 </p>
             </div>
+                <div className="project-desc">
+                    <p>{project.description}</p>
+                </div>
+
+
             {project && (
                 <div className="project-status">
                     <div className="status-item">

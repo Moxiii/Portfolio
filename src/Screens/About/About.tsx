@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngular, faGithub, faJs, faReact, faSass, faJava, faPython, faDocker } from "@fortawesome/free-brands-svg-icons";
 import { JSX, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import Dev from "../../assets/Illustration/3d-nft-icon-developer-male-illustration.png";
+import Dev from "../../assets/Illustration/3d-nft-icon-developer-male-illustration-min-500px.png";
 import HorizontalScroll from "../../Components/HorizontalScroll/HorizontalScroll.tsx";
 
 export default function About(): JSX.Element {
@@ -28,7 +28,7 @@ export default function About(): JSX.Element {
         <div className="about-page">
             <section className="about-landing">
                 <div className="text-zone">
-                    <h2>Presentation</h2>
+                    <h2>Présentation</h2>
                     <p>Passionné d'informatique depuis mon plus jeune âge, aujourd'hui cela devient mon métier !</p>
                     <img className="illustration" src={Dev} alt="white man who dev" />
                     <p>Toujours d'une curiosité sans faille, je m'autoforme sur :</p>
