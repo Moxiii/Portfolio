@@ -11,7 +11,7 @@ function openDB(): Promise<IDBDatabase> {
       if (!db.objectStoreNames.contains(STORE_NAME)) {
         db.createObjectStore(STORE_NAME, {
           keyPath: "id",
-          autoIncrement: true,
+          autoIncrement: false,
         });
       }
     };
@@ -23,7 +23,7 @@ function openDB(): Promise<IDBDatabase> {
 
 export async function addProject(project: {
   presentation: (string | { title: string; list: string[] })[];
-  img: { src: string }[];
+  img: { src: string, description?: string }[];
   techno: { name: string }[];
   ended: boolean;
   description: string;

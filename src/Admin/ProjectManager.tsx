@@ -7,7 +7,7 @@ import {
 } from "../Database/InitProject.ts";
 import { v4 as uuidv4 } from "uuid";
 import { Project } from "../Types/ProjectType.ts";
-
+import ImgCarrousel from "../Components/Carrousel/FramerImgCarrousel/ImgCarrousel.tsx";
 export default function ProjectManager(): JSX.Element {
   const [projects, setProjects] = useState<Project[]>([]);
   const [newProject, setNewProject] = useState<Partial<Project>>({
@@ -154,8 +154,8 @@ export default function ProjectManager(): JSX.Element {
     if (e.target.files) {
       const filesArray = Array.from(e.target.files);
       const newImages = filesArray.map((file) => ({
-        isMock: false,
         src: URL.createObjectURL(file),
+        description : file.name,
       }));
       setNewProject({
         ...newProject,
@@ -276,7 +276,10 @@ export default function ProjectManager(): JSX.Element {
                 <h3>{project.title}</h3>
                 <p>{project.description}</p>
                 {project.img && project.img.length > 0 && (
-                    <img src={project.img[0].src} alt={project.title}/>
+                  <ImgCarrousel images={project.img.map((img:any)=>({
+                      src:img.src,
+                      description:img.description || ""
+                    }))}/>
                 )}
                 <button onClick={() => handleDelete(project.id)}>
                   Supprimer

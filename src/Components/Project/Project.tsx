@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle, faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 import {Typed} from "react-typed";
 import { Project } from "../../Types/ProjectType";
+import ImgCarrousel from "../Carrousel/FramerImgCarrousel/ImgCarrousel.tsx";
 import {faAngular, faJava, faJs, faPython, faReact, faSass} from "@fortawesome/free-brands-svg-icons";
 interface ProjectCardProps{
     project: Project;
@@ -58,7 +59,7 @@ export default function ProjectDetails({project  }:ProjectCardProps){
     }, [project]);
     return (
         <div className="project-detail">
-            <div className="project-tech">
+            <div className="project-tech project" >
                 <p>
                     Développé en : <span ref={typedElement} style={{fontWeight: "bold"}}></span>
                     {currentIcon && (
@@ -69,13 +70,13 @@ export default function ProjectDetails({project  }:ProjectCardProps){
                     )}
                 </p>
             </div>
-                <div className="project-desc">
+                <div className="project-desc project">
                     <p>{project.description}</p>
                 </div>
 
 
             {project && (
-                <div className="project-status">
+                <div className="project-status project">
                     <div className="status-item">
                         <span>Fini : </span>
                         <FontAwesomeIcon
@@ -86,7 +87,7 @@ export default function ProjectDetails({project  }:ProjectCardProps){
                             }}
                         />
                     </div>
-                    <div className="status-item">
+                    <div className="status-item project">
                         <span>Deployer : </span>
                         <FontAwesomeIcon
                             icon={project.deploy ? faCheckCircle : faTimesCircle}
@@ -98,9 +99,17 @@ export default function ProjectDetails({project  }:ProjectCardProps){
                     </div>
                 </div>
             )}
-            <div>
-                <h3>Links:</h3>
-                <ul>
+            {project?.img && (
+                <div className="project-img project">
+                   <ImgCarrousel images={project.img.map((img:any)=>({
+                       src:img.src,
+                       description:img.description || ""
+                   }))}/>
+                </div>
+                )}
+
+            <div className="project-links project">
+            <ul>
                     {project.links?.map((link, index) => (
                         <div key={index}>
                             <a
@@ -114,13 +123,12 @@ export default function ProjectDetails({project  }:ProjectCardProps){
                     ))}
                 </ul>
             </div>
-            <div>
-                <h3>Présentation</h3>
+            <div className="project-pres project">
                 <ul>
                     {project.presentation?.map((pres, index) => (
-                        <div key={index}>
-                            <h3>{pres.title}</h3>
-                            <ul>
+                        <div key={index} >
+                            <h3 className="project-pres-title">{pres.title}</h3>
+                            <ul className="project-pres-desc">
                                 {pres.list?.map((item, i) => (
                                     <li key={i}>{item}</li>
                                 ))}

@@ -28,7 +28,7 @@ export default function Modal({isOpen , onClose ,onBack, title , children}:Modal
                            <FontAwesomeIcon icon={faArrowLeft} className="arrow-back" />
                        </button>
                    )}
-                   {title && <h2>{title}</h2>}
+                   {title && <h2 className="modal-title">{title}</h2>}
                    <button className="close-btn" onClick={onClose}>
                        <FontAwesomeIcon icon={faTimes}/>
                    </button>
