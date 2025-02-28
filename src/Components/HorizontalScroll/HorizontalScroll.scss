@@ -1,0 +1,25 @@
+.horizontal-scroll-container{
+  height: 250vh;
+  background: #121212;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+}
+.sticky-container {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.scroll-container {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem;
+  flex-wrap: nowrap;
+  width: max-content;
+  overflow: hidden;
+  white-space: nowrap;
+}
