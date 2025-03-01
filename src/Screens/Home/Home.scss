@@ -31,7 +31,13 @@
       }
     }
   }
-
+.project-list{
+  display: inline-flex;
+  justify-content: flex-start;
+  padding: 3%;
+  gap:30%;
+}
+;
   .project-folder {
     > .folder {
       display: flex;

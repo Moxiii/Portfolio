@@ -23,7 +23,7 @@ function openDB(): Promise<IDBDatabase> {
 
 export async function addProject(project: {
   presentation: (string | { title: string; list: string[] })[];
-  img: { src: string, description?: string }[];
+  img: { src: Blob | string, description?: string }[];
   techno: { name: string }[];
   ended: boolean;
   description: string;

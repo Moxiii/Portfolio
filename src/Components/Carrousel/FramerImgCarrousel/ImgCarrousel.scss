@@ -1,5 +1,36 @@
 .img-carrousel-container{
-  width: 50%;
-  height: 50%;
-  background: red;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  gap: 10;
+  .carrousel-button{
+    height: 5%;
+    width: 5%;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    outline-offset: 2px;
+  }
+
+  .carousel-slide{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+
+  }
+  .carousel-image{
+    max-width: 400px;
+    max-height: 400px;
+    aspect-ratio: 1/1;
+    object-fit: contain;
+}
+  .carousel-description{
+    background: #aaa9ad;
+    display: none;
+  }
 }

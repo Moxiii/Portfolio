@@ -2,9 +2,11 @@ import "./About.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngular, faGithub, faJs, faReact, faSass, faJava, faPython, faDocker } from "@fortawesome/free-brands-svg-icons";
 import { JSX, useRef, useState } from "react";
+import type { LenisRef } from "lenis/react";
 import { motion } from "framer-motion";
 import Dev from "../../assets/Illustration/3d-nft-icon-developer-male-illustration-min-500px.png";
 import HorizontalScroll from "../../Components/HorizontalScroll/HorizontalScroll.tsx";
+import ScrollProgress from "../../Components/ScrollProgress/ScrollProgress.tsx";
 
 export default function About(): JSX.Element {
     const techs = [
@@ -17,6 +19,7 @@ export default function About(): JSX.Element {
         { name: "Python", icon: faPython },
         { name: "Angular", icon: faAngular },
     ];
+    const lenisRef = useRef<LenisRef>(null)
     const progressBarRef = useRef<HTMLDivElement>(null);
     const [selectedTech, setSelectedTech] = useState<string | null>(null);
 
@@ -26,6 +29,7 @@ export default function About(): JSX.Element {
 
     return (
         <div className="about-page">
+            <ScrollProgress/>
             <section className="about-landing">
                 <div className="text-zone">
                     <h2>Présentation</h2>
@@ -70,4 +74,5 @@ export default function About(): JSX.Element {
             </section>
         </div>
     );
+
 }

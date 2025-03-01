@@ -10,10 +10,14 @@ import Admin from "./Admin/Portal/Admin.tsx";
 import { useRef} from "react";
 function App() {
 const lenisRef = useRef<LenisRef>(null)
-
+const lenisOption = {
+  autoRaf:true,
+  smooth:true,
+  lerp:0.1,
+  }
   return (
     <>
-      <ReactLenis root ref={lenisRef}>
+      <ReactLenis root ref={lenisRef} options={lenisOption}>
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />

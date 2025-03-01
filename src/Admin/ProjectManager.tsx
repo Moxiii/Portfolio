@@ -150,19 +150,33 @@ export default function ProjectManager(): JSX.Element {
 
     setNewProject({ ...newProject, presentation: newPresentation });
   }
+
   function handleImageUpload(e: React.ChangeEvent<HTMLInputElement>) {
     if (e.target.files) {
       const filesArray = Array.from(e.target.files);
-      const newImages = filesArray.map((file) => ({
-        src: URL.createObjectURL(file),
-        description : file.name,
-      }));
-      setNewProject({
-        ...newProject,
-        img: [...(newProject.img || []), ...newImages],
+
+      Promise.all(
+          filesArray.map((file) => {
+            return new Promise<{ src: string; description: string }>((resolve) => {
+              const reader = new FileReader();
+              reader.readAsDataURL(file);
+              reader.onloadend = () => {
+                resolve({
+                  src: reader.result as string,
+                  description: file.name,
+                });
+              };
+            });
+          })
+      ).then((newImages) => {
+        setNewProject({
+          ...newProject,
+          img: [...(newProject.img || []), ...newImages],
+        });
       });
     }
   }
+
 
   function handleEditProject(project: Project) {
     setNewProject(project);
