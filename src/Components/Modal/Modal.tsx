@@ -1,9 +1,11 @@
-import * as React from "react";
+
 import { motion } from "framer-motion";
-import {useRef} from "react";
+import React, {useRef} from "react";
 import {faTimes , faArrowLeft} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Modal.scss"
+import {ReactLenis} from "lenis/react";
+
 interface ModalProps{
     isOpen: boolean;
     onClose: ()=> void;
@@ -14,6 +16,9 @@ interface ModalProps{
 export default function Modal({isOpen , onClose ,onBack, title , children}:ModalProps){
     if(!isOpen) return null;
     const constraintsRef = useRef<HTMLDivElement>(null);
+    const modalContentRef = useRef<HTMLDivElement>(null);
+
+
     return (
        <motion.div ref={constraintsRef}>
            <motion.div
@@ -33,9 +38,11 @@ export default function Modal({isOpen , onClose ,onBack, title , children}:Modal
                        <FontAwesomeIcon icon={faTimes}/>
                    </button>
                </div>
-               <div className="modal-content">
-                   {children}
-               </div>
+              <ReactLenis root>
+                  <div className="modal-content" ref={modalContentRef}>
+                      {children}
+                  </div>
+              </ReactLenis>
            </motion.div>
        </motion.div>
     )
