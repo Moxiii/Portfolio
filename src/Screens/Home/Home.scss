@@ -9,8 +9,11 @@
   height: calc(100vh - 80px);
   width: 100vw;
   .quote-box {
+    position: relative;
     box-shadow: inset 0 0 0 1px $secondary-color;
-    padding: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 20px;
     border: solid;
     width: 50%;
@@ -20,11 +23,15 @@
     color: $secondary-color;
 
     > .quote {
-      font-size: 300%;
+      font-size: 200%;
     }
 
-    > .author {
+    > .sub-text {
+      position: absolute;
+      bottom: 0;
+      right: 0;
       font-size: 120%;
+      padding:2%;
 
       .rosy {
         color: $rose-pastel;

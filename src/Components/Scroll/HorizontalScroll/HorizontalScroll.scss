@@ -1,6 +1,7 @@
+@import "../../../const.scss";
 .horizontal-scroll-container{
   height: 700vh;
-  background: #121212;
+  background: $rose-magenta;
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
 }

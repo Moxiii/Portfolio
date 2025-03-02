@@ -46,11 +46,9 @@ export default function Home(): JSX.Element {
       <div className="landing-container">
         <div className="quote-box">
           <blockquote className="quote-text">
-            <h1 className="quote">Simple Portefolio</h1>
-            <p className="author">
-              <small>
-                By <a href="/about"><span className="rosy">moxi</span></a>
-              </small>
+            <h1 className="quote">Portfolio Maxime Lapouge</h1>
+            <p className="sub-text">
+                 <a href="/about"><span className="rosy">Étudiant développeur web</span></a>
             </p>
           </blockquote>
         </div>

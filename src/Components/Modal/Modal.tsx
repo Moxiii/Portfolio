@@ -11,7 +11,7 @@ interface ModalProps{
     isOpen: boolean;
     onClose: ()=> void;
     title?: string;
-    chlidren: React.JSX.Element;
+    children: React.JSX.Element;
     onBack?:()=>void;
 }
 export default function Modal({isOpen , onClose ,onBack, title , children}:ModalProps){
