@@ -1,5 +1,5 @@
 .horizontal-scroll-container{
-  height: 500vh;
+  height: 700vh;
   background: #121212;
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
@@ -17,7 +17,7 @@
 .scroll-container {
   display: flex;
   gap: 2rem;
-  padding: 2rem;
+  padding: 4rem;
   flex-wrap: nowrap;
   width: max-content;
   overflow: hidden;

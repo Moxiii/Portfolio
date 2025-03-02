@@ -12,9 +12,7 @@ export default function HorizontalScroll({children }:HorizontalScrollProps):JSX.
     const [maxScroll , setMaxScroll] = useState(0)
 
    useLenis(({scroll})=>{
-       setScrollValue(scroll * maxScroll)
-
-
+       setScrollValue(scroll - maxScroll)
        })
 
     useEffect(() => {

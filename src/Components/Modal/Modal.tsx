@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Modal.scss"
 import {ReactLenis} from "lenis/react";
 
+
 interface ModalProps{
     isOpen: boolean;
     onClose: ()=> void;

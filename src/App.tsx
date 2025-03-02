@@ -7,6 +7,7 @@ import { ReactLenis  } from "lenis/react";
 import type { LenisRef } from 'lenis/react';
 import "./App.scss";
 import Admin from "./Admin/Portal/Admin.tsx";
+import ErrorBoundary from "./Components/HOOK/ERROR/BOUNDARY/ErrorBoundary.tsx";
 import { useRef} from "react";
 function App() {
 const lenisRef = useRef<LenisRef>(null)
@@ -16,7 +17,7 @@ const lenisOption = {
   lerp:0.1,
   }
   return (
-    <>
+    <ErrorBoundary>
       <ReactLenis root ref={lenisRef} options={lenisOption}>
         <Routes>
           <Route path="/" element={<Layout />}>
@@ -27,7 +28,7 @@ const lenisOption = {
           </Route>
         </Routes>
       </ReactLenis>
-    </>
+    </ErrorBoundary>
   );
 }
 

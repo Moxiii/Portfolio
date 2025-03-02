@@ -49,7 +49,7 @@ export default function Home(): JSX.Element {
             <h1 className="quote">Simple Portefolio</h1>
             <p className="author">
               <small>
-                By <span className="rosy">moxi</span>
+                By <a href="/about"><span className="rosy">moxi</span></a>
               </small>
             </p>
           </blockquote>

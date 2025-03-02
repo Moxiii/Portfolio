@@ -4,8 +4,8 @@ import { faAngular, faGithub, faJs, faReact, faSass, faJava, faPython, faDocker 
 import { JSX, useState } from "react";
 import { motion } from "framer-motion";
 import Dev from "../../assets/Illustration/3d-nft-icon-developer-male-illustration-min-500px.png";
-import HorizontalScroll from "../../Components/HorizontalScroll/HorizontalScroll.tsx";
-import ScrollProgress from "../../Components/ScrollProgress/ScrollProgress.tsx";
+import HorizontalScroll from "../../Components/Scroll/HorizontalScroll/HorizontalScroll.tsx";
+import ScrollProgress from "../../Components/Scroll/ScrollProgress/ScrollProgress.tsx";
 
 export default function About(): JSX.Element {
     const techs = [
