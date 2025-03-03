@@ -4,8 +4,10 @@ import  "./HorizontalScroll.scss"
 import { useLenis } from "lenis/react";
 interface HorizontalScrollProps{
     children:React.ReactNode;
+    background?:string,
+    length?:number,
 }
-export default function HorizontalScroll({children }:HorizontalScrollProps):JSX.Element{
+export default function HorizontalScroll({children , background  , length = 8}:HorizontalScrollProps):JSX.Element{
     const containerRef = useRef<HTMLDivElement>(null);
     const scrollContainerRef = useRef<HTMLDivElement>(null);
     const [scrollValue , setScrollValue] = useState(0)
@@ -23,6 +25,7 @@ export default function HorizontalScroll({children }:HorizontalScrollProps):JSX.
         <section
             ref={containerRef}
             className="horizontal-scroll-container"
+            style={{ "--bg-color":background , "--length":length?.toString()} as React.CSSProperties}
         >
             <div className="sticky-container" ref={scrollContainerRef}>
                 <motion.div style={{x: `-${scrollValue * 0.4}px`,}} className="scroll-container">

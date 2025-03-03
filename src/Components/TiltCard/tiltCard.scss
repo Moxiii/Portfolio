@@ -1,8 +1,9 @@
+@import "../../const";
 .tilt-card {
   width: 280px;
   height: 400px;
   border-radius: 15px;
-  background: linear-gradient(to bottom right, #6b46c1, #805ad5);
+  //background: linear-gradient(to bottom right, #6b46c1, #805ad5);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -14,7 +15,11 @@
   .card-content {
     display: flex;
     justify-content: center;
-    background: white;
+    flex-direction: column;
+    background: $rose-framboise;
+    color:$primary-color;
+    height: 100%;
+    width: 100%;
     padding: 20px;
     border-radius: 10px;
     text-align: center;

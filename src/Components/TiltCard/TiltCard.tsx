@@ -7,16 +7,17 @@ import {
 } from "framer-motion";
 import Modal from "../../Components/Modal/Modal.tsx";
 import "./tiltCard.scss";
-
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 const ROTATION_RANGE = 32.5;
 const HALF_ROTATION_RANGE = ROTATION_RANGE / 2;
 
 interface TiltCardProps {
     title: string;
+    icon:string;
     content: React.ReactNode;
 }
 
-const TiltCard: React.FC<TiltCardProps> = ({ title, content }) => {
+const TiltCard: React.FC<TiltCardProps> = ({ title, content , icon }) => {
     const ref = useRef<HTMLDivElement>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -62,6 +63,7 @@ const TiltCard: React.FC<TiltCardProps> = ({ title, content }) => {
             >
                 <div className="card-content">
                     <p>{title}</p>
+                    <FontAwesomeIcon icon={icon}/>
                 </div>
             </motion.div>
 

@@ -9,6 +9,8 @@ import HorizontalScroll from "../../Components/Scroll/HorizontalScroll/Horizonta
 import ScrollProgress from "../../Components/Scroll/ScrollProgress/ScrollProgress.tsx";
 import CV from "../../assets/CV/CV LAPOUGE Maxime-1.pdf"
 import TiltCard from "../../Components/TiltCard/TiltCard.tsx";
+import CustomCursor from "../../Components/Cursor/CustomCursor.tsx";
+import ParallaxText from "../../Components/Scroll/ParallaxText/ParallaxText.tsx";
 
 
 export default function About(): JSX.Element {
@@ -26,43 +28,58 @@ export default function About(): JSX.Element {
         {
             title: "Clavier custom",
             content: <p>J'adore modder et créer des claviers mécaniques.</p>,
+            icon: faKeyboard,
         },
         {
             title: "Sport automobile",
             content: <p>Je démonte et répare des moteurs.</p>,
+            icon: faCar,
         },
         {
             title: "Moto",
             content: <p>Passionné de moto et de balades sur route.</p>,
+            icon: faMotorcycle,
         },
         {
             title: "Mode de seconde main",
             content: <p>Fan de thrift shopping et vintage.</p>,
+            icon: faShirt,
         },
     ];
 
 
     const [selectedTech, setSelectedTech] = useState<string | null>(null);
-    const [flippedIndex, setFlippedIndex] = useState<number | null>(null);
+
     return (
+        <>
+        <CustomCursor/>
         <div className="about-page">
             <ScrollProgress/>
-            <section className="about-landing">
-                <div className="text-zone ">
+                <ParallaxText
+                    topText="Développement Web - React - Node.js - UI/UX"
+                    centerText="Bienvenue sur mon portfolio"
+                    bottomText="Mobile - Backend - Design - Performance"
+                    speed={3000}
+                    skewFactor={20}
+                    textColor="#E91E63"
+                    bgColor="#9300c5"
+                />
+
+            <section className="text-zone">
+                <div className="first-pres">
                     <p>Passionné d'informatique depuis mon plus jeune âge, je désire en faire mon métier !</p>
-                    <img className="illustration" src={Dev} alt="white man who dev" />
+                    <img className="illustration" src={Dev} alt="white man who dev"/>
                     <p>Toujours d'une curiosité sans faille, je m'autoforme sur :</p>
                 </div>
             </section>
+            <HorizontalScroll length={techs.length - 1.5}>
 
-            <HorizontalScroll>
-
-                    {techs.map((tech , index)=>(
-                        <motion.div
-                            key={index}
-                            className="tech-card"
-                            whileHover={{scale:1.1}}
-                            onClick={()=>setSelectedTech(tech.name)}
+                {techs.map((tech, index) => (
+                    <motion.div
+                        key={index}
+                        className="tech-card"
+                        whileHover={{scale: 1.1}}
+                        onClick={() => setSelectedTech(tech.name)}
                             style={{'--icon-color' : tech.color} as React.CSSProperties}
                         >
                             <FontAwesomeIcon icon={tech.icon} className="tech-icon" />
@@ -87,7 +104,7 @@ export default function About(): JSX.Element {
                 <h2>Mais aussi passioné par :</h2>
                 <div className="interest-container">
                     {interests.map((interest, index) => (
-                        <TiltCard key={index} title={interest.title} content={interest.content} />
+                        <TiltCard key={index} title={interest.title} content={interest.content}  icon={interest.icon}/>
                     ))}
                 </div>
 
@@ -98,6 +115,7 @@ export default function About(): JSX.Element {
                 <iframe src={CV} className="CV" frameborder="0"></iframe>
             </section>
         </div>
+        </>
     );
 
 }
