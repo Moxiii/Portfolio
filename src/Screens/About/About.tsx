@@ -56,9 +56,9 @@ export default function About(): JSX.Element {
         <div className="about-page">
             <ScrollProgress/>
                 <ParallaxText
-                    topText="Développement Web - React - Node.js - UI/UX"
+                    topText={["Développement Web/-/" ,  "React/-/",  "Node.js/-/" ,"UI/UX"]}
                     centerText="Bienvenue sur mon portfolio"
-                    bottomText="Mobile - Backend - Design - Performance"
+                    bottomText={["Mobile/-/","Backend/-/" , "Design/-/" ,"Performance"]}
                     speed={3000}
                     skewFactor={20}
                     textColor="#E91E63"
