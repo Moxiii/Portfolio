@@ -26,6 +26,7 @@ import TiltCard from "../../Components/TiltCard/TiltCard.tsx";
 import CustomCursor from "../../Components/Cursor/CustomCursor.tsx";
 import ParallaxText from "../../Components/Scroll/ParallaxText/ParallaxText.tsx";
 import { LoremIpsum } from "react-lorem-ipsum";
+import AsideScroll from "../../Components/Scroll/AsideScroll/AsideScroll.tsx";
 export default function About(): JSX.Element {
   const techs = [
     { name: "React", icon: faReact, color: "#61DBFB" },
@@ -70,6 +71,7 @@ export default function About(): JSX.Element {
         <ParallaxText
           topText={["Développement Web", "React", "Node.js", "UI/UX"]}
           centerText="Maxime Lapouge"
+          subCenterText="Etudiant en informatique"
           bottomText={["Mobile", "Backend", "Design", "Performance"]}
           textColor="#E91E63"
           bgColor="#9300c5"
@@ -112,6 +114,23 @@ export default function About(): JSX.Element {
             </div>
           </div>
         )}
+        <AsideScroll mainTiltedText="Egalement">
+          <div className="Content">
+            <h3>Clavier custom</h3>
+            <p>test</p>
+          </div>
+          <div className="Content">
+            <h3>Sport automobile</h3>
+          </div>
+            <p>test</p>
+            <div className="Content">
+            </div>
+              <h3>Moto</h3>
+              <p>test</p>
+              <div className="Content">
+                <h3>Mode de seconde main</h3>
+              </div>
+        </AsideScroll>
         <section className="text-zone">
           <h2>Mais aussi passioné par :</h2>
           <div className="interest-container">

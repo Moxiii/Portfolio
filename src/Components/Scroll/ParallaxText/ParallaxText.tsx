@@ -3,10 +3,12 @@ import { useLenis } from "lenis/react";
 import { FaArrowDown } from "react-icons/fa";
 import s from "./ParallaxText.module.scss";
 import { motion } from "framer-motion";
+import BubbleText from "../../BubbleText";
 interface ParallaxTextProps {
   topText: string[];
   bottomText: string[];
   centerText?: string;
+  subCenterText?: string;
   length?: number;
   textColor?: string;
   bgColor?: string;
@@ -19,6 +21,7 @@ export default function ParallaxText({
   textColor = "#000",
   bgColor = "#fff",
   length = 5,
+  subCenterText = "",
 }: ParallaxTextProps): JSX.Element {
   const containerRef = useRef<HTMLDivElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -72,8 +75,10 @@ export default function ParallaxText({
         >
           {createRepeatingText(topText, 3)}
         </motion.div>
-
-        {centerText && <h1 className={s.centerText}>{centerText}</h1>}
+        <div className={s.centerTextContainer}>
+          {centerText && <h1 className={s.centerTitle}>{centerText}</h1>}
+          {subCenterText && <BubbleText text={subCenterText} />}
+        </div>
 
         <div className={s.scrollIndicator}>
           <motion.div
