@@ -1,11 +1,13 @@
 .parallaxTextContainer {
-  height: 300vh;
+  height: calc(var(--length) * 100vh);
   width: 100vw;
   display: flex;
 
   flex-wrap: nowrap;
 }
-
+.spanText {
+  padding: 1%;
+}
 .stickyContent {
   position: sticky;
   top: 0;
@@ -17,6 +19,9 @@
   justify-content: space-between;
   overflow: hidden;
   padding: 5rem 0;
+  span {
+    color: var(--text-color);
+  }
 }
 
 .parallaxTextTop,
@@ -26,17 +31,15 @@
   font-weight: bold;
   text-transform: uppercase;
   will-change: transform;
-  position:absolute;
+  position: absolute;
 }
 
 .parallaxTextTop {
-  top :20%;
-  left: 1%;
+  top: 10%;
 }
 
 .parallaxTextBottom {
-  bottom: 20%;
-  right: 1%;
+  bottom: 10%;
 }
 
 .centerText {
