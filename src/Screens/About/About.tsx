@@ -2,7 +2,7 @@ import "./About.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faAngular,
-  faGithub,
+  faGit,
   faJs,
   faReact,
   faSass,
@@ -31,7 +31,7 @@ export default function About(): JSX.Element {
   const techs = [
     { name: "React", icon: faReact, color: "#61DBFB" },
     { name: "Docker", icon: faDocker, color: "#2496ED" },
-    { name: "GitHub", icon: faGithub, color: "#181717" },
+    { name: "Git", icon: faGit, color: "#181717" },
     { name: "JavaScript", icon: faJs, color: "#F7DF1E" },
     { name: "Sass", icon: faSass, color: "#CD6799" },
     { name: "Java", icon: faJava, color: "#007396" },
@@ -60,7 +60,8 @@ export default function About(): JSX.Element {
       icon: faShirt,
     },
   ];
-
+const primaryColor : string = "#3a2172";
+const secondaryColor : string = "#efe07d";
   const [selectedTech, setSelectedTech] = useState<string | null>(null);
 
   return (
@@ -78,7 +79,7 @@ export default function About(): JSX.Element {
           length={3}
         />
 
-        <section className="text-zone">
+        <section className="text-zone" style={{"--background-color":secondaryColor , "--text-color":primaryColor}as React.CSSProperties}>
           <div className="first-pres">
             <LoremIpsum p={1} random={true} />
             <p>
@@ -90,7 +91,7 @@ export default function About(): JSX.Element {
             <p>Toujours d'une curiosité sans faille, je m'autoforme sur :</p>
           </div>
         </section>
-        <HorizontalScroll length={techs.length}>
+        <HorizontalScroll length={techs.length} background={primaryColor}>
           {techs.map((tech, index) => (
             <motion.div
               key={index}
@@ -114,7 +115,7 @@ export default function About(): JSX.Element {
             </div>
           </div>
         )}
-        <AsideScroll mainTiltedText="Egalement">
+        <AsideScroll mainTiltedText="Egalement" background={secondaryColor}>
           <div className="Content">
             <h3>Clavier custom</h3>
             <p>test</p>

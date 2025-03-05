@@ -6,11 +6,13 @@ import s from "./AsideScroll.module.scss";
 interface AsideScrollProps {
   mainTiltedText: string;
   children: ReactNode;
+  background?:string;
 }
 
 export default function AsideScroll({
                                       children,
                                       mainTiltedText,
+                                        background,
                                     }: AsideScrollProps): JSX.Element {
   const sectionRef = useRef<HTMLDivElement>(null);
 
@@ -45,7 +47,7 @@ export default function AsideScroll({
 
   return (
       <section ref={sectionRef} >
-          <div className="aside-scroll">
+          <div className="aside-scroll" style={{"--bg-color":background}as React.CSSProperties}>
               <div className="layout-grid">
                   <h2 className={cn(s.sticky, "h2")}> {mainTiltedText} </h2>
                   <aside className={s.asideContainer}>

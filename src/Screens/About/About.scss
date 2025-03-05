@@ -9,24 +9,15 @@
     width: 100vw;
     flex-direction: column;
     padding: 2%;
-    background-color: $primary-color;
+    background-color: var(--background-color , $primary-color);
+    color: var(--text-color , $secondary-color);
     img {
       aspect-ratio: 1/1;
       height: 40%;
     }
   }
 
-  .about-landing {
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    background: radial-gradient(
-      circle,
-      rgba(216, 27, 96, 0.2) 0%,
-      rgba(58, 33, 114, 1) 100%
-    );
-  }
+
   .first-pres {
     display: flex;
     justify-content: center;
@@ -41,7 +32,6 @@
     }
     p {
       font-size: 1.5rem;
-      color: white;
     }
   }
 

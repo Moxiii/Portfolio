@@ -1,6 +1,6 @@
 import { JSX } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faLink, faAddressCard, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faAddressCard, faUser } from '@fortawesome/free-solid-svg-icons';
 import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
 import "./Navbar.scss";
