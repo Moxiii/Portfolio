@@ -1,7 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
   server: {
@@ -9,5 +8,17 @@ export default defineConfig({
       "Cross-Origin-Opener-Policy": "same-origin",
       "Cross-Origin-Embedder-Policy": "require-corp"
     }
-  }
+  },
+  resolve: {
+    alias: {
+      '@styles': '/src/styles',
+    },
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "@styles/_color.scss";`
+      },
+    },
+  },
 })

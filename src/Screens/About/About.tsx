@@ -60,6 +60,11 @@ export default function About(): JSX.Element {
       icon: faShirt,
     },
   ];
+  const sideSkills=[
+    {title:"Reseaux" , text:"Creation d'un serveur WEB ."},
+    {title:"Reseaux" , text:"Creation d'un serveur WEB ."},
+    {title:"Reseaux" , text:"Creation d'un serveur WEB ."},
+  ]
 const primaryColor : string = "#3a2172";
 const secondaryColor : string = "#efe07d";
   const [selectedTech, setSelectedTech] = useState<string | null>(null);
@@ -115,23 +120,9 @@ const secondaryColor : string = "#efe07d";
             </div>
           </div>
         )}
-        <AsideScroll mainTiltedText="Egalement" background={secondaryColor}>
-          <div className="Content">
-            <h3>Clavier custom</h3>
-            <p>test</p>
-          </div>
-          <div className="Content">
-            <h3>Sport automobile</h3>
-          </div>
-            <p>test</p>
-            <div className="Content">
-            </div>
-              <h3>Moto</h3>
-              <p>test</p>
-              <div className="Content">
-                <h3>Mode de seconde main</h3>
-              </div>
-        </AsideScroll>
+        <AsideScroll mainTiltedText="Egalement" background={secondaryColor} tab={sideSkills}/>
+
+
         <section className="text-zone">
           <h2>Mais aussi passioné par :</h2>
           <div className="interest-container">
@@ -148,7 +139,7 @@ const secondaryColor : string = "#efe07d";
 
         <section className="text-zone cv-section">
           <h2>CV</h2>
-          <iframe src={CV} className="CV" frameborder="0"></iframe>
+          <iframe src={CV} className="CV" ></iframe>
         </section>
       </div>
     </>
