@@ -1,12 +1,6 @@
-@import '../../../styles/_color';
-
-.zoom-section {
+.zoomSection {
   position: relative;
   height: 500vh;
-
-  @media (min-width: 1024px) {
-    height: 1000vh;
-  }
 
   .inner {
     position: sticky;
@@ -19,9 +13,9 @@
     justify-content: center;
 
     &::after {
-      content: '';
-      background-color: currentColor;
-      position: absolute;
+      content: "";
+      //background-color: currentColor;
+      //position: absolute;
       height: 100%;
       width: 100%;
       left: 50%;
@@ -74,12 +68,5 @@
     text-align: center;
     font-size: 8vh;
     font-weight: bold;
-  }
-
-  .next-section {
-    position: relative;
-    height: 100vh;
-    background-color: var(--text-color, black);
-    transition: background-color 0.5s ease;
   }
 }

@@ -1,12 +1,13 @@
 .project-detail{
-
+  padding:5%;
   height: 100%;
   width: 100%;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  overflow: auto;
+  overflow: scroll;
+  max-height: 100vh;
   .project{
   padding: 2%;
 }

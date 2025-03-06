@@ -1,6 +1,7 @@
 import emailjs from "@emailjs/browser";
 import { useRef, JSX } from "react";
-import "./Contact.scss";
+import s from "./Contact.module.scss";
+import cn from "clsx";
 
 export default function Contact(): JSX.Element {
   const refForm = useRef<HTMLFormElement>(null);
@@ -26,35 +27,35 @@ export default function Contact(): JSX.Element {
   };
 
   return (
-    <div className="contact-page">
+    <div className={s.contactPage}>
       <div className="text-zone">
-        <div className="header">
+        <div className={s.header}>
           <h1>Contactez-moi</h1>
         </div>
 
-        <div className="contact-form">
-          <form ref={refForm} onSubmit={sendEmail}>
+        <div className={s.contactFormContainer}>
+          <form ref={refForm} onSubmit={sendEmail} className={s.contactForm}>
             <input
-              className="feedback-body__email"
+              className={cn(s.contactEmailInput)}
               type="email"
               placeholder="Email"
               name="user_email"
               required
             />
             <input
-              className="feedback-body__email"
+                className={cn(s.contactSubjectInput)}
               type="text"
               placeholder="Subject"
               name="user_subject"
               required
             />
             <textarea
-              className="feedback-body__message"
+                className={cn(s.contactTextInput)}
               placeholder="Message"
               name="user_message"
               required
             ></textarea>
-            <button className="feedback-body__submit" type="submit">
+            <button className={cn(s.contactSendButton)} type="submit">
               SEND
             </button>
           </form>
