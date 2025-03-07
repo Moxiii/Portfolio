@@ -1,9 +1,9 @@
-import { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useLenis } from "lenis/react";
 import { useWindowSize } from "react-use";
-import "./Zoom.scss";
-
+import cn from "clsx";
+import s from "./Zoom.module.scss";
 interface ZoomTextProps {
   title1: string;
   title2: string;
@@ -17,7 +17,7 @@ export default function ZoomText({ title1, text, title2 }: ZoomTextProps) {
   const [theme, setTheme] = useState("light");
   const [scrollValue, setScrollValue] = useState(0);
   const [maxScroll, setMaxScroll] = useState(0);
-  //setTheme(scrollValue === 1 ? "dark" : "light");
+
   function clamp(min, input, max) {
     return Math.max(min, Math.min(input, max));
   }
@@ -45,6 +45,7 @@ export default function ZoomText({ title1, text, title2 }: ZoomTextProps) {
       );
       containerRef.current.style.setProperty("--progress1", progress1);
       containerRef.current.style.setProperty("--progress2", progress2);
+      setTheme(progress2 === 1 ? "dark" : "light");
       const maxScrollInside = scrollHeight - window.innerHeight;
       if (rect.top < 0 && rect.bottom > 0) {
         const normalizedScroll = Math.max(
@@ -63,38 +64,23 @@ export default function ZoomText({ title1, text, title2 }: ZoomTextProps) {
   }, []);
 
   return (
-    <section ref={containerRef} className="zoom-scroll-container">
-      <div className="zoom-sticky-container" ref={scrollContainerRef}>
-        <div className="zoom-scroll-inside">
-          <motion.h2
-            className="first"
-            style={{
-              opacity: 1 - scrollValue,
-              y: `-${scrollValue * 50}vh`,
-            }}
-          >
-            {title1}
-          </motion.h2>
-
-          <motion.span
-            className="center contrast"
-            style={{
-              opacity: clamp(0, 1 - Math.abs(scrollValue - 0.5) * 2, 1),
-              scale: 1 + scrollValue * 5,
-            }}
-          >
-            {text}
-          </motion.span>
-
-          <motion.h2
-            className="second"
-            style={{
-              opacity: 1 - scrollValue,
-              y: `${scrollValue * 50}vh`,
-            }}
-          >
-            {title2}
-          </motion.h2>
+    <section ref={containerRef} className={s.solution}>
+      <div className={s.inner} ref={scrollContainerRef}>
+        <div className={s.zoom}>
+          <h2 className={cn(s.first, "h1 vh")}>
+            <span className={s.contrast}>{title1}</span>
+            <br /> {title2}
+          </h2>
+          <h2 className={cn(s.center, "h3 vh")}>
+            {" "}
+            {text.split("\n").map((line, index) => (
+              <React.Fragment key={index}>
+                {line}
+                <br />
+              </React.Fragment>
+            ))}
+          </h2>
+          <h2 className={cn(s.second, "h1 vh")}>Scroll down</h2>
         </div>
       </div>
     </section>

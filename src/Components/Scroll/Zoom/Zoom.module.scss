@@ -1,0 +1,53 @@
+.solution {
+  height: 500vh;
+  position: relative;
+  h2 {
+    font-size: 500%;
+  }
+
+  .inner {
+    position: sticky;
+    top: 0;
+    margin: 0 auto;
+    overflow: hidden;
+    height: calc(100 * var(--vh, 1vh));
+    &::after {
+      content: "";
+      background-color: currentColor;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      left: 50%;
+      transform: translateX(-50%) scaleX(var(--progress2));
+      top: 0;
+    }
+    .contrast {
+      color: $rose-framboise;
+    }
+    .center {
+      font-size: 100%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-54.2%, -50%) scale(calc((var(--progress1) * 18.2)));
+      transform-origin: 50% calc(50% - (var(--progress1) * 27%));
+      opacity: calc(var(--progress1) * 4);
+      text-align: center;
+    }
+    .first {
+      transform: translateY(calc(var(--progress1) * -100%));
+    }
+
+    .second {
+      text-align: end;
+    }
+    .zoom {
+      display: flex;
+      justify-content: space-between;
+      height: 100%;
+      width: 100%;
+      flex-direction: column;
+      transform: scale(calc(1 + (var(--progress1)) * 3));
+    }
+  }
+}

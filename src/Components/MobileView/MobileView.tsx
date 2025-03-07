@@ -9,7 +9,7 @@ export default function MobileView(): JSX.Element {
       <ZoomText
         title1={"Portefolio"}
         title2={"Maxime Lapouge"}
-        text={`Étudiant Developpeur`}
+        text={`Étudiant\nDéveloppeur`}
       />
       <section className={s.MobileProject}>
         <p>test</p>
