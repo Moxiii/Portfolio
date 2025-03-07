@@ -1,9 +1,8 @@
-import s from "./Zoom.module.scss";
 import { useRef, useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import { useLenis } from "lenis/react";
-import { useRect } from "hamo";
 import { useWindowSize } from "react-use";
-import cn from "clsx";
+import "./Zoom.scss";
 
 interface ZoomTextProps {
   title1: string;
@@ -12,76 +11,90 @@ interface ZoomTextProps {
 }
 
 export default function ZoomText({ title1, text, title2 }: ZoomTextProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
   const { height: windowHeight } = useWindowSize();
-  const zoomRef = useRef<HTMLDivElement>(null);
-  const [zoomWrapperRectRef, zoomWrapperRect] = useRect();
-  const [theme, setTheme] = useState("dark");
-
-  function clamp(min: number, input: number, max: number): number {
+  const [theme, setTheme] = useState("light");
+  const [scrollValue, setScrollValue] = useState(0);
+  const [maxScroll, setMaxScroll] = useState(0);
+  //setTheme(scrollValue === 1 ? "dark" : "light");
+  function clamp(min, input, max) {
     return Math.max(min, Math.min(input, max));
   }
 
-  function mapRange(
-    in_min: number,
-    in_max: number,
-    input: number,
-    out_min: number,
-    out_max: number
-  ): number {
+  function mapRange(in_min, in_max, input, out_min, out_max) {
     return (
       ((input - in_min) * (out_max - out_min)) / (in_max - in_min) + out_min
     );
   }
 
   useLenis(({ scroll }) => {
-    if (!zoomWrapperRect) {
-      console.warn("zoomWrapperRect n'existe pas encore");
-      return;
-    }
+    if (containerRef.current) {
+      const rect = containerRef.current.getBoundingClientRect();
+      const scrollHeight = containerRef.current.clientHeight;
+      const start = rect.top + windowHeight * 0.5;
+      const end = rect.top + scrollHeight - windowHeight;
 
-    const start = (zoomWrapperRect.top ?? 0) + windowHeight * 0.5;
-    const end =
-      (zoomWrapperRect.top ?? 0) + (zoomWrapperRect.height ?? 0) - windowHeight;
-
-    const progress = clamp(0, mapRange(start, end, scroll, 0, 1), 1);
-    const center = 0.6;
-    const progress1 = clamp(0, mapRange(0, center, progress, 0, 1), 1);
-    const progress2 = clamp(0, mapRange(center, 1, progress, 0, 1), 1);
-
-    setTheme(progress2 === 1 ? "light" : "dark");
-    console.log("zoomRefWrapperRef:", zoomWrapperRectRef);
-    console.log("zoomRefWrapper:", zoomWrapperRectRef);
-    console.log("progress1:", progress1, "progress2:", progress2);
-
-    if (zoomRef.current) {
-      zoomRef.current.style.setProperty("--progress1", progress1.toString());
-      zoomRef.current.style.setProperty("--progress2", progress2.toString());
-
-      if (progress === 1) {
-        zoomRef.current.style.setProperty("background-color", "currentColor");
-      } else {
-        zoomRef.current.style.removeProperty("background-color");
+      const progress = clamp(0, mapRange(start, end, scroll, 0, 1), 1);
+      const center = 0.6;
+      const progress1 = clamp(0, mapRange(0, center, progress, 0, 1), 1);
+      const progress2 = clamp(
+        0,
+        mapRange(center - 0.055, 1, progress, 0, 1),
+        1
+      );
+      containerRef.current.style.setProperty("--progress1", progress1);
+      containerRef.current.style.setProperty("--progress2", progress2);
+      const maxScrollInside = scrollHeight - window.innerHeight;
+      if (rect.top < 0 && rect.bottom > 0) {
+        const normalizedScroll = Math.max(
+          0,
+          Math.min(-rect.top / maxScrollInside, 1)
+        );
+        setScrollValue(normalizedScroll);
       }
     }
   });
 
+  useEffect(() => {
+    setMaxScroll(
+      scrollContainerRef.current.scrollWidth - containerRef.current.clientWidth
+    );
+  }, []);
+
   return (
-    <section
-      ref={(node) => {
-        if (node) {
-          zoomWrapperRectRef(node);
-          zoomRef.current = node as HTMLDivElement;
-        }
-      }}
-      className={s.zoomSection}
-    >
-      <div className={s.inner}>
-        <div className={s.zoom}>
-          <h2 className={cn(s.first, "h1 vh")}>
-            <span className="contrast">{title1}</span>
-          </h2>
-          <h2 className={cn(s.text, "h3 vh")}>{text}</h2>
-          <h2 className={cn(s.second, "h3 vh")}>{title2}</h2>
+    <section ref={containerRef} className="zoom-scroll-container">
+      <div className="zoom-sticky-container" ref={scrollContainerRef}>
+        <div className="zoom-scroll-inside">
+          <motion.h2
+            className="first"
+            style={{
+              opacity: 1 - scrollValue,
+              y: `-${scrollValue * 50}vh`,
+            }}
+          >
+            {title1}
+          </motion.h2>
+
+          <motion.span
+            className="center contrast"
+            style={{
+              opacity: clamp(0, 1 - Math.abs(scrollValue - 0.5) * 2, 1),
+              scale: 1 + scrollValue * 5,
+            }}
+          >
+            {text}
+          </motion.span>
+
+          <motion.h2
+            className="second"
+            style={{
+              opacity: 1 - scrollValue,
+              y: `${scrollValue * 50}vh`,
+            }}
+          >
+            {title2}
+          </motion.h2>
         </div>
       </div>
     </section>

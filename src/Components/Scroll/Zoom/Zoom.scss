@@ -1,0 +1,35 @@
+.zoom-scroll-container {
+  height: 500vh;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  h2 {
+    font-size: 500%;
+  }
+}
+.zoom-sticky-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+.contrast {
+  color: $rose-framboise;
+}
+.center {
+  font-size: larger;
+}
+.zoom-scroll-inside {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200vh;
+  width: 100%;
+  flex-direction: column;
+  gap: 2rem;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  white-space: nowrap;
+}
