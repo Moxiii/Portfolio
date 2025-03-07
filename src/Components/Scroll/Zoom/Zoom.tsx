@@ -4,6 +4,7 @@ import { useLenis } from "lenis/react";
 import { useWindowSize } from "react-use";
 import cn from "clsx";
 import s from "./Zoom.module.scss";
+import { useTheme } from "../../Utils/Provider/Theme/ThemeContext";
 interface ZoomTextProps {
   title1: string;
   title2: string;
@@ -11,10 +12,11 @@ interface ZoomTextProps {
 }
 
 export default function ZoomText({ title1, text, title2 }: ZoomTextProps) {
+  const { setTheme } = useTheme();
   const containerRef = useRef<HTMLDivElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const { height: windowHeight } = useWindowSize();
-  const [theme, setTheme] = useState("light");
+
   const [scrollValue, setScrollValue] = useState(0);
   const [maxScroll, setMaxScroll] = useState(0);
 

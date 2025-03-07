@@ -1,16 +1,17 @@
 import { JSX, useEffect, useState } from "react";
-import { getProjects } from "../../Database/initProject";
+import { getProjects } from "../../Components/Utils/Database/initProject.ts";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFolder } from "@fortawesome/free-solid-svg-icons";
-import { Project } from "../../Types/ProjectType";
+import { Project } from "../../Components/Utils/Types/ProjectType.ts";
 import "./Home.scss";
 import Modal from "../../Components/Modal/Modal.tsx";
-import ProjectDetails from "../../Components/Project/Project.tsx"
+import ProjectDetails from "../../Components/Project/Project.tsx";
 export default function Home(): JSX.Element {
   const [projects, setProjects] = useState<Project[]>([]);
   const [currentProject, setCurrentProject] = useState<Project | null>(null);
   const [isProjectsModalOpen, setIsProjectsModalOpen] = useState(false);
-  const [isProjectDetailModalOpen, setIsProjectDetailModalOpen] = useState(false);
+  const [isProjectDetailModalOpen, setIsProjectDetailModalOpen] =
+    useState(false);
 
   const handleOpenProjectsModal = () => {
     setIsProjectsModalOpen(true);
@@ -22,14 +23,13 @@ export default function Home(): JSX.Element {
   const handleProjectClick = (project: Project) => {
     setCurrentProject(project);
     setIsProjectsModalOpen(false);
-    setIsProjectDetailModalOpen(true)
+    setIsProjectDetailModalOpen(true);
   };
-
 
   const handleCloseProjectDetailModal = () => {
     setIsProjectDetailModalOpen(false);
     setCurrentProject(null);
-    setIsProjectsModalOpen(true)
+    setIsProjectsModalOpen(true);
   };
 
   useEffect(() => {
@@ -40,59 +40,59 @@ export default function Home(): JSX.Element {
     fetchProjects();
   }, []);
 
-
-
   return (
-      <div className="landing-container">
-        <div className="quote-box">
-          <blockquote className="quote-text">
-            <h1 className="quote">Portfolio Maxime Lapouge</h1>
-            <p className="sub-text">
-                 <a href="/about"><span className="rosy">Étudiant développeur web</span></a>
-            </p>
-          </blockquote>
-        </div>
-        <div className="project-folder">
-          <div className="folder" onClick={handleOpenProjectsModal}>
-            <FontAwesomeIcon icon={faFolder} className="folder-icon" />
-            <span className="folder-name">Projects</span>
-          </div>
-        </div>
-        <Modal
-            isOpen={isProjectsModalOpen}
-            onClose={() => setIsProjectsModalOpen(false)}
-            title="Liste des projets"
-            onBack={() => {
-              handleCloseProjectsModal()
-            }}
-        >
-          <div className="project-list">
-            {projects.map((project) => (
-                <div
-                    key={project.id}
-                    className="project-folder"
-                    onClick={() => {handleProjectClick(project)}}
-                >
-                  <div className="folder">
-                    <FontAwesomeIcon icon={faFolder} className="folder-icon"/>
-                    <span className="folder-name">{project.title}</span>
-                  </div>
-                </div>
-            ))}
-          </div>
-        </Modal>
-        <Modal
-            isOpen={isProjectDetailModalOpen}
-            onClose={() => setIsProjectDetailModalOpen(false)}
-            onBack={() => {
-              handleCloseProjectDetailModal()
-            }}
-            title={currentProject?.title}
-        >
-          {currentProject && (
-              <ProjectDetails project={currentProject} />
-          )}
-        </Modal>
+    <div className="landing-container">
+      <div className="quote-box">
+        <blockquote className="quote-text">
+          <h1 className="quote">Portfolio Maxime Lapouge</h1>
+          <p className="sub-text">
+            <a href="/about">
+              <span className="rosy">Étudiant développeur web</span>
+            </a>
+          </p>
+        </blockquote>
       </div>
+      <div className="project-folder">
+        <div className="folder" onClick={handleOpenProjectsModal}>
+          <FontAwesomeIcon icon={faFolder} className="folder-icon" />
+          <span className="folder-name">Projects</span>
+        </div>
+      </div>
+      <Modal
+        isOpen={isProjectsModalOpen}
+        onClose={() => setIsProjectsModalOpen(false)}
+        title="Liste des projets"
+        onBack={() => {
+          handleCloseProjectsModal();
+        }}
+      >
+        <div className="project-list">
+          {projects.map((project) => (
+            <div
+              key={project.id}
+              className="project-folder"
+              onClick={() => {
+                handleProjectClick(project);
+              }}
+            >
+              <div className="folder">
+                <FontAwesomeIcon icon={faFolder} className="folder-icon" />
+                <span className="folder-name">{project.title}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </Modal>
+      <Modal
+        isOpen={isProjectDetailModalOpen}
+        onClose={() => setIsProjectDetailModalOpen(false)}
+        onBack={() => {
+          handleCloseProjectDetailModal();
+        }}
+        title={currentProject?.title}
+      >
+        {currentProject && <ProjectDetails project={currentProject} />}
+      </Modal>
+    </div>
   );
 }

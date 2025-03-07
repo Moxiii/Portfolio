@@ -20,9 +20,16 @@
   color: $secondary-color;
   width: 100vw;
   height: 100vh;
-@media (max-width: 769px) {
-  background: $secondary-color;
-  color: $primary-color;
+  @media (max-width: 769px) {
+    background: $secondary-color;
+    color: $primary-color;
+  }
+  .ligth {
+    background: $secondary-color;
+    color: $primary-color;
+  }
+  .dark {
+    background: $primary-color;
+    color: $secondary-color;
+  }
 }
-}
-

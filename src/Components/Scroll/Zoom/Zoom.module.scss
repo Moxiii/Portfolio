@@ -25,11 +25,11 @@
       color: $rose-framboise;
     }
     .center {
-      font-size: 100%;
+      font-size: 50%;
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-54.2%, -50%) scale(calc((var(--progress1) * 18.2)));
+      transform: translate(-54.2%, -50%) scale(calc((var(--progress1) * 15)));
       transform-origin: 50% calc(50% - (var(--progress1) * 27%));
       opacity: calc(var(--progress1) * 4);
       text-align: center;
