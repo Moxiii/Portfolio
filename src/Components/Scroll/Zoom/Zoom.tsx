@@ -2,9 +2,11 @@ import React, { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useLenis } from "lenis/react";
 import { useWindowSize } from "react-use";
+
 import cn from "clsx";
 import s from "./Zoom.module.scss";
 import { useTheme } from "../../Utils/Provider/Theme/ThemeContext";
+
 interface ZoomTextProps {
   title1: string;
   title2: string;
@@ -19,7 +21,6 @@ export default function ZoomText({ title1, text, title2 }: ZoomTextProps) {
 
   const [scrollValue, setScrollValue] = useState(0);
   const [maxScroll, setMaxScroll] = useState(0);
-
   function clamp(min, input, max) {
     return Math.max(min, Math.min(input, max));
   }
@@ -69,10 +70,10 @@ export default function ZoomText({ title1, text, title2 }: ZoomTextProps) {
     <section ref={containerRef} className={s.solution}>
       <div className={s.inner} ref={scrollContainerRef}>
         <div className={s.zoom}>
-          <h2 className={cn(s.first, "h1 vh")}>
-            <span className={s.contrast}>{title1}</span>
-            <br /> {title2}
-          </h2>
+          <div className={cn(s.first, "h1 vh")}>
+            <h1 className={cn(s.contrast, "h1")}>{title1}</h1>
+            <h2>{title2}</h2>
+          </div>
           <h2 className={cn(s.center, "h3 vh")}>
             {" "}
             {text.split("\n").map((line, index) => (
@@ -82,7 +83,7 @@ export default function ZoomText({ title1, text, title2 }: ZoomTextProps) {
               </React.Fragment>
             ))}
           </h2>
-          <h2 className={cn(s.second, "h1 vh")}>Scroll down</h2>
+          <h2 className={cn(s.second, "h1 vh")}>Scroll Down</h2>
         </div>
       </div>
     </section>

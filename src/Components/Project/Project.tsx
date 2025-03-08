@@ -1,4 +1,4 @@
-import { JSX, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./Project.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {

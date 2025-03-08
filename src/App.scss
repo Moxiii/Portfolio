@@ -21,10 +21,10 @@
   width: 100vw;
   height: 100vh;
   @media (max-width: 769px) {
-    background: $secondary-color;
-    color: $primary-color;
+    width: 100vw;
+    height: auto;
   }
-  .ligth {
+  .light {
     background: $secondary-color;
     color: $primary-color;
   }

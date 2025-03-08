@@ -1,24 +1,22 @@
-.bubbleContainer{
-  .bubbleText{
+.bubbleContainer {
+  .bubbleText {
     .hoverText {
-      transition:
-              0.35s font-weight,
-              0.35s color;
+      transition: 0.35s font-weight, 0.35s color;
     }
     .hoverText:hover {
-      font-weight: var(--size);
+      font-weight: var(--size) px;
       color: var(--color);
     }
     .hoverText:hover + .hoverText {
       font-weight: 500;
-      color: rgb(199, 210, 254);
+      color: $rose-pastel;
     }
     .hoverText:hover + .hoverText + .hoverText {
       font-weight: 300;
     }
     .hoverText:has(+ .hoverText:hover) {
       font-weight: 500;
-      color: rgb(199, 210, 254);
+      color: $rose-pastel;
     }
     .hoverText:has(+ .hoverText + .hoverText:hover) {
       font-weight: 300;

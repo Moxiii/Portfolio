@@ -8,7 +8,7 @@ interface BubbleTextProps {
 export default function BubbleText({
   text,
   color = "#000",
-  size = 900,
+  size = 1200,
 }: BubbleTextProps): JSX.Element {
   return (
     <div

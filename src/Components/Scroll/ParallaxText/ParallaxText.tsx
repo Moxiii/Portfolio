@@ -77,7 +77,11 @@ export default function ParallaxText({
         </motion.div>
         <div className={s.centerTextContainer}>
           {centerText && <h1 className={s.centerTitle}>{centerText}</h1>}
-          {subCenterText && <div className={s.subCenter}><BubbleText text={subCenterText} /> </div>}
+          {subCenterText && (
+            <div className={s.subCenter}>
+              <BubbleText text={subCenterText} color="" />
+            </div>
+          )}
         </div>
 
         <div className={s.scrollIndicator}>

@@ -1,5 +1,83 @@
 .MobileView {
-  section {
+  .MobilePresentation,
+  .MobileProject,
+  .MobileContact {
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2% auto;
+    padding: 0 1rem;
+    width: 100%;
     height: 100vh;
+  }
+  .illustration {
+    aspect-ratio: 1/1;
+    height: 25%;
+  }
+  .MobilePresentation {
+    justify-content: space-evenly;
+    height: 150vh;
+    .skillsContainer {
+      margin-top: 10%;
+      width: 80%;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .skillRow {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 5%;
+      margin-bottom: 10%;
+
+      &.left {
+        flex-direction: row;
+        text-align: left;
+      }
+
+      &.right {
+        flex-direction: row-reverse;
+        text-align: right;
+      }
+    }
+
+    .skillText {
+      flex: 1;
+      max-width: 50%;
+      h3 {
+        color: $rose-pastel;
+        padding-bottom: 3%;
+        font-size: larger;
+      }
+    }
+
+    .card {
+      width: 150px;
+      height: 150px;
+      border: 2px solid $rose-corail;
+      box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.3);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+    }
+
+    .cardHeader {
+      font-size: 2rem;
+    }
+
+    .cardContent {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  }
+  .MobileProject {
+    h2 {
+      padding-bottom: 5%;
+    }
   }
 }
