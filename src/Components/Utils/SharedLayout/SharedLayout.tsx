@@ -1,23 +1,18 @@
 import s from "./SharedLayout.module.scss";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Project } from "../../Utils/Types/ProjectType.ts";
+import TypedText from "../Typed/TypedText.tsx";
 interface ProjectsProps {
   projects: Project[];
 }
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCheckCircle,
+  faTimesCircle,
+} from "@fortawesome/free-solid-svg-icons";
 import { AnimatePresence, motion } from "framer-motion";
 export default function SharedLayout({ projects }: ProjectsProps) {
-  const [selectedTab, setSelectedTab] = useState<Project | null>(null);
-
-  useEffect(() => {
-    if (projects.length > 0) {
-      setSelectedTab(projects[0]);
-      document.documentElement.style.setProperty(
-        "--project-length",
-        projects.length.toString()
-      );
-    }
-  }, [projects]);
-
+  const [selectedTab, setSelectedTab] = useState<Project | null>(projects[0]);
   return (
     <div className={s.SharedLayoutContainer}>
       <nav className={s.SharedLayoutNav}>
@@ -55,7 +50,42 @@ export default function SharedLayout({ projects }: ProjectsProps) {
             transition={{ duration: 0.2 }}
             className={s.content}
           >
-            {selectedTab?.description}
+            <TypedText
+              mainTitle="Développé en : "
+              project={{
+                techno:
+                  selectedTab?.techno.map((tech) => ({
+                    name: tech.name,
+                    icon: tech.icon,
+                  })) || [],
+              }}
+            />
+            <motion.div className={s.status}>
+              <div className={s.statusItm}>
+                <span>Fini : </span>
+                <FontAwesomeIcon
+                  icon={selectedTab?.ended ? faCheckCircle : faTimesCircle}
+                  style={{
+                    color: selectedTab?.ended ? "#1ee11e" : "red",
+                    marginLeft: "5px",
+                  }}
+                />
+              </div>
+              <div className={s.statusItm}>
+                <span>Deployé : </span>
+                <FontAwesomeIcon
+                  icon={selectedTab?.deploy ? faCheckCircle : faTimesCircle}
+                  style={{
+                    color: selectedTab?.deploy ? "#1ee11e" : "red",
+                    marginLeft: "5px",
+                  }}
+                />
+              </div>
+            </motion.div>
+            <motion.div className={s.ProjectDescription}>
+              {selectedTab?.description}
+            </motion.div>
+
             <motion.div className={s.button}>En savoir plus</motion.div>
           </motion.div>
         </AnimatePresence>

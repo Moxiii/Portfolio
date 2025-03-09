@@ -16,6 +16,7 @@ import {
   faReact,
   faSass,
 } from "@fortawesome/free-brands-svg-icons";
+import TypedText from "../Utils/Typed/TypedText.tsx";
 interface ProjectCardProps {
   project: Project;
   getFormattedUrl: (url: string) => string;
@@ -69,16 +70,15 @@ export default function ProjectDetails({ project }: ProjectCardProps) {
   return (
     <div className="project-detail">
       <div className="project-tech project">
-        <p>
-          Développé en :{" "}
-          <span ref={typedElement} style={{ fontWeight: "bold" }}></span>
-          {currentIcon && (
-            <FontAwesomeIcon
-              icon={currentIcon}
-              style={{ marginRight: "5px", fontSize: "150%" }}
-            />
-          )}
-        </p>
+        <TypedText
+          mainTitle="Développé en "
+          project={{
+            techno: project.techno.map((tech) => ({
+              name: tech.name,
+              icon: tech.icon,
+            })),
+          }}
+        />
       </div>
       <div className="project-desc project">
         <p>{project.description}</p>

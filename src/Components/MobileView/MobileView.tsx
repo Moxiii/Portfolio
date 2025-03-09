@@ -9,7 +9,7 @@ import { getProjects } from "../Utils/Database/InitProject.ts";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faServer, faNetworkWired } from "@fortawesome/free-solid-svg-icons";
 import { faJs } from "@fortawesome/free-brands-svg-icons";
-import { motion } from "framer-motion";
+import LoremIpsum from "react-lorem-ipsum";
 export default function MobileView(): JSX.Element {
   const [projects, setProjects] = useState<Project[]>([]);
   useEffect(() => {
@@ -29,11 +29,13 @@ export default function MobileView(): JSX.Element {
       />
       <section className={s.MobilePresentation}>
         <h2>A propos de moi </h2>
+        <LoremIpsum p={1} random={true} />
         <p>
           Passionné d'informatique depuis mon plus jeune âge, je désire en faire
           mon métier !
         </p>
         <img src={Dev} alt="Développeur" className={s.illustration} />
+        <LoremIpsum p={1} random={true} />
         <p> Toujours d'une curiosité sans faille, je m'autoforme sur :</p>
         <div className={s.skillsContainer}>
           {[
@@ -66,8 +68,6 @@ export default function MobileView(): JSX.Element {
                 <div className={s.cardHeader}>
                   <FontAwesomeIcon icon={skill.icon} />
                 </div>
-                <div className={s.cardContent}>{skill.title}</div>
-                <motion.div className={s.underline} />
               </div>
             </div>
           ))}
