@@ -16,10 +16,10 @@ import {
   faCar,
   faShirt,
 } from "@fortawesome/free-solid-svg-icons";
-import { JSX, useState , lazy} from "react";
+import {JSX, useState, lazy, useEffect} from "react";
 import { motion } from "framer-motion";
 import Dev from "../../assets/Illustration/3d-nft-icon-developer-male-illustration-min-500px.png";
-import CV from "../../assets/CV/CV LAPOUGE Maxime-1.pdf";
+import CV from "../../assets/CV/CV LAPOUGE Maxime-1.pdf"
 import { LoremIpsum } from "react-lorem-ipsum";
 //Lazy
 const HorizontalScroll = lazy(()=>import("../../Components/Scroll/HorizontalScroll/HorizontalScroll.tsx"));
@@ -28,7 +28,7 @@ const TiltCard = lazy(()=>import("../../Components/TiltCard/TiltCard.tsx"));
 const CustomCursor = lazy(()=>import("../../Components/Cursor/CustomCursor.tsx"));
 const ParallaxText = lazy(()=>import("../../Components/Scroll/ParallaxText/ParallaxText.tsx"));
 const AsideScroll = lazy(()=>import("../../Components/Scroll/AsideScroll/AsideScroll.tsx"));
-
+const RenderPDF = lazy(()=>import("../../Components/Utils/CV/RenderPDF.tsx"))
 export default function About(): JSX.Element {
   const techs = [
     { name: "React", icon: faReact, color: "#61DBFB" },
@@ -70,7 +70,13 @@ export default function About(): JSX.Element {
 const primaryColor : string = "#3a2172";
 const secondaryColor : string = "#efe07d";
   const [selectedTech, setSelectedTech] = useState<string | null>(null);
-
+  const [cvHtml, setCvHtml] = useState<string>("");
+useEffect(()=>{
+  fetch("../../assets/CV/CV LAPOUGE MAXIME-1-1.html")
+      .then((response) => response.text())
+      .then((data) => setCvHtml(data))
+      .catch((error) => console.error("Erreur de chargement du CV :", error));
+},[])
   return (
     <>
       <CustomCursor />
@@ -139,9 +145,9 @@ const secondaryColor : string = "#efe07d";
           </div>
         </section>
 
-        <section className="text-zone cv-section">
+        <section className=" cv-section">
           <h2>CV</h2>
-          <iframe src={CV} className="CV" ></iframe>
+          <RenderPDF pdfUrl={CV as string}/>
         </section>
       </div>
     </>

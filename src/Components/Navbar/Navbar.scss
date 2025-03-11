@@ -10,13 +10,13 @@
   border-radius: 50px;
   display: flex;
   gap: 20px;
-  box-shadow: 0px 0px 10px $secondary-color;
+  box-shadow: 0px 0px 5px $rose-pastel;
   backdrop-filter: blur(10px);
 
   .dock-item {
     font-size: 24px;
   }
   .icon-color{
-    color: $secondary-color
+    color: $secondary-color;
   }
 }

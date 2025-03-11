@@ -5,8 +5,8 @@ import {faLinkedin , faGithub} from "@fortawesome/free-brands-svg-icons";
 import {motion} from "framer-motion";
 
 export default function Footer():JSX.Element{
-    const linkedinLink : string = "";
-    const githubLink : string = "";
+    const linkedinLink : string = "https://www.linkedin.com/in/maxime-lapouge69/";
+    const githubLink : string = "https://github.com/Moxiii";
     return (
         <footer className={s.footerContainer}>
             <div className={s.footerItems}>
