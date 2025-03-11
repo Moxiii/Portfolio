@@ -8,10 +8,10 @@ const  SharedLayout = lazy(()=> import("../Utils/SharedLayout/SharedLayout.tsx")
 
 import { Project } from "../Utils/Types/ProjectType.ts";
 import { getProjects } from "../Utils/Database/InitProject.ts";
-
+import links from "../Utils/_const/_links.ts";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faServer, faNetworkWired } from "@fortawesome/free-solid-svg-icons";
-import { faJs } from "@fortawesome/free-brands-svg-icons";
+import { faJs ,faLinkedin , faGithub} from "@fortawesome/free-brands-svg-icons";
 import LoremIpsum from "react-lorem-ipsum";
 
 
@@ -21,6 +21,7 @@ export default function MobileView(): JSX.Element {
   const [projects, setProjects] = useState<Project[]>([]);
   const [dragCloseDrawerOpen , setDragCloseDrawerOpen ] = useState(false);
   const [openedProject , setOpenedProject] = useState(null);
+
   useEffect(() => {
     const fetchProjects = async () => {
       const data: any = await getProjects();
@@ -129,7 +130,18 @@ export default function MobileView(): JSX.Element {
 </section>
     <section className={s.MobileContact}>
         <h2>Me contacter : </h2>
+        <div className={s.Mobileform}>
+            <p>On linkedin : </p>
+            <a href={links.externalLinks.linkedin}>
+                <FontAwesomeIcon icon={faLinkedin}/>
+            </a>
 
+            <p>Visit Github : </p>
+            <a href={links.externalLinks.github}>
+                <FontAwesomeIcon icon={faGithub}/>
+            </a>
+
+        </div>
     </section>
 </div>
 )

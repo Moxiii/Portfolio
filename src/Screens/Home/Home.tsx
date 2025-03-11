@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFolder } from "@fortawesome/free-solid-svg-icons";
 import { Project } from "../../Components/Utils/Types/ProjectType.ts";
 import "./Home.scss";
-
+import links from "../../Components/Utils/_const/_links.ts";
 const Modal = lazy(() => import("../../Components/Modal/PopUpModal/Modal.tsx"));
 const ProjectDetails = lazy(() => import("../../Components/Project/Project.tsx"));
 
@@ -48,7 +48,7 @@ export default function Home(): JSX.Element {
         <blockquote className="quote-text">
           <h1 className="quote">Portfolio Maxime Lapouge</h1>
           <p className="sub-text">
-            <a href="/about">
+            <a href={links.about}>
               <span className="rosy">Étudiant développeur web</span>
             </a>
           </p>

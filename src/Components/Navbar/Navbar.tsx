@@ -4,7 +4,7 @@ import { faHome, faAddressCard, faUser } from '@fortawesome/free-solid-svg-icons
 import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
 import "./Navbar.scss";
-
+import links from "../Utils/_const/_links.ts";
 const iconHoverEffect = {
     whileHover: {
         scale: 1.2,
@@ -19,7 +19,7 @@ export default function Navbar(): JSX.Element {
     return (
         <div className="dock-navbar">
             <div className="dock-item">
-                <NavLink exact="true" to="/" data-title="Home">
+                <NavLink exact="true" to={links.home} data-title="Home">
                     <motion.div
                         whileHover={iconHoverEffect.whileHover}
                         transition={iconHoverEffect.whileTap}
@@ -32,7 +32,7 @@ export default function Navbar(): JSX.Element {
 
 
             <div className="dock-item">
-                <NavLink exact="true" to="/about" data-title="About">
+                <NavLink exact="true" to={links.about} data-title="About">
                     <motion.div
                         whileHover={iconHoverEffect.whileHover}
                         whileTap={iconHoverEffect.whileTap}
@@ -43,7 +43,7 @@ export default function Navbar(): JSX.Element {
                 </NavLink>
             </div>
             <div className="dock-item">
-                <NavLink exact="true" to="/contact" data-title="Contact">
+                <NavLink exact="true" to={links.contact} data-title="Contact">
                     <motion.div
                         whileHover={iconHoverEffect.whileHover}
                         whileTap={iconHoverEffect.whileTap}

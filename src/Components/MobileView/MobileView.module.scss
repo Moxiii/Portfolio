@@ -116,4 +116,12 @@
       height: 100%;
     }
   }
+  .MobileContact{
+    .Mobileform{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+  }
 }

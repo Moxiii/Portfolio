@@ -7,7 +7,7 @@ import { JSX , Suspense } from "react";
 import Loading from "../Loading/LoadingScreen.tsx"
 import MobileView from "../../MobileView/MobileView.tsx";
 export default function Layout(): JSX.Element {
-  const isDesktop = useMediaQuery({ minWidth: 769 });
+  const isDesktop = useMediaQuery({ minWidth: 800 });
   return (
       <Suspense fallback={<Loading/>}>
     <ThemeProvider>
@@ -15,11 +15,13 @@ export default function Layout(): JSX.Element {
         <div className="app">
           <Navbar />
           <Outlet />
+          <Footer/>
         </div>
       ) : (
         <MobileView />
       )}
-      <Footer />
+
+
     </ThemeProvider>
       </Suspense>
   );
