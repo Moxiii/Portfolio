@@ -70,13 +70,11 @@ export default function About(): JSX.Element {
 const primaryColor : string = "#3a2172";
 const secondaryColor : string = "#efe07d";
   const [selectedTech, setSelectedTech] = useState<string | null>(null);
-  const [cvHtml, setCvHtml] = useState<string>("");
-useEffect(()=>{
-  fetch("../../assets/CV/CV LAPOUGE MAXIME-1-1.html")
-      .then((response) => response.text())
-      .then((data) => setCvHtml(data))
-      .catch((error) => console.error("Erreur de chargement du CV :", error));
-},[])
+  useEffect(() => {
+    setTimeout(()=>{
+      window.scrollTo(0,0)
+    },100)
+  }, []);
   return (
     <>
       <CustomCursor />
@@ -148,6 +146,7 @@ useEffect(()=>{
         <section className=" cv-section">
           <h2>CV</h2>
           <RenderPDF pdfUrl={CV as string}/>
+          <button> Télecharger le cv </button>
         </section>
       </div>
     </>

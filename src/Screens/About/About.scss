@@ -1,5 +1,6 @@
 
 .about-page {
+  height: auto;
   cursor: none;
   .text-zone {
     display: flex;
@@ -108,11 +109,11 @@
     background-color: $rose-vif;
     .pdfContainer{
       padding-top: 5%;
+      padding-bottom: 5%;
       display: flex;
       justify-content: center;
       align-items: flex-start;
-      height: 75vh;
-      width: 75vw;
+
     }
   }
 }

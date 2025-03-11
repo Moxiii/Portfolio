@@ -1,10 +1,30 @@
 .solution {
-  height: 350vh;
-  position: relative;
-  h1,
-  h2 {
-    font-size: 600%;
+  @include desktop{
+    height: 500vh;
+    h1,
+    h2 {
+      font-size: 600%;
+    }
+    .center{
+      font-size: 50%;
+    }
   }
+  @include mobile{
+    height: 350vh;
+    h1,
+    h2 {
+      font-size: 400%;
+    }
+    .center{
+      font-size: 25%;
+    }
+    .second{
+      padding-bottom: 15%;
+    }
+  }
+
+  position: relative;
+
 
   .inner {
     position: sticky;
@@ -26,7 +46,6 @@
       color: $rose-framboise;
     }
     .center {
-      font-size: 50%;
       position: absolute;
       top: 50%;
       left: 50%;
