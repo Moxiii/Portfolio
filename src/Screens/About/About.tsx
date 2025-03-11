@@ -16,17 +16,19 @@ import {
   faCar,
   faShirt,
 } from "@fortawesome/free-solid-svg-icons";
-import { JSX, useState } from "react";
+import { JSX, useState , lazy} from "react";
 import { motion } from "framer-motion";
 import Dev from "../../assets/Illustration/3d-nft-icon-developer-male-illustration-min-500px.png";
-import HorizontalScroll from "../../Components/Scroll/HorizontalScroll/HorizontalScroll.tsx";
-import ScrollProgress from "../../Components/Scroll/ScrollProgress/ScrollProgress.tsx";
 import CV from "../../assets/CV/CV LAPOUGE Maxime-1.pdf";
-import TiltCard from "../../Components/TiltCard/TiltCard.tsx";
-import CustomCursor from "../../Components/Cursor/CustomCursor.tsx";
-import ParallaxText from "../../Components/Scroll/ParallaxText/ParallaxText.tsx";
 import { LoremIpsum } from "react-lorem-ipsum";
-import AsideScroll from "../../Components/Scroll/AsideScroll/AsideScroll.tsx";
+//Lazy
+const HorizontalScroll = lazy(()=>import("../../Components/Scroll/HorizontalScroll/HorizontalScroll.tsx"));
+const ScrollProgress = lazy(()=>import("../../Components/Scroll/ScrollProgress/ScrollProgress.tsx"));
+const TiltCard = lazy(()=>import("../../Components/TiltCard/TiltCard.tsx"));
+const CustomCursor = lazy(()=>import("../../Components/Cursor/CustomCursor.tsx"));
+const ParallaxText = lazy(()=>import("../../Components/Scroll/ParallaxText/ParallaxText.tsx"));
+const AsideScroll = lazy(()=>import("../../Components/Scroll/AsideScroll/AsideScroll.tsx"));
+
 export default function About(): JSX.Element {
   const techs = [
     { name: "React", icon: faReact, color: "#61DBFB" },

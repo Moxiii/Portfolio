@@ -8,14 +8,18 @@ import type { LenisRef } from "lenis/react";
 import "./App.scss";
 import Admin from "./Admin/Portal/Admin.tsx";
 import ErrorBoundary from "./Components/HOOK/ERROR/BOUNDARY/ErrorBoundary.tsx";
-import { useRef } from "react";
+import { useRef , Suspense } from "react";
+
+
 function App() {
+
   const lenisRef = useRef<LenisRef>(null);
   const lenisOption = {
     autoRaf: true,
     smooth: true,
     lerp: 0.1,
   };
+
   return (
     <ErrorBoundary>
       <ReactLenis

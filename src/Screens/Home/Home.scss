@@ -7,6 +7,10 @@
   color: $primary-color;
   height: calc(100vh - 80px);
   width: 100vw;
+  .main-folder {
+    position: absolute;
+    bottom: 20%;
+  }
   .quote-box {
     position: relative;
     box-shadow: inset 0 0 0 1px $secondary-color;
@@ -41,11 +45,11 @@
     display: inline-flex;
     justify-content: flex-start;
     padding: 3%;
-    gap: 30%;
+    width: 100%;
+    gap: 1%;
+    height: 100%;
   }
   .project-folder {
-    position: absolute;
-    bottom: 20%;
     > .folder {
       display: flex;
       justify-content: center;

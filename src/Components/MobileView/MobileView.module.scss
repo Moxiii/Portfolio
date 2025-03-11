@@ -2,11 +2,18 @@
   .MobilePresentation,
   .MobileProject,
   .MobileContact {
+    h1,
+    h2,
+    h3 {
+      font-size: xx-large;
+    }
+    p {
+      font-size: large;
+    }
     justify-content: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 2% auto;
     padding: 0 1rem;
     width: 100%;
     height: 100vh;
@@ -20,6 +27,7 @@
   }
   .MobilePresentation {
     p {
+      font-size: large;
       padding: 2%;
     }
     justify-content: space-evenly;
@@ -53,10 +61,13 @@
     .skillText {
       flex: 1;
       max-width: 50%;
+      p {
+        padding: 0 0 2% 0;
+        font-size: large;
+      }
       h3 {
         color: $rose-pastel;
-        padding-bottom: 3%;
-        font-size: x-large;
+        padding-bottom: 5%;
       }
     }
 
@@ -84,6 +95,25 @@
   .MobileProject {
     h2 {
       padding-bottom: 5%;
+    }
+  }
+  .ProjectPresContainer{
+    height: 100%;
+    .ProjectPres{
+      height: 100%;
+    }
+
+  }
+  .ProjectLinksContainer{
+    height: 100%;
+    .ProjectLink{
+      height: 100%;
+    }
+}
+  .ProjecImgContainer{
+    height: 100%;
+    .ProjectImage{
+      height: 100%;
     }
   }
 }

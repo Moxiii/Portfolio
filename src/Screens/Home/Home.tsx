@@ -1,11 +1,13 @@
-import { JSX, useEffect, useState } from "react";
+import { JSX, useEffect, useState , lazy} from "react";
 import { getProjects } from "../../Components/Utils/Database/initProject.ts";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFolder } from "@fortawesome/free-solid-svg-icons";
 import { Project } from "../../Components/Utils/Types/ProjectType.ts";
 import "./Home.scss";
-import Modal from "../../Components/Modal/Modal.tsx";
-import ProjectDetails from "../../Components/Project/Project.tsx";
+
+const Modal = lazy(() => import("../../Components/Modal/PopUpModal/Modal.tsx"));
+const ProjectDetails = lazy(() => import("../../Components/Project/Project.tsx"));
+
 export default function Home(): JSX.Element {
   const [projects, setProjects] = useState<Project[]>([]);
   const [currentProject, setCurrentProject] = useState<Project | null>(null);
@@ -52,7 +54,7 @@ export default function Home(): JSX.Element {
           </p>
         </blockquote>
       </div>
-      <div className="project-folder">
+      <div className="project-folder main-folder">
         <div className="folder" onClick={handleOpenProjectsModal}>
           <FontAwesomeIcon icon={faFolder} className="folder-icon" />
           <span className="folder-name">Projects</span>
