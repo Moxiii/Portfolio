@@ -117,11 +117,37 @@
     }
   }
   .MobileContact{
+    paddin:5%;
+    text-align: center;
     .Mobileform{
       display: flex;
       justify-content: center;
       align-items: center;
-      flex-direction: column;
+
+      .ContactLinksContainer{
+        padding: 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100vw;
+        height: 80vh;
+        .contactItem{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          p{
+            margin-bottom: 5%;
+            font-size: large;
+          }
+          .contactLink{
+            font-size: x-large;
+            color: $rose-pastel;
+          }
+
+        }
+      }
+
     }
   }
 }
