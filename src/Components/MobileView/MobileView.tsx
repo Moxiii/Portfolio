@@ -1,18 +1,19 @@
 import s from "./MobileView.module.scss";
-import React, { JSX, useState, useEffect , lazy } from "react";
+import React, {JSX, useState, useEffect, lazy, useRef} from "react";
 
 const ZoomText = lazy(() => import("../Scroll/Zoom/Zoom.tsx"));
 const ScrollProgress = lazy( () => import ("../Scroll/ScrollProgress/ScrollProgress.tsx"));
 const DragCloseDrawer = lazy(()=>import("../Modal/DragCloseDrawer/DragCloseDrawer.tsx"));
 const  SharedLayout = lazy(()=> import("../Utils/SharedLayout/SharedLayout.tsx"));
-
+import {SendEmail} from "../Utils/SendEmail/SendEmail.ts";
 import { Project } from "../Utils/Types/ProjectType.ts";
 import { getProjects } from "../Utils/Database/InitProject.ts";
 import links from "../Utils/_const/_links.ts";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faServer, faNetworkWired } from "@fortawesome/free-solid-svg-icons";
+import { faServer, faNetworkWired , faFileLines } from "@fortawesome/free-solid-svg-icons";
 import { faJs ,faLinkedin , faGithub} from "@fortawesome/free-brands-svg-icons";
 import LoremIpsum from "react-lorem-ipsum";
+import cn from "clsx";
 
 
 
@@ -21,7 +22,7 @@ export default function MobileView(): JSX.Element {
   const [projects, setProjects] = useState<Project[]>([]);
   const [dragCloseDrawerOpen , setDragCloseDrawerOpen ] = useState(false);
   const [openedProject , setOpenedProject] = useState(null);
-
+const emailRef = useRef<HTMLFormElement>(null)
   useEffect(() => {
     const fetchProjects = async () => {
       const data: any = await getProjects();
@@ -132,19 +133,39 @@ export default function MobileView(): JSX.Element {
               <h2>Me contacter : </h2>
               <div className={s.Mobileform}>
                   <div className={s.ContactLinksContainer}>
-                      <div className={s.contactItem}>
-                          <p>LinkedIn</p>
-                          <a href={links.externalLinks.linkedin} className={s.contactLink}>
-                              <FontAwesomeIcon icon={faLinkedin}/>
-                          </a>
-                      </div>
+                      <a href={links.externalLinks.linkedin}>
+                          <div className={s.contactItem}>
+                              <p>LinkedIn</p>
+                              <div className={s.contactLink}>
+                                  <FontAwesomeIcon icon={faLinkedin}/>
+                              </div>
+                          </div>
+                      </a>
 
-                      <div className={s.contactItem}>
-                          <p>Github </p>
-                          <a href={links.externalLinks.github} className={s.contactLink}>
-                              <FontAwesomeIcon icon={faGithub}/>
-                          </a>
-                      </div>
+                      <a href={links.externalLinks.github}>
+                          <div className={s.contactItem}>
+                              <p>Github </p>
+                              <div className={s.contactLink}>
+                                  <FontAwesomeIcon icon={faGithub}/>
+                              </div>
+                          </div>
+                      </a>
+                      <a href={links.downloadLink.cv} download="Maxime Lapouge CV" >
+                          <div className={s.contactItem}>
+                              <p>Voir le CV  </p>
+                              <div className={s.contactLink}>
+                                  <FontAwesomeIcon icon={faFileLines}/>
+                              </div>
+                          </div>
+                      </a>
+                  </div>
+                  <div className={s.contactFormContainer}>
+                      <form ref={emailRef} onSubmit={(e) => SendEmail(e, emailRef)} className={s.ContactForm}>
+                          <input type="email" name="user_email" placeholder="Votre Email" className={cn(s.ContactInput , "email")}/>
+                          <input type="text" name="user_subject" placeholder="Sujet" className={cn(s.ContactInput , "subject")}/>
+                          <textarea name="user_message" placeholder="Votre Message" className={cn(s.ContactInput , "message")}></textarea>
+                          <button type="submit" className={s.ContactButton}>Envoyer</button>
+                      </form>
                   </div>
 
               </div>

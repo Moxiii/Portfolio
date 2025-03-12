@@ -41,3 +41,8 @@
     @content;
   }
 }
+@mixin tinyDevice {
+  @media (max-width: #{$mobile-width}) {
+    @content;
+  }
+}

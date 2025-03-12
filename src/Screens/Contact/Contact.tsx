@@ -1,30 +1,11 @@
-import emailjs from "@emailjs/browser";
+import {SendEmail} from "../../Components/Utils/SendEmail/SendEmail.ts"
 import { useRef, JSX } from "react";
 import s from "./Contact.module.scss";
 import cn from "clsx";
 
 export default function Contact(): JSX.Element {
   const refForm = useRef<HTMLFormElement>(null);
-  const sendEmail = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (refForm.current) {
-      emailjs
-        .sendForm(
-          "service_grqpcg8",
-          "template_eq7kyaw",
-          refForm.current,
-          "kLjaD0rwsaIaJI6O5"
-        )
-        .then(
-          (result) => {
-            console.log("Email envoyé avec succès", result.text);
-          },
-          (error) => {
-            console.error("Erreur lors de l'envoi de l'email", error.text);
-          }
-        );
-    }
-  };
+
 
   return (
     <div className={s.contactPage}>
@@ -34,7 +15,7 @@ export default function Contact(): JSX.Element {
         </div>
 
         <div className={s.contactFormContainer}>
-          <form ref={refForm} onSubmit={sendEmail} className={s.contactForm}>
+          <form ref={refForm} onSubmit={(e)=> SendEmail(e,refForm)} className={s.contactForm}>
             <input
               className={cn(s.contactEmailInput)}
               type="email"
