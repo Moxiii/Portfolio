@@ -1,4 +1,5 @@
-import "./About.scss";
+import {JSX, useState, lazy} from "react";
+import("./About.scss")
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faAngular,
@@ -16,7 +17,7 @@ import {
   faCar,
   faShirt,
 } from "@fortawesome/free-solid-svg-icons";
-import {JSX, useState, lazy, useEffect} from "react";
+
 import { motion } from "framer-motion";
 import Dev from "../../assets/Illustration/3d-nft-icon-developer-male-illustration-min-500px.png";
 import CV from "../../assets/CV/CV LAPOUGE Maxime-1.pdf"
@@ -29,7 +30,10 @@ const CustomCursor = lazy(()=>import("../../Components/Cursor/CustomCursor.tsx")
 const ParallaxText = lazy(()=>import("../../Components/Scroll/ParallaxText/ParallaxText.tsx"));
 const AsideScroll = lazy(()=>import("../../Components/Scroll/AsideScroll/AsideScroll.tsx"));
 const RenderPDF = lazy(()=>import("../../Components/Utils/CV/RenderPDF.tsx"))
+const PopUpModal = lazy(()=>import("../../Components/Modal/PopUpModal/Modal.tsx"))
 export default function About(): JSX.Element {
+  const [isTechModalOpen, setIsTechModalOpen] = useState(false);
+
   const techs = [
     { name: "React", icon: faReact, color: "#61DBFB" },
     { name: "Docker", icon: faDocker, color: "#2496ED" },
@@ -63,18 +67,14 @@ export default function About(): JSX.Element {
     },
   ];
   const sideSkills=[
-    {title:"Reseaux" , text:"Creation d'un serveur WEB ."},
-    {title:"Reseaux" , text:"Creation d'un serveur WEB ."},
-    {title:"Reseaux" , text:"Creation d'un serveur WEB ."},
+    {title:"Reseaux" , text:"Creation d'un serveur WEB avec Ubuntu Serveur (en cour) ."},
+    {title:"Android" , text:"Application Android de gestion en cour \n pour plus de détails voir le projet LYRA ."},
+    {title:"LLM" , text:`Auto hebergement de model tel que : \n - Mistral 7b \n - Falcon 7b `},
   ]
 const primaryColor : string = "#3a2172";
 const secondaryColor : string = "#efe07d";
   const [selectedTech, setSelectedTech] = useState<string | null>(null);
-  useEffect(() => {
-    setTimeout(()=>{
-      window.scrollTo(0,0)
-    },100)
-  }, []);
+
   return (
     <>
       <CustomCursor />
@@ -118,13 +118,7 @@ const secondaryColor : string = "#efe07d";
         </HorizontalScroll>
 
         {selectedTech && (
-          <div className="tech-popup" onClick={() => setSelectedTech(null)}>
-            <div className="popup-content">
-              <h2>{selectedTech}</h2>
-              <p>Plus d'infos sur {selectedTech}...</p>
-              <button onClick={() => setSelectedTech(null)}>Fermer</button>
-            </div>
-          </div>
+          <PopUpModal isOpen={isTechModalOpen} onClose={()=>setIsTechModalOpen(false)}/>
         )}
         <AsideScroll mainTiltedText="Egalement" background={secondaryColor} tab={sideSkills}/>
 

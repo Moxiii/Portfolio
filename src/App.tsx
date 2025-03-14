@@ -1,15 +1,15 @@
 import { Routes, Route } from "react-router-dom";
 import Layout from "./Components/Utils/Layout/Layout.tsx";
-import Home from "./Screens/Home/Home.tsx";
-import About from "./Screens/About/About.tsx";
-import Contact from "./Screens/Contact/Contact.tsx";
 import { ReactLenis } from "lenis/react";
 import type { LenisRef } from "lenis/react";
 import "./App.scss";
-import Admin from "./Admin/Portal/Admin.tsx";
 import ErrorBoundary from "./Components/HOOK/ERROR/BOUNDARY/ErrorBoundary.tsx";
-import { useRef , Suspense } from "react";
+import {useRef, lazy} from "react";
 
+const LazyHome = lazy(() => import("./Screens/Home/Home.tsx"));
+const LazyAbout = lazy(() => import("./Screens/About/About.tsx"));
+const LazyContact = lazy(() => import("./Screens/Contact/Contact.tsx"));
+const LazyAdmin = lazy(() => import("./Admin/Portal/Admin.tsx"));
 
 function App() {
 
@@ -21,6 +21,7 @@ function App() {
   };
 
   return (
+
     <ErrorBoundary>
       <ReactLenis
         root
@@ -28,16 +29,19 @@ function App() {
         options={lenisOption}
         style={{ height: "100vh", overflowY: "auto" }}
       >
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/admin/panel" element={<Admin />} />
-          </Route>
-        </Routes>
+
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<LazyHome />} />
+              <Route path="/about" element={<LazyAbout />} />
+              <Route path="/contact" element={<LazyContact />} />
+              <Route path="/admin/panel" element={<LazyAdmin />} />
+            </Route>
+          </Routes>
+
       </ReactLenis>
     </ErrorBoundary>
+
   );
 }
 

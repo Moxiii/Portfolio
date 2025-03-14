@@ -27,6 +27,7 @@ export default function Modal({isOpen , onClose ,onBack, title , children}:Modal
                dragConstraints={constraintsRef}
                dragElastic={0.1}
                className="project-modal"
+               style={{ pointerEvents: "auto" }}
            >
                <div className="modal-header">
                    {onBack && (

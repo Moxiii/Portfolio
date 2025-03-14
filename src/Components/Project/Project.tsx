@@ -91,7 +91,7 @@ export default function ProjectDetails({ project }: ProjectCardProps) {
       <div className="project-pres project">
         <ul>
           {project.presentation?.map((pres, index) => (
-            <div key={index}>
+            <div key={index} className="project-pres-content">
               <h3 className="project-pres-title">{pres.title}</h3>
               <ul className="project-pres-desc">
                 {pres.list?.map((item, i) => (

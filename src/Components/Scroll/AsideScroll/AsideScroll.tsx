@@ -1,6 +1,6 @@
 import { useLenis } from "lenis/react";
 import cn from "clsx";
-import React, { JSX, ReactNode, useRef } from "react";
+import React, { JSX, useRef } from "react";
 import s from "./AsideScroll.module.scss";
 import { motion } from "framer-motion";
 
@@ -44,25 +44,24 @@ export default function AsideScroll({
       ref={sectionRef}
       className={cn(s.asideScroll)}
       style={{ "--bg-color": background } as React.CSSProperties}
+      data-lenis-scroll-snap-align="start"
     >
-      <div className={cn(s.stickyContainer)}>
-        <h2 className={cn(s.sticky, "h2")}>{mainTiltedText}</h2>
-      </div>
 
       <div className={cn(s.layoutGrid)}>
+        <h2 className={cn(s.sticky, "h2")}>{mainTiltedText}</h2>
         <aside className={cn(s.asideContainer)}>
           {tab.map((item, index) => (
-            <motion.div
-              key={index}
-              className={cn(s.asideChilds)}
-              variants={asideVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-            >
-              <h3 className={cn(s.title, "h4")}>{item.title}</h3>
-              <p className={cn(s.text, "p")}>{item.text}</p>
-            </motion.div>
+              <motion.div
+                  key={index}
+                  className={cn(s.asideChilds)}
+                  variants={asideVariants}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ amount: 0.3}}
+              >
+                <h3 className={cn(s.title, "h4")}>{item.title}</h3>
+                <p className={cn(s.text, "p")}>{item.text}</p>
+              </motion.div>
           ))}
         </aside>
       </div>
