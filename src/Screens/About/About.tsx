@@ -73,6 +73,49 @@ export default function About(): JSX.Element {
   ]
 const primaryColor : string = "#3a2172";
 const secondaryColor : string = "#efe07d";
+
+  const techDescriptions: Record<string, { reason: string; project: string; learnings: string }> = {
+    React: {
+      reason: "J'ai choisi React pour sa flexibilité et la rapidité du développement des interfaces interactives.",
+      project: "Utilisé dans mon portfolio et Lyra (projet de gestion de temps).",
+      learnings: "J'ai appris la gestion d'état avec Redux et l'optimisation des performances avec React.memo.",
+    },
+    Docker: {
+      reason: "Pour déployer dans le futur mes sites sur mon serveur web locale plus simplement",
+      project: "Utilisé pour conteneuriser mes applications HERA et LYRA afin de condenser BACKEND - FRONTEND - SCRAPPING - BDD etc",
+      learnings: "J'ai appris à écrire des Dockerfiles et à orchestrer plusieurs services avec Docker Compose.",
+    },
+    Git: {
+      reason: "Indispensable pour la gestion de version et le travail collaboratif.",
+      project: "Utilisé dans tous mes projets pour suivre les versions et collaborer avec d'autres développeurs.",
+      learnings: "J'ai appris à créer des branches, à résoudre des conflits et à utiliser les Pull Requests.",
+    },
+    JavaScript: {
+      reason: "Pour experimenté le WEBGL et les page dynamique pour ce rapprocher du creative web. \n",
+      project: "Utilisé dans mon portfolio et mes projets frontend.",
+      learnings: "En cour d'apprentissage de lib frontend comme Three.js , framer motion , gsap , lenis ... ",
+    },
+    Sass: {
+      reason: "Stylisation du css plus simple et plus comprehensible.",
+      project: "Utilisé dans mon portfolio et mes projets frontend.",
+      learnings: "Constanste , sass:math ,sass:map ...",
+    },
+    Java: {
+      reason: "Langage fondamental du web, permettant d'ajouter du dynamisme aux sites.",
+      project: "Utilisé pour LYRA , HERA et d'autre futur projet.",
+      learnings: "Gestion JWT , cache Redis , BDD Mongo et JDBC etc ",
+    },
+    Python: {
+      reason: "Langage fondamental du web, permettant d'ajouter du dynamisme aux sites.",
+      project: "Utilisé pour HERA dans la partie scrapping",
+      learnings: "Scrapp avec Playwright et asynchronisme ",
+    },
+    Angular: {
+      reason: "Langage fondamental du web, permettant d'ajouter du dynamisme aux sites.",
+      project: "Utilisé pour le projet HERA.",
+      learnings: "En cour d'apprentissage",
+    },
+  };
 const roseVif : string = "#E91E63";
 const roseMagenta:string= "#C2185B";
   const [selectedTech, setSelectedTech] = useState<string | null>(null);
@@ -127,8 +170,28 @@ const roseMagenta:string= "#C2185B";
               isOpen={isTechModalOpen}
               onClose={()=>setIsTechModalOpen(false)}
               onBack={()=>setIsTechModalOpen(false)}
-              title={selectedTech}
-              children={<div>test</div>}/>
+              title={selectedTech}>
+              <div>
+                {techDescriptions[selectedTech] ? (
+                    <div className="tech-description">
+                      <div className="tech-description-itm">
+                        <h3>Pourquoi cette technologie ? </h3>
+                        <p>{techDescriptions[selectedTech].reason}</p>
+                      </div>
+                      <div className="tech-description-itm">
+                        <h3>Utilisé dans quel projet ? </h3>
+                        <p>{techDescriptions[selectedTech].project}</p>
+                      </div>
+                      <div className="tech-description-itm">
+                        <h3>Ce que j'ai appris : </h3>
+                        <p>{techDescriptions[selectedTech].learnings}</p>
+                      </div>
+
+                    </div>
+                ) : (<p>Aucune description disponible</p>)}
+              </div>
+
+          </PopUpModal>
         )}
         <AsideScroll mainTiltedText="Egalement" background={secondaryColor} tab={sideSkills}/>
 

@@ -86,6 +86,42 @@
       color: var(--icon-color, white);
     }
   }
+  .modal-content{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    .tech-description{
+      height: 100%;
+      width: 100%;
+      margin: 3%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      .tech-description-itm{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+        margin: 5%;
+        text-underline: #9300c5;
+        h3{
+          margin: 2%;
+          padding-bottom: 3%;
+          font-size: 200%;
+          font-weight: bold;
+          color:$rose-pastel
+        }
+        p{
+          color: $primary-color;
+        }
+      }
+
+    }
+  }
 
   .interest-container {
     height: 120vh;
