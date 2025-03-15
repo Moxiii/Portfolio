@@ -1,3 +1,6 @@
+.HomePage{
+  overflow: auto;
+}
 .landing-container {
   display: flex;
   justify-content: center;
@@ -7,40 +10,12 @@
   color: $primary-color;
   height: 100vh;
   width: 100vw;
-  .main-folder {
-    position: absolute;
-    bottom: 20%;
-  }
-  .quote-box {
-    position: relative;
-    box-shadow: inset 0 0 0 1px $secondary-color;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 20px;
-    border: solid;
-    width: 50%;
-    height: 50%;
-  }
-  .quote-text {
-    color: $secondary-color;
+.main-folder{
+  border:solid 1px $secondary-color;
+  padding: 2%;
+  border-radius: 25px;
+}
 
-    > .quote {
-      font-size: 200%;
-    }
-
-    > .sub-text {
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      font-size: 120%;
-      padding: 2%;
-
-      .rosy {
-        color: $rose-pastel;
-      }
-    }
-  }
   .project-list {
     display: inline-flex;
     justify-content: flex-start;
