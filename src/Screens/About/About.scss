@@ -1,7 +1,7 @@
 
 .about-page {
   height: auto;
-  cursor: none;
+  //cursor: none;
   .text-zone {
     display: flex;
     justify-content: center;
@@ -106,7 +106,8 @@
     flex-direction: column;
     height: 200vh;
     width: 100%;
-    background-color: $rose-vif;
+    background-color: var(--background-color , $primary-color);
+    color: var(--text-color , $secondary-color);
     .pdfContainer{
  margin: 2%;
       display: flex;

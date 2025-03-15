@@ -73,8 +73,13 @@ export default function About(): JSX.Element {
   ]
 const primaryColor : string = "#3a2172";
 const secondaryColor : string = "#efe07d";
+const roseVif : string = "#E91E63";
+const roseMagenta:string= "#C2185B";
   const [selectedTech, setSelectedTech] = useState<string | null>(null);
-
+  const handleTechClick = (techName:string)=>{
+    setSelectedTech(techName);
+    setIsTechModalOpen(true)
+  }
   return (
     <>
       <CustomCursor />
@@ -86,11 +91,11 @@ const secondaryColor : string = "#efe07d";
           subCenterText="Etudiant en informatique"
           bottomText={["Mobile", "Backend", "Design", "Performance"]}
           textColor="#E91E63"
-          bgColor="#9300c5"
+          bgColor={primaryColor}
           length={3}
         />
 
-        <section className="text-zone" style={{"--background-color":secondaryColor , "--text-color":primaryColor}as React.CSSProperties}>
+        <section className="text-zone" style={{"--background-color":roseMagenta , "--text-color":secondaryColor}as React.CSSProperties}>
           <div className="first-pres">
             <LoremIpsum p={1} random={true} />
             <p>
@@ -108,7 +113,7 @@ const secondaryColor : string = "#efe07d";
               key={index}
               className="tech-card"
               whileHover={{ scale: 1.1 }}
-              onClick={() => setSelectedTech(tech.name)}
+              onClick={() => handleTechClick(tech.name)}
               style={{ "--icon-color": tech.color } as React.CSSProperties}
             >
               <FontAwesomeIcon icon={tech.icon} className="tech-icon" />
@@ -117,8 +122,13 @@ const secondaryColor : string = "#efe07d";
           ))}
         </HorizontalScroll>
 
-        {selectedTech && (
-          <PopUpModal isOpen={isTechModalOpen} onClose={()=>setIsTechModalOpen(false)}/>
+        {selectedTech && isTechModalOpen &&(
+          <PopUpModal
+              isOpen={isTechModalOpen}
+              onClose={()=>setIsTechModalOpen(false)}
+              onBack={()=>setIsTechModalOpen(false)}
+              title={selectedTech}
+              children={<div>test</div>}/>
         )}
         <AsideScroll mainTiltedText="Egalement" background={secondaryColor} tab={sideSkills}/>
 
@@ -137,7 +147,7 @@ const secondaryColor : string = "#efe07d";
           </div>
         </section>
 
-        <section className=" cv-section">
+        <section className=" cv-section" style={{"--background-color":roseMagenta }as React.CSSProperties} >
           <h2>CV</h2>
           <RenderPDF pdfUrl={CV as string}/>
           <button> Télecharger le cv </button>
