@@ -1,0 +1,58 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: black;
+  color: wheat;
+  width: 100vw;
+  height: auto;
+}
+
+.app {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+form {
+  display: flex;
+  flex-direction: column;
+}
+h1 {
+  color: red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.underline {
+  width: 80%;
+  border-bottom: 1px double red;
+}
+#send {
+  padding-bottom: 10%;
+  display: flex;
+  flex-direction: column-reverse;
+}
+.envoie {
+  color: blue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  border: solid 3px red;
+  border-radius: 0.5em;
+  height: 30%;
+  width: 80vw;
+  height: 30vh;
+}
+.result a {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 5%;
+  font-size: x-large;
+}

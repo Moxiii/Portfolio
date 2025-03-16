@@ -6,11 +6,15 @@ interface HorizontalScrollProps {
   children: React.ReactNode;
   background?: string;
   length?: number;
+  gap?:string;
+  padding?:string;
 }
 export default function HorizontalScroll({
   children,
   background,
   length = 8,
+    gap,
+    padding,
 }: HorizontalScrollProps): JSX.Element {
   const containerRef = useRef<HTMLDivElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -45,6 +49,8 @@ export default function HorizontalScroll({
         {
           "--bg-color": background,
           "--length": length?.toString(),
+          "--gap":gap,
+          "--padding":padding,
         } as React.CSSProperties
       }
     >

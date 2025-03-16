@@ -1,0 +1,39 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100vw;
+  height: 50vh;
+  text-transform: capitalize;
+}
+button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.25em;
+  background-color: bisque;
+  text-transform: uppercase;
+  background-color: transparent;
+  cursor: pointer;
+  border: transparent;
+  color: white;
+}
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black;
+  color: whitesmoke;
+  flex-direction: column;
+  border-radius: 0.5em;
+  width: 60%;
+  height: 10%;
+  padding-bottom: 5%;
+}
+.color {
+  color: black;
+}

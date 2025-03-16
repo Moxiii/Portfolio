@@ -25,7 +25,7 @@ import { LoremIpsum } from "react-lorem-ipsum";
 //Lazy
 const HorizontalScroll = lazy(()=>import("../../Components/Scroll/HorizontalScroll/HorizontalScroll.tsx"));
 const ScrollProgress = lazy(()=>import("../../Components/Scroll/ScrollProgress/ScrollProgress.tsx"));
-const TiltCard = lazy(()=>import("../../Components/TiltCard/TiltCard.tsx"));
+const TiltCard = lazy(()=>import("../../Components/Cards/TiltCard/TiltCard.tsx"));
 const CustomCursor = lazy(()=>import("../../Components/Cursor/CustomCursor.tsx"));
 const ParallaxText = lazy(()=>import("../../Components/Scroll/ParallaxText/ParallaxText.tsx"));
 const AsideScroll = lazy(()=>import("../../Components/Scroll/AsideScroll/AsideScroll.tsx"));

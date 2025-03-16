@@ -1,0 +1,199 @@
+* {
+    font-family:sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    max-width: 100vw;
+  }
+  /* ^ ^ ^reset all anoying css basic rules ^ ^ ^*/
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 5%;
+    background-color: rgb(0, 0, 0);
+    color:white;
+}
+.brand{
+    text-align: center;
+    font-size: 4rem;
+    color:red;
+    margin-bottom: 30px;
+}
+form{
+    width: 90%;
+    max-width: 400px;
+    margin:20px auto;
+    background-color: rgb(233, 233, 233);
+    border-radius: .75em;
+    top:20px;
+}
+input{
+    width: 100%;
+    background-color: transparent;
+    padding: 10px;
+    border:none;
+    outline:none;
+    font-size: 2rem;
+    display: inline-block;
+}
+form ion-icon{
+    font-size: 3rem;
+    color: red ;
+    display: inline-block;
+  }
+
+h1{
+    margin-bottom:5% ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+section{
+    margin-bottom: 10%;
+}
+/*card for result / suggest */
+.resultat{
+    display: grid;
+    display: grid;
+    grid-gap :25px;
+    grid-template: auto / repeat(auto-fit, minmax(300px, 1fr));
+
+}
+.container,.resultat{
+    margin-top :50px; 
+    width: 100%;
+}
+
+.itm{
+    width: 100%;
+    border-radius: .75em;
+    background-color: rgb(131, 131, 131);
+    padding: 15px;
+    overflow: hidden;
+}
+.card{
+width: 100%;
+border-radius: 0.75em;
+background-color: grey;
+padding: 15px;
+overflow: hidden;
+margin-bottom: 10%;
+}
+.card img{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+    width: 100%;
+    height: 300px;
+    border-radius: .75em;
+}
+.card .container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.card .titre{
+    color:whitesmoke;
+    margin: 20px 10px 0 0 ;
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+/* enlever text decoration ( plus jolie) / le tuto : https://www.youtube.com/watch?v=x8EY0BlhPGk */
+ion-icon{
+    cursor:pointer;
+    font-size: 500px;
+}
+button{
+    width: 100px;
+    height: 100px;
+    background: transparent;
+    border:none;
+}
+img{
+    /*width: 100%;
+    height: 100%;*/
+    object-fit: cover;
+}
+section{
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.resutat .titre{
+    color: whitesmoke;
+    margin: 20px 10px 0 0;
+    font-size: 1.8rem;
+    font-weight: 400;
+  }
+  .view-btn{
+    text-decoration: none;
+    text-align: center;
+    width: 130px;
+    padding: 10px 0;
+    background-color: #404041;
+    color: whitesmoke;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-top: 20px;
+    border-radius: 4px;
+    align-self:flex-start;
+  }
+  .itm-data{
+    color: whitesmoke;
+    display: block;
+    margin-top: 10px ;
+    font-size: 1.4rem;
+    letter-spacing: .05rem;
+    line-height: 2rem;
+  }
+  .container.initial .brand{
+    font-size: 7rem;
+  }
+  .container.initial form {
+    max-width: 800px;
+  }
+  .container.initial form input{
+    padding: 20px;
+    font-size: 3rem;
+  }
+  
+  @media (max-width: 768px){
+    .resultat{
+      grid-gap:10px
+    }
+    .container.initial .brand{
+      font-size: 4rem;
+    }
+    .container.initial form {
+      max-width: 500px;
+    }
+    .container.initial form input{
+      padding: 10px;
+      font-size: 2rem;
+    }
+  }
+  #ingredients{
+      padding-top: 5%;
+      color:red;
+      font-size: 20px;
+  }
+  .ingredients{
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+  footer{
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      background-color: black;
+  }
+  a{
+    text-decoration: none;
+  }

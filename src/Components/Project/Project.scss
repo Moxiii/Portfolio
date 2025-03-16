@@ -1,4 +1,6 @@
 .project-detail{
+  overscroll-behavior: contain;
+  --webkit-overflow-scrolling: touch;
   ul {
     list-style: none;
 
@@ -17,7 +19,7 @@
   align-items: center;
   flex-direction: column;
   overflow-y: auto;
-
+overflow-x : hidden;
   .project{
   padding: 2%;
     margin:1%;

@@ -1,0 +1,60 @@
+.test {
+  font-size: 20vw;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  font-family: fantasy;
+  color: white;
+  border-radius: 50px;
+  box-shadow: 0px -7px 20px whitesmoke;
+  box-sizing: content-box;
+  cursor: pointer;
+  text-decoration: none;
+  text-decoration-color: none;
+  border: solid;
+}
+a:link {
+  text-decoration: none;
+}
+.test:hover {
+  background: linear-gradient(darkblue, blueviolet);
+}
+.test::before{
+  transform: translate3d(10em, 0em, 10em);
+}
+body {
+  background-color:black;
+  color: white;
+}
+
+.section {
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+
+.subtitle {
+  font-size: large;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+}
+#typed {
+  display: inline;
+}
+/* svg qui tourne :/  */
+
+@keyframes rotateSvg {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+img {
+  animation: rotateSvg 2s linear infinite;
+}
+

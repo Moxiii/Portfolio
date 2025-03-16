@@ -68,9 +68,6 @@
     height: 100%;
     overflow-y: auto;
     position: relative;
-    scrollbar-width:none;
-    overscroll-behavior: contain;
-    --webkit-overflow-scrolling: touch;
     .project-folder {
       display: inline-flex;
       flex-direction: row;

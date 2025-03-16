@@ -1,0 +1,32 @@
+.card{
+  position: relative;
+  width: 300px;
+  height: 400px;
+  background: #222;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  gap:50%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  .cardHeader , .cardFooter {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+  }
+  .cardHeader{
+    top: 10px;
+  }
+  .cardBody{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+  .cardFooter{
+    bottom: 10px;}
+}
