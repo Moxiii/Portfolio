@@ -1,40 +1,54 @@
-import {Canvas, useFrame, useLoader} from "@react-three/fiber";
+import {Canvas, useFrame} from "@react-three/fiber";
 import {  Text3D } from "@react-three/drei";
-import {useEffect, useRef} from "react";
+import {useEffect, useRef, useState} from "react";
 import * as THREE from "three";
-import {FontLoader} from "three/examples/jsm/loaders/FontLoader";
+
 
 function RotatingQuestionMark() {
-    const font = "/fonts/DM Sans_Bold.json";
-    const loadedFont = useLoader(FontLoader , font)
+    const [position, setPosition] = useState<[number, number, number]>([0, 0, 0]);
 
     const questionMarkRef = useRef<THREE.Mesh>(null);
-
+    useEffect(() => {
+        const width = questionMarkRef.current.geometry.boundingBox?.max.x || 0;
+        setPosition([-(width/2) , 0 ,3])
+    }, []);
     useFrame(() => {
         if (questionMarkRef.current) {
-            questionMarkRef.current.rotation.y += 0.005;
+            questionMarkRef.current.rotation.y += 0.007;
+
         }
     });
 
 
     return (
-        loadedFont ? (
-            <mesh ref={questionMarkRef} position={[-3, 0, 0]}>
-                <Text3D font={loadedFont} size={1} height={0.1}>
+
+
+                <Text3D
+                    ref={questionMarkRef}
+                    font="/fonts/DM_Sans_Regular.json"
+                    size={1}
+                    height={0.1}
+                    curveSegments={12}
+                    bevelEnabled
+                    bevelThickness={0.02}
+                    bevelSize={0.02}
+                    bevelOffset={0}
+                    bevelSegments={5}
+                    position={position}
+
+                >
                     ?
-                    <meshStandardMaterial color="purple" />
+                    <meshStandardMaterial color="#cf87ff" />
                 </Text3D>
-            </mesh>
-        ) : (
-            <></>
-        )
+
     );
 }
 
-export default function QuestionMark3D() {
+export default function QuestionMark3D({text}:{text:string}) {
     return (
+        <div style={{ position: "relative", width: "100%", height: "100%" }}>
         <Canvas
-            camera={{position: [0, 0, 5], fov: 50 }}
+            camera={{position: [0, 0, -3], fov: 60 }}
             style={{
                 position: "absolute",
                 top: 0,
@@ -45,11 +59,27 @@ export default function QuestionMark3D() {
             }}
         >
 
-            <directionalLight intensity={1.2} position={[2, 2, 5]} />
-            <ambientLight intensity={0.5} />
+            <directionalLight intensity={1.2} position={[0, 0, 5]} />
+            <ambientLight intensity={2} />
 
             <RotatingQuestionMark/>
 
         </Canvas>
+    {text && (
+        <div
+            style={{
+                marginTop:"5%",
+                position: "relative",
+                display:"flex",
+                justifyContent:"center",
+                alignItems:"center",
+                flexDirection:"column",
+                fontSize: "2rem",
+                zIndex: 10,
+            }}
+        >
+            {text}
+        </div>
+    )}</div>
     );
 }

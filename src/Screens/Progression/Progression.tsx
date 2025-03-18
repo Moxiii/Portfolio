@@ -34,7 +34,7 @@ export default function Progression():JSX.Element{
             </HorizontalScroll>
             <section className={s.interrogationContainer}>
                 <h2>Le futur ? </h2>
-                <QuestionMark3D/>
+                <QuestionMark3D text="Apprentissage de THREE JS pour proposer un portfolio interractif"/>
 
             </section>
         </div>
