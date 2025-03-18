@@ -27,7 +27,7 @@ export default function Modal({isOpen , onClose ,onBack, title , children}:Modal
                dragConstraints={constraintsRef}
                dragElastic={0.1}
                className="project-modal"
-               style={{ pointerEvents: "auto" }}
+               style={{ pointerEvents: "auto" , touchAction:"auto"}}
            >
                <div className="modal-header">
                    {onBack && (
@@ -40,11 +40,11 @@ export default function Modal({isOpen , onClose ,onBack, title , children}:Modal
                        <FontAwesomeIcon icon={faTimes}/>
                    </button>
                </div>
-              <ReactLenis root>
-                  <div className="modal-content" ref={modalContentRef}>
+
+                  <div className="modal-content" ref={modalContentRef} style={{   pointerEvents: "auto",}}>
                       {children}
                   </div>
-              </ReactLenis>
+
            </motion.div>
        </motion.div>
     )

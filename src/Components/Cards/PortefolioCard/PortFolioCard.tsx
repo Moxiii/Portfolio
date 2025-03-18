@@ -5,11 +5,26 @@ interface CardProps{
     title : string,
     year: Date,
     version : number;
+    key:number;
 }
-export default function PortfolioCard({title , year , version }:CardProps):JSX.Element
+export default function PortfolioCard({title , year , version , key }:CardProps):JSX.Element
 {
+    const iconHoverEffect = {
+        whileHover: {
+            scale: 1.1,
+            y: -5,
+        },
+        whileTap:{
+            scale:0.8
+        }
+    };
     return (
-        <motion.div className={s.card}>
+        <motion.div
+            className={s.card}
+            whileHover={iconHoverEffect.whileHover}
+            transition={iconHoverEffect.whileTap}
+            key={key}
+        >
             <div className={s.cardHeader}>
                 <span>V:{version}</span>
             </div>

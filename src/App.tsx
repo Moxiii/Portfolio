@@ -5,8 +5,6 @@ import type { LenisRef } from "lenis/react";
 import "./App.scss";
 import ErrorBoundary from "./Components/HOOK/ERROR/BOUNDARY/ErrorBoundary.tsx";
 import {useRef, lazy} from "react";
-import Progression from "./Screens/Progression/Progression.tsx";
-import olderPortfolio from "./Screens/OlderPortFolio/OlderPortfolio.tsx";
 const LazyHome = lazy(() => import("./Screens/Home/Home.tsx"));
 const LazyAbout = lazy(() => import("./Screens/About/About.tsx"));
 const LazyContact = lazy(() => import("./Screens/Contact/Contact.tsx"));
@@ -38,7 +36,6 @@ function App() {
                 <Route path="/contact" element={<LazyContact />} />
                 <Route path="/admin/panel" element={<LazyAdmin />} />
                 <Route path="/progression" element={<LazyProgression />} />
-                <Route path="/portfolio/v:id" element={<olderPortfolio />} />
             </Route>
           </Routes>
 

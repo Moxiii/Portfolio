@@ -4,11 +4,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFolder } from "@fortawesome/free-solid-svg-icons";
 import { Project } from "../../Components/Utils/Types/ProjectType.ts";
 import "./Home.scss";
-
-
+import {NavLink} from "react-router-dom";
+import _links from "../../Components/Utils/_const/_links.ts";
 const Modal = lazy(() => import("../../Components/Modal/PopUpModal/Modal.tsx"));
 const ProjectDetails = lazy(() => import("../../Components/Project/Project.tsx"));
 const AnimatedLanding = lazy(()=>import("../../Components/AnimatedLanding/AnimatedLanding.tsx"))
+const Progression = lazy(()=>import("../Progression/Progression.tsx"))
 export default function Home(): JSX.Element {
   const [projects, setProjects] = useState<Project[]>([]);
   const [currentProject, setCurrentProject] = useState<Project | null>(null);
@@ -16,6 +17,10 @@ export default function Home(): JSX.Element {
   const [isProjectDetailModalOpen, setIsProjectDetailModalOpen] =
     useState(false);
   const [isRevealed, setIsRevealed] = useState<boolean>(false);
+  const handleRevealComplete = () => {
+    setIsRevealed(true);
+    sessionStorage.setItem("animationPlayed", "true");
+  };
   const handleOpenProjectsModal = () => {
     setIsProjectsModalOpen(true);
   };
@@ -34,10 +39,7 @@ export default function Home(): JSX.Element {
     setCurrentProject(null);
     setIsProjectsModalOpen(true);
   };
-const handleRevealComplete=()=>{
-  setIsRevealed(true);
-  sessionStorage.setItem("animationPlayed", "true");
-}
+
   useEffect(() => {
     const fetchProjects = async () => {
       const data: any = await getProjects();
@@ -51,7 +53,10 @@ const handleRevealComplete=()=>{
         {!isRevealed && <AnimatedLanding onRevealComplete={handleRevealComplete}/>}
         {isRevealed && (
             <div className="landing-container">
-
+              <NavLink to={_links.progression} className="folder archives">
+                <FontAwesomeIcon icon={faFolder} className="folder-icon"/>
+                <span className="folder-name">Archives</span>
+              </NavLink>
               <div className="project-folder main-folder">
                 <div className="folder" onClick={handleOpenProjectsModal}>
                   <FontAwesomeIcon icon={faFolder} className="folder-icon"/>
