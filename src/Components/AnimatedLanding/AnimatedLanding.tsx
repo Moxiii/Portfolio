@@ -10,61 +10,50 @@ export default function AnimatedLanding({onRevealComplete}:AnimatedLandingProps)
     const sceneRef = useRef<HTMLDivElement>(null)
     const revealRef = useRef<HTMLDivElement>(null)
     useEffect(() => {
-        if(isOpen){
-            gsap.to(sceneRef.current,{
-                duration: 0.8,
-                height:"100%",
-                top:"0%",
-                left:"0%",
-                ease:"power3.inOut",
-                onComplete:()=>{
-                    gsap.to(revealRef.current,{
-                        duration:1.8,
-                        width:"100%",
-                        top:"30%",
-                        ease:"power3.inOut",
-                    });
-                    gsap.to(sceneRef.current,{
-                        duration: 0.8,
-                        top: "-70%",
-                        ease: "power3.inOut",
-                        onComplete: onRevealComplete,
-                    })
-                }
-            })
-        }else{
-            gsap.to(revealRef.current,{
+        if (isOpen) {
+            const tl = gsap.timeline({
+                defaults: { ease: "power3.inOut" },
+                onComplete: onRevealComplete,
+            });
+
+            tl.to(sceneRef.current, {
                 duration: 1.2,
-                top: "100%",
-                width: "100%",
-                ease: "power3.inOut",
-                onComplete:()=>{
-                    gsap.to(sceneRef.current,{
-                        duration: 0.8,
-                        height: "100%",
-                        width: "100%",
-                        ease: "power3.inOut",
-                    })
-                }
+                y: "-100%"
             })
+                .to(revealRef.current, {
+                    duration: 1.2,
+                    opacity: 1,
+                    visibility:"visible",
+                })
+                .to(revealRef.current, {
+                    duration: 0.5,
+                    opacity: 0,
+                    visibility:"hidden"
+                })
+                .to(sceneRef.current, {
+                    duration: 1,
+                    backdropFilter: "blur(0px)"
+                }, "-=0.5");
+
         }
     }, [isOpen]);
     return (
         <div className={s.AnimatedLandingcontainer}>
-            <button className={s.trigger} onClick={()=>setIsOpen(true)} >{isOpen ? "Fermer" : "Ouvrir"}</button>
+
             <div
                 ref={sceneRef}
                 className={s.sceneContainer}
             >
-                <h1>Portfolio</h1>
+                <h1>Bienvenu.e sur mon Portfolio</h1>
+                <h2>me </h2>
+                <button className={s.trigger} onClick={() => setIsOpen(true)}>{isOpen ? "Fermer" : "Ouvrir"}</button>
                 <p>{new Date().getFullYear()}</p>
-                <h2>Me</h2>
             </div>
             <motion.div
-          ref={revealRef} className={s.revealContainer}
-          >
-
-          </motion.div>
+                ref={revealRef} className={s.revealContainer}
+            >
+            <h2>Etudiant en informatique a IPI</h2>
+            </motion.div>
 
         </div>
     )

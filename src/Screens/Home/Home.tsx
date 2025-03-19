@@ -9,7 +9,7 @@ import _links from "../../Components/Utils/_const/_links.ts";
 const Modal = lazy(() => import("../../Components/Modal/PopUpModal/Modal.tsx"));
 const ProjectDetails = lazy(() => import("../../Components/Project/Project.tsx"));
 const AnimatedLanding = lazy(()=>import("../../Components/AnimatedLanding/AnimatedLanding.tsx"))
-const Progression = lazy(()=>import("../Progression/Progression.tsx"))
+
 export default function Home(): JSX.Element {
   const [projects, setProjects] = useState<Project[]>([]);
   const [currentProject, setCurrentProject] = useState<Project | null>(null);
@@ -19,7 +19,7 @@ export default function Home(): JSX.Element {
   const [isRevealed, setIsRevealed] = useState<boolean>(false);
   const handleRevealComplete = () => {
     setIsRevealed(true);
-    sessionStorage.setItem("animationPlayed", "true");
+    //localStorage.setItem("animationPlayed", "true");
   };
   const handleOpenProjectsModal = () => {
     setIsProjectsModalOpen(true);
@@ -96,7 +96,7 @@ export default function Home(): JSX.Element {
                   }}
                   title={currentProject?.title}
               >
-                {currentProject && <ProjectDetails project={currentProject}/>}
+                {<ProjectDetails project={currentProject as Project} /> as JSX.Element}
               </Modal>
             </div>
         )}

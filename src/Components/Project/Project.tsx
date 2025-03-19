@@ -8,13 +8,14 @@ import { Project } from "../Utils/Types/ProjectType.ts";
 import ImgCarrousel from "../Carrousel/FramerImgCarrousel/ImgCarrousel.tsx";
 
 import TypedText from "../Utils/Typed/TypedText.tsx";
+import {JSX} from "react";
 interface ProjectCardProps {
   project: Project;
   getFormattedUrl: (url: string) => string;
   getTechIcon: (techName: string) => any;
 }
 
-export default function ProjectDetails({ project }: ProjectCardProps) {
+export default function ProjectDetails({ project }: ProjectCardProps) :JSX.Element {
   function getFormattedUrl(url: string) {
     return url.startsWith("http://") || url.startsWith("https://")
       ? url
@@ -102,6 +103,11 @@ export default function ProjectDetails({ project }: ProjectCardProps) {
           ))}
         </ul>
       </div>
+        <div className="project">
+            <p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p>
+            <p>lorem</p>
+        </div>
+
     </div>
   );
 }
