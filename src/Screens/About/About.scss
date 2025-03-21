@@ -27,12 +27,24 @@
     height: 100%;
     padding: 5%;
     gap: 5%;
-    h1 {
-      font-size: 3rem;
-      color: white;
-    }
+    h1 , h2 {
+    font-size: 2rem;
+    margin:1%;
+    text-align: center;
+  }
     p {
-      font-size: 1.5rem;
+      font-size: 1.25rem;
+
+    }
+    .text-container{
+      margin:1%;
+
+    }
+    .subPres{
+      font-size: 2rem;
+      margin-top: 3%;
+      padding: 2%;
+      color: $primary-color;
     }
   }
 
@@ -89,7 +101,7 @@
   .modal-content{
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     .tech-description{
       height: 100%;
       width: 100%;
@@ -131,6 +143,27 @@
     align-items: center;
     padding: 5%;
     width: 100%;
+    .modal-content{
+      color:$rose-fuchsia;
+    }
+    .tilt-card-content{
+      height: 100%;
+      width: 100%;
+      padding:3%;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-direction: column;
+      p{
+        margin: 2%;
+        font-size: 110%;
+      }
+      ul>li{
+        list-style: none;
+        margin: 1%;
+        width: 100%;
+      }
+    }
   }
 
   .cv-section {
@@ -150,6 +183,20 @@
       justify-content: center;
       align-items: flex-start;
 
+    }
+    .cv-button{
+      padding: 3%;
+      border:solid 2px $secondary-color;
+      background-color: $rose-fuchsia;
+      color:$secondary-color;
+      cursor: pointer;
+      border-radius: 10px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      &:hover{
+        color:$rose-fuchsia;
+        background:$secondary-color;
+        border:solid 2px $rose-fuchsia;
+      }
     }
   }
 }

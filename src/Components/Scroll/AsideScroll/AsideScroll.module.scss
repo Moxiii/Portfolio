@@ -1,4 +1,5 @@
 .asideScroll {
+  background: var(--bg-color,$primary-color);
   margin-bottom: mobile-vw(160px);
 
   @include desktop {

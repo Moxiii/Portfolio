@@ -21,7 +21,7 @@ export default function AnimatedLanding({onRevealComplete}:AnimatedLandingProps)
                 y: "-100%"
             })
                 .to(revealRef.current, {
-                    duration: 1.2,
+                    duration: 2,
                     opacity: 1,
                     visibility:"visible",
                 })
@@ -36,7 +36,7 @@ export default function AnimatedLanding({onRevealComplete}:AnimatedLandingProps)
                 }, "-=0.5");
 
         }
-    }, [isOpen]);
+    }, [isOpen, onRevealComplete]);
     return (
         <div className={s.AnimatedLandingcontainer}>
 
@@ -44,7 +44,7 @@ export default function AnimatedLanding({onRevealComplete}:AnimatedLandingProps)
                 ref={sceneRef}
                 className={s.sceneContainer}
             >
-                <h1>Bienvenu.e sur mon Portfolio</h1>
+                <h1>Bienvenu sur mon Portfolio</h1>
                 <h2>me </h2>
                 <button className={s.trigger} onClick={() => setIsOpen(true)}>{isOpen ? "Fermer" : "Ouvrir"}</button>
                 <p>{new Date().getFullYear()}</p>

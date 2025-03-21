@@ -11,8 +11,8 @@ import TypedText from "../Utils/Typed/TypedText.tsx";
 import {JSX} from "react";
 interface ProjectCardProps {
   project: Project;
-  getFormattedUrl: (url: string) => string;
-  getTechIcon: (techName: string) => any;
+  getFormattedUrl?: (url: string) => string;
+  getTechIcon?: (techName: string) => any;
 }
 
 export default function ProjectDetails({ project }: ProjectCardProps) :JSX.Element {

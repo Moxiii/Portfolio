@@ -1,4 +1,4 @@
-import { JSX, useEffect, useState , lazy } from "react";
+import {JSX, useEffect, useState, lazy, useRef} from "react";
 import { getProjects } from "../../Components/Utils/Database/initProject.ts";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFolder } from "@fortawesome/free-solid-svg-icons";
@@ -19,7 +19,7 @@ export default function Home(): JSX.Element {
   const [isRevealed, setIsRevealed] = useState<boolean>(false);
   const handleRevealComplete = () => {
     setIsRevealed(true);
-    //localStorage.setItem("animationPlayed", "true");
+    localStorage.setItem("animationPlayed", "true");
   };
   const handleOpenProjectsModal = () => {
     setIsProjectsModalOpen(true);
@@ -96,7 +96,7 @@ export default function Home(): JSX.Element {
                   }}
                   title={currentProject?.title}
               >
-                {<ProjectDetails project={currentProject as Project} /> as JSX.Element}
+                {<ProjectDetails project={currentProject as Project}  /> as JSX.Element}
               </Modal>
             </div>
         )}

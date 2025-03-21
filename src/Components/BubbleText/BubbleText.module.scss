@@ -1,11 +1,15 @@
 .bubbleContainer {
+  span{
+    color:var(--color);
+  }
+
   .bubbleText {
     .hoverText {
-      transition: 0.35s font-weight, 0.35s color;
+      transition: 0.15s font-weight, 0.15s color;
     }
     .hoverText:hover {
       font-weight: var(--size) px;
-      color: var(--color);
+      color: $rose-fuchsia;
     }
     .hoverText:hover + .hoverText {
       font-weight: 500;

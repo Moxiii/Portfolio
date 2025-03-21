@@ -22,6 +22,7 @@ import { motion } from "framer-motion";
 import Dev from "../../assets/Illustration/3d-nft-icon-developer-male-illustration-min-500px.png";
 import CV from "../../assets/CV/CV LAPOUGE Maxime-1.pdf"
 import { LoremIpsum } from "react-lorem-ipsum";
+import _links from "../../Components/Utils/_const/_links.ts";
 //Lazy
 const HorizontalScroll = lazy(()=>import("../../Components/Scroll/HorizontalScroll/HorizontalScroll.tsx"));
 const ScrollProgress = lazy(()=>import("../../Components/Scroll/ScrollProgress/ScrollProgress.tsx"));
@@ -47,26 +48,46 @@ export default function About(): JSX.Element {
   const interests = [
     {
       title: "Clavier custom",
-      content: <p>J'adore modder et créer des claviers mécaniques.</p>,
+      content: <div className="tilt-card-content">
+        <p>Création de clavier Custom : </p>
+       <p>Neo 65</p>
+          <ul>
+            <li>- vertex v1 </li>
+            <li>- Keycaps replica night sakura</li>
+          </ul>
+          <p>NEO ERGO</p>
+          <ul><li>- Durock white lotus</li> <li>- Keycap BOW  aliexpress</li></ul>
+
+      </div>,
       icon: faKeyboard,
     },
     {
       title: "Sport automobile",
-      content: <p>Je démonte et répare des moteurs.</p>,
+      content:
+          <div className="tilt-card-content">
+            <p>Suivis de la scene WRC</p>
+          </div>,
       icon: faCar,
     },
     {
       title: "Moto",
-      content: <p>Passionné de moto et de balades sur route.</p>,
-      icon: faMotorcycle,
-    },
-    {
+      content: <div className="tilt-card-content">
+        <p>Passionné de moto et de balades sur route.</p>
+        <p>Passage du permis A2 en cours</p>
+      </div>,
+        icon: faMotorcycle,
+        },
+        {
       title: "Mode de seconde main",
-      content: <p>Fan de thrift shopping et vintage.</p>,
-      icon: faShirt,
-    },
-  ];
-  const sideSkills=[
+          content: <div className="tilt-card-content">
+            <p>Fan de vetement vintage.</p>
+            <p>Utilisation de Vinted et passage en fripperie</p>
+            <p>Ce qui a motiver la creation de "Hera" pour faire un outils de recherche pour vetements de 'collection'</p>
+      </div>,
+        icon: faShirt,
+        },
+        ];
+        const sideSkills=[
     {title:"Reseaux" , text:"Creation d'un serveur WEB avec Ubuntu Serveur (en cour) ."},
     {title:"Android" , text:"Application Android de gestion en cour \n pour plus de détails voir le projet LYRA ."},
     {title:"LLM" , text:`Auto hebergement de model tel que : \n - Mistral 7b \n - Falcon 7b `},
@@ -101,14 +122,14 @@ const secondaryColor : string = "#efe07d";
       learnings: "Constanste , sass:math ,sass:map ...",
     },
     Java: {
-      reason: "Langage fondamental du web, permettant d'ajouter du dynamisme aux sites.",
+      reason: "Langage back robuste",
       project: "Utilisé pour LYRA , HERA et d'autre futur projet.",
       learnings: "Gestion JWT , cache Redis , BDD Mongo et JDBC etc ",
     },
     Python: {
-      reason: "Langage fondamental du web, permettant d'ajouter du dynamisme aux sites.",
+      reason: "Langage de scripting et back end  ",
       project: "Utilisé pour HERA dans la partie scrapping",
-      learnings: "Scrapp avec Playwright et asynchronisme ",
+      learnings: "Scrapp avec Playwright et asynchronisme  + Django",
     },
     Angular: {
       reason: "Langage fondamental du web, permettant d'ajouter du dynamisme aux sites.",
@@ -129,10 +150,10 @@ const roseMagenta:string= "#C2185B";
       <div className="about-page">
         <ScrollProgress />
         <ParallaxText
-          topText={["Développement Web", "React", "Node.js", "UI/UX"]}
+          topText={["Développement Web", "React", "Typescript", "UI/UX"]}
           centerText="Maxime Lapouge"
           subCenterText="Etudiant en informatique"
-          bottomText={["Mobile", "Backend", "Design", "Performance"]}
+          bottomText={["Mobile", "Backend", "Design", "Performance" , "WEBGL"]}
           textColor="#E91E63"
           bgColor={primaryColor}
           length={3}
@@ -140,39 +161,53 @@ const roseMagenta:string= "#C2185B";
 
         <section className="text-zone" style={{"--background-color":roseMagenta , "--text-color":secondaryColor}as React.CSSProperties}>
           <div className="first-pres">
-            <LoremIpsum p={1} random={true} />
-            <p>
-              Passionné d'informatique depuis mon plus jeune âge, je désire en
-              faire mon métier !
-            </p>
-            <img className="illustration" src={Dev} alt="white man who dev" />
-            <LoremIpsum p={1} random={true} />
-            <p>Toujours d'une curiosité sans faille, je m'autoforme sur :</p>
+
+            <h2>Passioné depuis le plus jeune age</h2>
+            <div className="text-container">
+              <p>
+                A 5 ans la premiere manette de NES dans les mains , 8 ans plus tard je decouvre la programmation avec
+                python .
+              </p>
+              <p>Malheuresement en manque d'idée il aura fallu attendre encore quasiment 10 ans pour que je me relance
+                dans l'aventure du développement</p>
+            </div>
+            <h2>Ce que je souhaite faire dans le futur : </h2>
+            <div className="text-container">
+              <p>Un de mes objectifs principaux étant de me retrouver dans 5 ans dans les presentation des Awwwards</p>
+              <p>Ou du moins pouvoir experimenté pleinement de creative web / WEBGL</p>
+            </div>
+            <h2>Comment je compte y parvenir : </h2>
+            <div className="text-container">
+              <p>En recherchant des experience professionlles enrichissantes</p>
+              <p>En suivant la formation de ThreeJS journey</p>
+
+            </div>
+            <h3 className="subPres">Sans oublier de m'autoformer sur :</h3>
           </div>
         </section>
         <HorizontalScroll length={techs.length} background={primaryColor}>
           {techs.map((tech, index) => (
-            <motion.div
-              key={index}
-              className="tech-card"
-              whileHover={{ scale: 1.1 }}
-              onClick={() => handleTechClick(tech.name)}
-              style={{ "--icon-color": tech.color } as React.CSSProperties}
-            >
-              <FontAwesomeIcon icon={tech.icon} className="tech-icon" />
-              <h3>{tech.name}</h3>
-            </motion.div>
+              <motion.div
+                  key={index}
+                  className="tech-card"
+                  whileHover={{scale: 1.1}}
+                  onClick={() => handleTechClick(tech.name)}
+                  style={{"--icon-color": tech.color} as React.CSSProperties}
+              >
+                <FontAwesomeIcon icon={tech.icon} className="tech-icon"/>
+                <h3>{tech.name}</h3>
+              </motion.div>
           ))}
         </HorizontalScroll>
 
-        {selectedTech && isTechModalOpen &&(
-          <PopUpModal
-              isOpen={isTechModalOpen}
-              onClose={()=>setIsTechModalOpen(false)}
-              onBack={()=>setIsTechModalOpen(false)}
-              title={selectedTech}>
+        {selectedTech && isTechModalOpen && (
+            <PopUpModal
+                isOpen={isTechModalOpen}
+                onClose={() => setIsTechModalOpen(false)}
+                onBack={() => setIsTechModalOpen(false)}
+                title={selectedTech}>
               <div>
-                {techDescriptions[selectedTech] ? (
+              {techDescriptions[selectedTech] ? (
                     <div className="tech-description">
                       <div className="tech-description-itm">
                         <h3>Pourquoi cette technologie ? </h3>
@@ -193,7 +228,7 @@ const roseMagenta:string= "#C2185B";
 
           </PopUpModal>
         )}
-        <AsideScroll mainTiltedText="Egalement" background={secondaryColor} tab={sideSkills}/>
+        <AsideScroll mainTiltedText="Egalement" tab={sideSkills}/>
 
 
         <section className="text-zone">
@@ -213,7 +248,8 @@ const roseMagenta:string= "#C2185B";
         <section className=" cv-section" style={{"--background-color":roseMagenta }as React.CSSProperties} >
           <h2>CV</h2>
           <RenderPDF pdfUrl={CV as string}/>
-          <button> Télecharger le cv </button>
+          <a href={CV as string} download="CV Maxime Lapouge" rel="noopener noreferrer">
+            <button className="cv-button" > Télecharger le cv </button>  </a>
         </section>
       </div>
     </>

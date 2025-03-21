@@ -59,7 +59,7 @@ const handleCloseModal = ()=>{
                 </Modal>
             )}
             <section className={s.interrogationContainer}>
-                <h2>Le futur ? </h2>
+                <h2 style={{fontSize:"3rem"}}>Le futur ? </h2>
                 <QuestionMark3D text="Apprentissage de THREE JS pour proposer un portfolio interractif"/>
             </section>
         </div>

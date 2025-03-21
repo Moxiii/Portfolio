@@ -74,7 +74,7 @@ const TiltCard: React.FC<TiltCardProps> = ({ title, content, icon }) => {
         onBack={() => setIsModalOpen(false)}
         title={title}
       >
-        {content}
+        {content as React["JSX.Element"]}
       </Modal>
     </>
   );

@@ -46,7 +46,7 @@ function RotatingQuestionMark() {
 
 export default function QuestionMark3D({text}:{text:string}) {
     return (
-        <div style={{ position: "relative", width: "100%", height: "100%" }}>
+        <div style={{ position: "relative", width: "100%", height: "60%" }}>
         <Canvas
             camera={{position: [0, 0, -3], fov: 60 }}
             style={{
