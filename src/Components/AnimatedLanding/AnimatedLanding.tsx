@@ -15,7 +15,9 @@ export default function AnimatedLanding({onRevealComplete}:AnimatedLandingProps)
                 defaults: { ease: "power3.inOut" },
                 onComplete: onRevealComplete,
             });
-
+            tl.set([sceneRef.current , revealRef.current],{
+                backdropFilter: "blur(20px)",
+            });
             tl.to(sceneRef.current, {
                 duration: 1.2,
                 y: "-100%"
@@ -24,17 +26,21 @@ export default function AnimatedLanding({onRevealComplete}:AnimatedLandingProps)
                     duration: 2,
                     opacity: 1,
                     visibility:"visible",
-                })
+                },"-=1")
                 .to(revealRef.current, {
                     duration: 0.5,
                     opacity: 0,
                     visibility:"hidden"
                 })
-                .to(sceneRef.current, {
-                    duration: 1,
-                    backdropFilter: "blur(0px)"
-                }, "-=0.5");
-
+            tl.set([sceneRef.current , revealRef.current],{
+                duration:1.2,
+                backdropFilter: "blur(20px)",
+            },"+=0.5");
+            tl.to(revealRef.current ,{
+                duration:0.5,
+                opacity:0,
+                visibility:"hidden"
+            })
         }
     }, [isOpen, onRevealComplete]);
     return (
