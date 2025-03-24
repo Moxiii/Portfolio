@@ -45,8 +45,8 @@ export default function TypedText({
     if (typedElement.current && techNames.length > 0) {
       const options = {
         strings: techNames,
-        typeSpeed: 50,
-        backSpeed: 100,
+        typeSpeed: 75,
+        backSpeed: 125,
         loop: shouldLoop,
         backDelay: 200,
         preStringTyped: (index: number) => {

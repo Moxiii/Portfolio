@@ -1,5 +1,5 @@
 import {JSX, useEffect, useState, lazy, useRef} from "react";
-import { getProjects } from "../../Components/Utils/Database/initProject.ts";
+import { getProjects } from "../../Components/Project/InitProject.ts";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFolder } from "@fortawesome/free-solid-svg-icons";
 import { Project } from "../../Components/Utils/Types/ProjectType.ts";
@@ -42,7 +42,7 @@ export default function Home(): JSX.Element {
 
   useEffect(() => {
     const fetchProjects = async () => {
-      const data: any = await getProjects();
+      const data = await getProjects();
       setProjects(data);
     };
     fetchProjects();

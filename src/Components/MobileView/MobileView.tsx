@@ -7,7 +7,7 @@ const DragCloseDrawer = lazy(()=>import("../Modal/DragCloseDrawer/DragCloseDrawe
 const  SharedLayout = lazy(()=> import("../Utils/SharedLayout/SharedLayout.tsx"));
 import {SendEmail} from "../Utils/SendEmail/SendEmail.ts";
 import { Project } from "../Utils/Types/ProjectType.ts";
-import { getProjects } from "../Utils/Database/InitProject.ts";
+import { getProjects } from "../Project/InitProject.ts";
 import links from "../Utils/_const/_links.ts";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faServer, faNetworkWired , faFileLines } from "@fortawesome/free-solid-svg-icons";
@@ -44,13 +44,30 @@ const emailRef = useRef<HTMLFormElement>(null)
               text={`Étudiant\nDéveloppeur\nIPI ${new Date().getFullYear()}`}
           />
           <section className={s.MobilePresentation}>
-              <h2>A propos de moi </h2>
-              <p>
-                  Passionné d'informatique depuis mon plus jeune âge, je désire en faire
-                  mon métier !
-              </p>
-              <LoremIpsum p={1} random={true}/>
-              <p> Toujours d'une curiosité sans faille, je m'autoforme sur :</p>
+              <h2>Passioné depuis le plus jeune age</h2>
+              <div className="text-container">
+                  <p>
+                      A 5 ans la premiere manette de NES dans les mains , 8 ans plus tard je decouvre la programmation
+                      avec
+                      python .
+                  </p>
+                  <p>Malheuresement en manque d'idée il aura fallu attendre encore quasiment 10 ans pour que je me
+                      relance
+                      dans l'aventure du développement</p>
+              </div>
+              <h2>Ce que je souhaite faire dans le futur : </h2>
+              <div className="text-container">
+                  <p>Un de mes objectifs principaux étant de me retrouver dans 5 ans dans les presentation des
+                      Awwwards</p>
+                  <p>Ou du moins pouvoir experimenté pleinement de creative web / WEBGL</p>
+              </div>
+              <h2>Comment je compte y parvenir : </h2>
+              <div className="text-container">
+                  <p>En recherchant des experience professionlles enrichissantes</p>
+                  <p>En suivant la formation de ThreeJS journey</p>
+
+              </div>
+              <h3 className="subPres">Sans oublier de m'autoformer sur :</h3>
               <div className={s.skillsContainer}>
                   {[
                       {
@@ -98,16 +115,26 @@ const emailRef = useRef<HTMLFormElement>(null)
               {dragCloseDrawerOpen && openedProject && (
                   <DragCloseDrawer isOpen={dragCloseDrawerOpen} setIsOpen={setDragCloseDrawerOpen}>
                       <div className={s.ProjectPresContainer}>
-                          {openedProject.presentation.map((item, index) => (
-                              <div key={index} className={s.ProjectPres}>
-                                  <h2>{item.title}</h2>
-                                  <ul>
-                                      {item.list.map((listItem, subIndex) => (
-                                          <li key={subIndex}>{listItem}</li>
-                                      ))}
-                                  </ul>
-                              </div>
-                          ))}
+                          <div className={s.ProjectPres}>
+                              {openedProject.presentation?.map((item, index) => {
+                                  if (typeof item === "string") {
+                                      return <p key={index} className="project-pres-content">{item}</p>;
+                                  } else if (item.title) {
+                                      return <h3 key={index} className="project-pres-title">{item.title}</h3>;
+                                  } else if (item.list) {
+                                      return (
+                                          <ul key={index} className="project-pres-list">
+                                          {item.list.map((listItem, i) => (
+                                                  <li key={i}>{listItem}</li>
+                                              ))}
+                                          </ul>
+                                      );
+                                  }
+                                  return null;
+                              })}
+                          </div>
+
+
                           <div className={s.ProjectLinksContainer}>
                               {openedProject.links && openedProject.links.map((link, index) => (
                                   <div key={index} className={s.ProjectLink}>

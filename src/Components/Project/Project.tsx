@@ -28,7 +28,7 @@ export default function ProjectDetails({ project }: ProjectCardProps) :JSX.Eleme
         <TypedText
           mainTitle="Développé en "
           project={{
-            techno: project.techno.map((tech) => ({
+            techno: project.technologies.map((tech) => ({
               name: tech.name,
               icon: tech.icon,
             })),
@@ -36,7 +36,9 @@ export default function ProjectDetails({ project }: ProjectCardProps) :JSX.Eleme
         />
       </div>
       <div className="project-desc project">
-        <p>{project.description}</p>
+          {project.description?.map((line, index) => (
+              <p key={index} >{line}</p>
+          ))}
       </div>
 
       {project && (
@@ -77,36 +79,37 @@ export default function ProjectDetails({ project }: ProjectCardProps) :JSX.Eleme
       <div className="project-links project">
         <ul>
           {project.links?.map((link, index) => (
-            <div key={index}>
+
               <a
                 href={getFormattedUrl(link.url)}
                 target="_blank"
                 rel="noopener noreferrer"
+                key={index}
               >
                 <li>{link.name}</li>
               </a>
-            </div>
           ))}
         </ul>
       </div>
       <div className="project-pres project">
-        <ul>
-          {project.presentation?.map((pres, index) => (
-            <div key={index} className="project-pres-content">
-              <h3 className="project-pres-title">{pres.title}</h3>
-              <ul className="project-pres-desc">
-                {pres.list?.map((item, i) => (
-                  <li key={i}>{item}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </ul>
+          {project.presentation?.map((item, index) => {
+              if (typeof item === "string") {
+                  return <p key={index} className="project-pres-content">{item}</p>;
+              } else if (item.title) {
+                  return <h3 key={index} className="project-pres-title">{item.title}</h3>;
+              } else if (item.list) {
+                  return (
+                      <ul key={index} className="project-pres-list">
+                          {item.list.map((listItem, i) => (
+                              <li key={i}>{listItem}</li>
+                          ))}
+                      </ul>
+                  );
+              }
+              return null;
+        })}
       </div>
-        <div className="project">
-            <p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p>
-            <p>lorem</p>
-        </div>
+
 
     </div>
   );

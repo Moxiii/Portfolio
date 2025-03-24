@@ -20,11 +20,7 @@ const handleClickButton = (selectedTab : Project)=>{
     setOpen(true);
     setOpenedProject(selectedTab);
     }
-    function getFormattedUrl(url: string) {
-        return url.startsWith("http://") || url.startsWith("https://")
-            ? url
-            : `https://${url}`;
-    }
+
   return (
     <div className={s.SharedLayoutContainer}>
       <nav className={s.SharedLayoutNav}>
@@ -68,7 +64,7 @@ const handleClickButton = (selectedTab : Project)=>{
                       mainTitle="Développé en : "
                       project={{
                           techno:
-                              selectedTab?.techno.map((tech) => ({
+                              selectedTab?.technologies.map((tech) => ({
                                   name: tech.name,
                                   icon: tech.icon,
                               })) || [],

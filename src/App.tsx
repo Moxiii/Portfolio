@@ -9,7 +9,6 @@ import {useRef, lazy} from "react";
 const LazyHome = lazy(() => import("./Screens/Home/Home.tsx"));
 const LazyAbout = lazy(() => import("./Screens/About/About.tsx"));
 const LazyContact = lazy(() => import("./Screens/Contact/Contact.tsx"));
-const LazyAdmin = lazy(() => import("./Admin/Portal/Admin.tsx"));
 const LazyProgression = lazy(()=>import("./Screens/Progression/Progression.tsx"))
 
 function App() {
@@ -36,7 +35,6 @@ function App() {
                 <Route index element={<LazyHome />} />
                 <Route path="/about" element={<LazyAbout />} />
                 <Route path="/contact" element={<LazyContact />} />
-                <Route path="/admin/panel" element={<LazyAdmin />} />
                 <Route path="/progression" element={<LazyProgression />} />
                   <Route path="*" element={<NotFound/>}/>
             </Route>

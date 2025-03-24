@@ -29,6 +29,7 @@
         font-size: x-large;
       }
     }
+    overflow: hidden;
   }
 
   .illustration {
@@ -124,24 +125,19 @@
     }
   }
   .ProjectPresContainer{
+    width: 100%;
     height: 100%;
     .ProjectPres{
       height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
     }
 
   }
-  .ProjectLinksContainer{
-    height: 100%;
-    .ProjectLink{
-      height: 100%;
-    }
-}
-  .ProjecImgContainer{
-    height: 100%;
-    .ProjectImage{
-      height: 100%;
-    }
-  }
+
   .MobileContact{
     padding:5%;
     text-align: center;

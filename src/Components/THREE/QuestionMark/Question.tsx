@@ -14,7 +14,7 @@ function RotatingQuestionMark() {
     }, []);
     useFrame(() => {
         if (questionMarkRef.current) {
-            questionMarkRef.current.rotation.y += 0.007;
+            questionMarkRef.current.rotation.y += 0.009;
 
         }
     });
