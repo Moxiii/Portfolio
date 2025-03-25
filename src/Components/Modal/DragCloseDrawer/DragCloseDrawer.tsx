@@ -31,7 +31,7 @@ export default function DragCloseDrawer({
     });
     setIsOpen(false);
   };
-  const modalContentRef = useRef<HTMLDivElement>(null);
+
   return (
 
       <>

@@ -16,7 +16,9 @@ export default function Home(): JSX.Element {
   const [isProjectsModalOpen, setIsProjectsModalOpen] = useState(false);
   const [isProjectDetailModalOpen, setIsProjectDetailModalOpen] =
     useState(false);
-  const [isRevealed, setIsRevealed] = useState<boolean>(false);
+  const [isRevealed, setIsRevealed] = useState<boolean>(() => {
+    return localStorage.getItem("animationPlayed") === "true";
+  });
   const handleRevealComplete = () => {
     setIsRevealed(true);
     localStorage.setItem("animationPlayed", "true");

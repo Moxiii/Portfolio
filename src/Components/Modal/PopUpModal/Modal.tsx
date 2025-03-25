@@ -1,10 +1,10 @@
 
 import { motion } from "framer-motion";
-import React, {useRef} from "react";
+import React, { useRef} from "react";
 import {faTimes , faArrowLeft} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Modal.scss"
-import {ReactLenis} from "lenis/react";
+
 
 
 interface ModalProps{
@@ -18,8 +18,6 @@ export default function Modal({isOpen , onClose ,onBack, title , children}:Modal
     if(!isOpen) return null;
     const constraintsRef = useRef<HTMLDivElement>(null);
     const modalContentRef = useRef<HTMLDivElement>(null);
-
-
     return (
        <motion.div ref={constraintsRef}>
            <motion.div

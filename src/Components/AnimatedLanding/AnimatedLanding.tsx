@@ -20,27 +20,26 @@ export default function AnimatedLanding({onRevealComplete}:AnimatedLandingProps)
             });
             tl.to(sceneRef.current, {
                 duration: 1.2,
-                y: "-100%"
+                y: "-100%",
+                backdropFilter: "blur(10px)",
             })
                 .to(revealRef.current, {
-                    duration: 2,
+                    duration: 3,
                     opacity: 1,
                     visibility:"visible",
+                    backdropFilter: "blur(5px)",
                 },"-=1")
                 .to(revealRef.current, {
-                    duration: 0.5,
+                    duration: 1,
                     opacity: 0,
-                    visibility:"hidden"
+                    visibility:"hidden",
+                    backdropFilter: "blur(0px)",
                 })
             tl.set([sceneRef.current , revealRef.current],{
                 duration:1.2,
-                backdropFilter: "blur(20px)",
-            },"+=0.5");
-            tl.to(revealRef.current ,{
-                duration:0.5,
-                opacity:0,
-                visibility:"hidden"
-            })
+                backdropFilter: "none",
+            },"-=0.5");
+
         }
     }, [isOpen, onRevealComplete]);
     return (
@@ -58,7 +57,7 @@ export default function AnimatedLanding({onRevealComplete}:AnimatedLandingProps)
             <motion.div
                 ref={revealRef} className={s.revealContainer}
             >
-            <h2>Etudiant en informatique a IPI</h2>
+            <h2>Étudiant Concepteur développeur d’applications a IPI LYON 9</h2>
             </motion.div>
 
         </div>
