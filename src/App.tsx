@@ -5,7 +5,8 @@ import type { LenisRef } from "lenis/react";
 import "./App.scss";
 import ErrorBoundary from "./Components/HOOK/ERROR/BOUNDARY/ErrorBoundary.tsx";
 import NotFound from "./Screens/NotFound/NotFound.tsx";
-import {useRef, lazy} from "react";
+import {useRef, lazy, Suspense} from "react";
+import Loading from "./Components/Utils/Loading/LoadingScreen.tsx";
 const LazyHome = lazy(() => import("./Screens/Home/Home.tsx"));
 const LazyAbout = lazy(() => import("./Screens/About/About.tsx"));
 const LazyContact = lazy(() => import("./Screens/Contact/Contact.tsx"));
@@ -29,7 +30,7 @@ function App() {
         options={lenisOption}
         style={{ height: "100vh", overflowY: "auto" }}
       >
-
+          <Suspense fallback={<Loading/>}>
           <Routes>
               <Route path="/" element={<Layout />}>
                 <Route index element={<LazyHome />} />
@@ -39,7 +40,7 @@ function App() {
                   <Route path="*" element={<NotFound/>}/>
             </Route>
           </Routes>
-
+          </Suspense>
       </ReactLenis>
     </ErrorBoundary>
 
