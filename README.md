@@ -29,4 +29,4 @@ Train animation with lenis / framer / three
 - - Learn css animation + Loading logic + make simple but efficient WebSite
 - - Unloading some parts for mobilViews 
 ## Ok but what next ? 
--- Buy three journey lesseons and build full three portfolio with react three fiber 
+-- Buy three journey lessons and build full three portfolio with react three fiber 
