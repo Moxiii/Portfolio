@@ -7,13 +7,14 @@
 
     }
   }
+  scrollbar-width: auto;
   max-height: 100%;
   width: 100%;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  overflow-y: auto;
+  overflow-y: auto !important;
   overflow-x: hidden;
   .project{
   padding: 2%;
@@ -36,12 +37,30 @@
     height: 80%;
   }
   .project-links{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    gap:10px;
-    width: 100%;
+    background: rgba($primary-color , 0.8);
+    border-radius: 20px;
+    min-width: 50vw;
+    ul{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      gap:10vw;
+      width: 100%;
+      list-style: none;
+      a{
+        text-decoration: none;
+        color:$rose-fuchsia;
+        &:visited{
+          color:$rose-corail;
+        }
+        li{
+          padding:3%;
+          width: 10vw;
+        }
+      }
+    }
   }
 .project-pres{
   display: flex;

@@ -165,24 +165,24 @@ const roseMagenta:string= "#C2185B";
             <h2>Passioné depuis le plus jeune age</h2>
             <div className="text-container">
               <p>
-                A 5 ans la premiere manette de NES dans les mains , 8 ans plus tard je decouvre la programmation avec
+                A 5 ans la premiere manette de NES dans les mains , 8 ans plus tard je découvre la programmation avec
                 python .
               </p>
-              <p>Malheuresement en manque d'idée il aura fallu attendre encore quasiment 10 ans pour que je me relance
-                dans l'aventure du développement</p>
+              <p>Malheureusement en manque d'idée il aura fallu attendre encore quasiment 10 ans pour que je me relance
+                dans l'aventure du développement.</p>
             </div>
             <h2>Ce que je souhaite faire dans le futur : </h2>
             <div className="text-container">
-              <p>Un de mes objectifs principaux étant de me retrouver dans 5 ans dans les presentation des Awwwards</p>
+              <p>Un de mes objectifs principaux étant de me retrouver dans 5 ans dans les presentation des Awwwards.</p>
               <p>Ou du moins pouvoir experimenté pleinement de creative web / WEBGL</p>
             </div>
             <h2>Comment je compte y parvenir : </h2>
             <div className="text-container">
-              <p>En recherchant des experience professionlles enrichissantes</p>
+              <p>En recherchant des experience professionnelles enrichissantes</p>
               <p>En suivant la formation de ThreeJS journey</p>
 
             </div>
-            <h3 className="subPres">Sans oublier de m'autoformer sur :</h3>
+            <h3 className="subPres">Sans oublié de m'autoformer sur :</h3>
           </div>
         </section>
         <HorizontalScroll length={techs.length} background={primaryColor}>
@@ -206,7 +206,6 @@ const roseMagenta:string= "#C2185B";
                 onClose={() => setIsTechModalOpen(false)}
                 onBack={() => setIsTechModalOpen(false)}
                 title={selectedTech}>
-              <div>
               {techDescriptions[selectedTech] ? (
                     <div className="tech-description">
                       <div className="tech-description-itm">
@@ -224,7 +223,6 @@ const roseMagenta:string= "#C2185B";
 
                     </div>
                 ) : (<p>Aucune description disponible</p>)}
-              </div>
 
           </PopUpModal>
         )}

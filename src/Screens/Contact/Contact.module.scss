@@ -10,7 +10,8 @@
     font-size: 3rem;
   }
   .contactFormContainer{
-
+    height: 100%;
+    width: 100%;
    }
   .contactForm{
     display: flex;
@@ -22,9 +23,13 @@
 
   }
   input , textarea{
-    border: dashed 1px red;
-    border-radius: 15px;
-    width: 50%;
+    border: 2px solid rgba(0, 0, 0, 0.6);
+    border-radius: 5px;
+    width: 70%;
+    &:focus{
+      outline: none;
+      border-color: $rose-fuchsia;
+    }
   }
   .contactEmailInput , .contactSubjectInput , .contactTextInput ,.contactSendButton{
     padding: 1%;
@@ -33,6 +38,15 @@
 
   }
 .contactSendButton{
-  width: 10%;
+  width: 10vw;
+  background-color: $rose-fuchsia;
+  border: 2px solid rgba(0, 0, 0, 0.6);
+  color: $secondary-color;
+  border-radius: 5px;
+  &:hover{
+    background-color: $secondary-color ;
+    color: $rose-fuchsia;
+    border: 2px solid rgba($sr-purple, 0.6);
+  }
 }
 }
