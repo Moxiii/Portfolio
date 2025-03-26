@@ -6,7 +6,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
+  .Accent{
+    font-size: 250%;
+    color:$rose-pastel;
+  }
   .trigger {
     position: relative;
     z-index: 9999;
