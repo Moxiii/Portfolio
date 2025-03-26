@@ -41,6 +41,14 @@
       font-size: large;
       padding: 2%;
     }
+
+      h3{
+        margin-top: 3%;
+        padding: 2%;
+        color: $rose-pastel;
+      }
+
+
     justify-content: space-evenly;
     height: 150vh;
     .skillsContainer {
@@ -133,7 +141,13 @@
       justify-content: center;
       align-items: center;
       flex-direction: column;
-
+      h3{
+        color:$rose-pastel;
+        margin:1%;
+      }
+      ul{
+        margin-top:5%;
+      }
     }
 
   }

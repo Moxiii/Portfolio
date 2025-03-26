@@ -1,11 +1,11 @@
 import React, { useRef, useState, useEffect } from "react";
-import { motion } from "framer-motion";
 import { useLenis } from "lenis/react";
 import { useWindowSize } from "react-use";
-
+import MouseScrollAnimation from "../../ScrollDownInvintation/MouseScrollAnimation.tsx";
 import cn from "clsx";
 import s from "./Zoom.module.scss";
 import { useTheme } from "../../Utils/Provider/Theme/ThemeContext";
+
 
 interface ZoomTextProps {
   title1: string;
@@ -83,7 +83,11 @@ export default function ZoomText({ title1, text, title2 }: ZoomTextProps) {
               </React.Fragment>
             ))}
           </h2>
-          <h2 className={cn(s.second, "h1 vh")}>Scroll Down</h2>
+          <div className={s.second}>
+            <MouseScrollAnimation color={"#3a2172"}/>
+            <h2 className={cn("h1 vh")}>Scroll Down</h2>
+          </div>
+
         </div>
       </div>
     </section>

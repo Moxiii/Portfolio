@@ -1,14 +1,14 @@
 import s from "./MobileView.module.scss";
 import React, {JSX, useState, useEffect, lazy, useRef} from "react";
 
-const ZoomText = lazy(() => import("../Scroll/Zoom/Zoom.tsx"));
-const ScrollProgress = lazy( () => import ("../Scroll/ScrollProgress/ScrollProgress.tsx"));
-const DragCloseDrawer = lazy(()=>import("../Modal/DragCloseDrawer/DragCloseDrawer.tsx"));
-const  SharedLayout = lazy(()=> import("../Utils/SharedLayout/SharedLayout.tsx"));
-import {SendEmail} from "../Utils/SendEmail/SendEmail.ts";
-import { Project } from "../Utils/Types/ProjectType.ts";
-import { getProjects } from "../Project/InitProject.ts";
-import links from "../Utils/_const/_links.ts";
+const ZoomText = lazy(() => import("../../Components/Scroll/Zoom/Zoom.tsx"));
+const ScrollProgress = lazy( () => import ("../../Components/Scroll/ScrollProgress/ScrollProgress.tsx"));
+const DragCloseDrawer = lazy(()=>import("../../Components/Modal/DragCloseDrawer/DragCloseDrawer.tsx"));
+const  SharedLayout = lazy(()=> import("../../Components/Utils/SharedLayout/SharedLayout.tsx"));
+import {SendEmail} from "../../Components/Utils/SendEmail/SendEmail.ts";
+import { Project } from "../../Components/Utils/Types/ProjectType.ts";
+import { getProjects } from "../../Components/Project/InitProject.ts";
+import links from "../../Components/Utils/_const/_links.ts";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faServer, faNetworkWired , faFileLines } from "@fortawesome/free-solid-svg-icons";
 import { faJs ,faLinkedin , faGithub} from "@fortawesome/free-brands-svg-icons";

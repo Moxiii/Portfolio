@@ -19,10 +19,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import { motion } from "framer-motion";
-import Dev from "../../assets/Illustration/3d-nft-icon-developer-male-illustration-min-500px.png";
+
 import CV from "../../assets/CV/CV LAPOUGE Maxime-1.pdf"
-import { LoremIpsum } from "react-lorem-ipsum";
-import _links from "../../Components/Utils/_const/_links.ts";
+
 //Lazy
 const HorizontalScroll = lazy(()=>import("../../Components/Scroll/HorizontalScroll/HorizontalScroll.tsx"));
 const ScrollProgress = lazy(()=>import("../../Components/Scroll/ScrollProgress/ScrollProgress.tsx"));
@@ -32,6 +31,7 @@ const ParallaxText = lazy(()=>import("../../Components/Scroll/ParallaxText/Paral
 const AsideScroll = lazy(()=>import("../../Components/Scroll/AsideScroll/AsideScroll.tsx"));
 const RenderPDF = lazy(()=>import("../../Components/Utils/CV/RenderPDF.tsx"))
 const PopUpModal = lazy(()=>import("../../Components/Modal/PopUpModal/Modal.tsx"))
+
 export default function About(): JSX.Element {
   const [isTechModalOpen, setIsTechModalOpen] = useState(false);
 

@@ -7,6 +7,7 @@
 }
 .spanText {
   padding: 1%;
+  color: var(--text-color);
 }
 .stickyContent {
   position: sticky;
@@ -19,9 +20,7 @@
   justify-content: space-between;
   overflow: hidden;
   padding: 5rem 0;
-  span {
-    color: var(--text-color);
-  }
+
 }
 
 .parallaxTextTop,

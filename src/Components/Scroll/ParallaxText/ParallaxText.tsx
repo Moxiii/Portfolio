@@ -1,9 +1,10 @@
 import { JSX, useEffect, useRef, useState } from "react";
 import { useLenis } from "lenis/react";
-import { FaArrowDown } from "react-icons/fa";
+
 import s from "./ParallaxText.module.scss";
 import { motion } from "framer-motion";
 import BubbleText from "../../BubbleText/BubbleText.tsx";
+import MouseScrollAnimation from "../../ScrollDownInvintation/MouseScrollAnimation.tsx";
 interface ParallaxTextProps {
   topText: string[];
   bottomText: string[];
@@ -83,15 +84,7 @@ export default function ParallaxText({
 
         </div>
 
-        <div className={s.scrollIndicator}>
-          <motion.div
-            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-            animate={{ y: [0, 10, 0] }}
-          >
-            <FaArrowDown size={30} color={textColor} />
-          </motion.div>
-          <p>Scroll pour explorer</p>
-        </div>
+        <MouseScrollAnimation/>
 
         <motion.div
           style={{ x: `${(scrollValue * maxScroll * 0.5) % maxScroll}px` }}

@@ -2,7 +2,7 @@
   position: relative;
   width: 300px;
   height: 400px;
-  background: #222;
+  background: $rose-magenta;
   border-radius: 10px;
   overflow: hidden;
   display: flex;
@@ -10,13 +10,14 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   .cardHeader , .cardFooter {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
     font-size: 14px;
     font-weight: bold;
-    color: white;
+    color: $sr-grey;
   }
   .cardHeader{
     top: 10px;
