@@ -92,8 +92,8 @@ export default function About(): JSX.Element {
     {title:"Android" , text:"Application Android de gestion en cour \n pour plus de détails voir le projet LYRA ."},
     {title:"LLM" , text:`Auto hebergement de model tel que : \n - Mistral 7b \n - Falcon 7b `},
   ]
-const primaryColor : string = "#3a2172";
-const secondaryColor : string = "#efe07d";
+const primaryColor : string = "#5d1867";
+const secondaryColor : string = "#ffc731";
 
   const techDescriptions: Record<string, { reason: string; project: string; learnings: string }> = {
     React: {
@@ -151,10 +151,10 @@ const roseMagenta:string= "#C2185B";
         <ScrollProgress />
         <ParallaxText
           topText={["Développement Web", "React", "Typescript", "UI/UX"]}
-          centerText="Maxime Lapouge"
+          centerText="Maxime LAPOUGE"
           subCenterText="Etudiant en informatique"
           bottomText={["Mobile", "Backend", "Design", "Performance" , "WEBGL"]}
-          textColor="#E91E63"
+          textColor={secondaryColor}
           bgColor={primaryColor}
           length={3}
         />

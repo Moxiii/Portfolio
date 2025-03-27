@@ -34,7 +34,7 @@ const handleCloseModal = ()=>{
                 <h1>Mes anciennes réalisations :</h1>
             </div>
 
-            <HorizontalScroll length={ 3} background={"#3a2172"} gap={"50rem"} padding={"20rem"}>
+            <HorizontalScroll length={ 3} background={"#5d1867"} gap={"50rem"} padding={"20rem"}>
                     {portfolios.map((portfolio , index)=>(
                         <div onClick={()=>handlePortfolioCLick(portfolio)} className={s.PortefolioCard}>
                         <PortfolioCard

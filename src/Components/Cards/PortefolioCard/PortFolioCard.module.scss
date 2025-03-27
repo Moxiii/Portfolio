@@ -17,17 +17,27 @@
     transform: translateX(-50%);
     font-size: 14px;
     font-weight: bold;
-    color: $sr-grey;
+    color: $sr-black;
   }
   .cardHeader{
     top: 10px;
+    span{
+      font-size: large;
+    }
   }
   .cardBody{
     display: flex;
     justify-content: center;
     align-items: center;
+    span{
+      font-size: xx-large;
+    }
 
   }
   .cardFooter{
-    bottom: 10px;}
+    bottom: 10px;
+    span{
+      font-size: x-large;
+    }
+  }
 }

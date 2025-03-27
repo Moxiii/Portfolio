@@ -50,7 +50,7 @@ export default function AnimatedLanding({onRevealComplete}:AnimatedLandingProps)
                 className={s.sceneContainer}
             >
                 <h1>Bienvenue sur mon Portfolio</h1>
-                <h2 className={s.Accent}>Maxime Lapouge</h2>
+                <h2 className={s.Accent}>Maxime LAPOUGE</h2>
                 <button className={s.trigger} onClick={() => setIsOpen(true)}>{isOpen ? "Fermer" : "Ouvrir"}</button>
                 <p>{new Date().getFullYear()}</p>
             </div>
