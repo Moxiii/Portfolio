@@ -5,6 +5,7 @@ const ZoomText = lazy(() => import("../../Components/Scroll/Zoom/Zoom.tsx"));
 const ScrollProgress = lazy( () => import ("../../Components/Scroll/ScrollProgress/ScrollProgress.tsx"));
 const DragCloseDrawer = lazy(()=>import("../../Components/Modal/DragCloseDrawer/DragCloseDrawer.tsx"));
 const  SharedLayout = lazy(()=> import("../../Components/Utils/SharedLayout/SharedLayout.tsx"));
+const PokemonLikeCarousel = lazy(()=>import("../../Components/Carrousel/PokemonLikeCarrousel/PokemonCarousel.tsx"))
 import {SendEmail} from "../../Components/Utils/SendEmail/SendEmail.ts";
 import { Project } from "../../Components/Utils/Types/ProjectType.ts";
 import { getProjects } from "../../Components/Project/InitProject.ts";
@@ -111,7 +112,7 @@ const emailRef = useRef<HTMLFormElement>(null)
           </section>
           <section className={s.MobileProject}>
               <h2>Mes réalisations:</h2>
-              <SharedLayout projects={projects} setOpen={setDragCloseDrawerOpen} setOpenedProject={setOpenedProject}/>
+              <SharedLayout projects={projects} setOpen={setDragCloseDrawerOpen} setOpenedProject={setOpenedProject} />
               {dragCloseDrawerOpen && openedProject && (
                   <DragCloseDrawer isOpen={dragCloseDrawerOpen} setIsOpen={setDragCloseDrawerOpen}>
                       <div className={s.ProjectPresContainer}>
@@ -145,11 +146,7 @@ const emailRef = useRef<HTMLFormElement>(null)
                           </div>
 
                           <div className={s.ProjecImgContainer}>
-                              {openedProject.img && openedProject.img.map((img, index) => (
-                                  <div key={index} className={s.ProjectImage}>
-                                      <img src={img.src} alt=""/>
-                                  </div>
-                              ))}
+                              {openedProject.img && <PokemonLikeCarousel images={openedProject.img} />}
                           </div>
 
                       </div>

@@ -69,10 +69,10 @@
           }
       }
       margin-top: 10%;
-      width: 80%;
+      width: 90%;
       display: flex;
       flex-direction: column;
-      gap: 40px;
+      gap: 5%;
     }
 
     .skillRow {
@@ -143,13 +143,40 @@
       flex-direction: column;
       h3{
         color:$rose-pastel;
-        margin:1%;
+        margin:5%;
       }
       ul{
         margin-top:5%;
+        li{
+          padding:1%;
+          &:last-child{
+            padding-bottom:5%;
+          }
+        }
+
       }
     }
-
+.ProjectLinksContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  padding: 35% 0 20% 0;
+  .ProjectLink{
+    a{color:$rose-pastel;}
+    padding: 2%;
+  }
+}
+    .ProjecImgContainer{
+      height: 100%;
+      padding: 5%;
+      .ProjectImage{
+        >img{
+          aspect-ratio: 1/1;
+          width: 100%;
+        }
+      }
+    }
   }
 
   .MobileContact{

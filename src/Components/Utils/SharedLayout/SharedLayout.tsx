@@ -14,7 +14,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { AnimatePresence, motion } from "framer-motion";
 
-export default function SharedLayout({ projects , setOpen , setOpenedProject}: ProjectsProps) {
+export default function SharedLayout({ projects , setOpen , setOpenedProject }: ProjectsProps) {
   const [selectedTab, setSelectedTab] = useState<Project | null>(projects.length > 0 ? projects[0] : null);
 const handleClickButton = (selectedTab : Project)=>{
     setOpen(true);
@@ -22,9 +22,9 @@ const handleClickButton = (selectedTab : Project)=>{
     }
 
   return (
-    <div className={s.SharedLayoutContainer}>
+    <div className={s.SharedLayoutContainer} >
       <nav className={s.SharedLayoutNav}>
-        <ul className={s.tabsContainer}>
+        <ul className={s.tabsContainer}  style={{"--project-length": Math.max(projects.length, 1 )}as React.CSSProperties}>
           {projects.map((item) => (
             <motion.li
               key={item.id}

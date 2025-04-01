@@ -152,7 +152,6 @@ const roseMagenta:string= "#C2185B";
         <ParallaxText
           topText={["Développement Web", "React", "Typescript", "UI/UX"]}
           centerText="Maxime LAPOUGE"
-          subCenterText="Etudiant en informatique"
           bottomText={["Mobile", "Backend", "Design", "Performance" , "WEBGL"]}
           textColor={secondaryColor}
           bgColor={primaryColor}

@@ -81,10 +81,10 @@ export default function ParallaxText({
             <BubbleText text={centerText} color="#efe07d"/>
           </h1>}
 
-
+          <MouseScrollAnimation/>
         </div>
 
-        <MouseScrollAnimation/>
+
 
         <motion.div
           style={{ x: `${(scrollValue * maxScroll * 0.5) % maxScroll}px` }}

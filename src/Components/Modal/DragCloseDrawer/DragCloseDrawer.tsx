@@ -5,7 +5,7 @@ import {
   useMotionValue,
   useAnimate,
 } from "framer-motion";
-import React, { useRef } from "react";
+import React from "react";
 import { useMeasure } from "react-use";
 interface ModalPopUpProps {
   isOpen: boolean;
