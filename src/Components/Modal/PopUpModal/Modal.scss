@@ -7,7 +7,8 @@
   height: calc(100vh - 11%);
   bottom: 40px;
   width: 95vw;
-overflow:auto;
+  overflow: hidden;
+
   .modal-header {
     background-color: rgba(144, 2, 255, 1);
     width: 100%;
@@ -19,9 +20,11 @@ overflow:auto;
     border-bottom: 1px solid #ccc;
     z-index: 1000;
     border-radius: .25rem .25rem 0 0;
-    .modal-title{
-      color:$rose-pastel;
+
+    .modal-title {
+      color: $rose-pastel;
     }
+
     > .close-btn {
       display: flex;
       justify-content: center;
@@ -58,11 +61,15 @@ overflow:auto;
   .modal-content {
     background: white;
     display: flex;
-    border-radius:  0 0 0.25rem.25rem;
+    border-radius: 0 0 0.25rem .25rem;
     width: 100%;
     height: calc(100vh - 15%);
     max-height: 85vh;
     flex-direction: column;
+    overflow-y: auto !important;
+    overflow-x: hidden;
+    flex: 1;
+
     .project-folder {
       display: inline-flex;
       flex-direction: row;

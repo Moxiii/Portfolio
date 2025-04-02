@@ -1,12 +1,14 @@
-.project-detail{
+.project-detail {
   ul {
     padding: 1%;
+
     li {
       margin: 1%;
       padding: 2%;
 
     }
   }
+
   scrollbar-width: auto;
   max-height: 100%;
   width: 100%;
@@ -16,72 +18,86 @@
   flex-direction: column;
   overflow-y: auto !important;
   overflow-x: hidden;
-  .project{
-  padding: 2%;
-    margin:1%;
-}
-  .project-desc{
-    p{
+
+  .project {
+    padding: 2%;
+    margin: 1%;
+  }
+
+  .project-desc {
+    p {
       margin: 1%;
       padding-bottom: 1%;
     }
   }
-  .project-status{
+
+  .project-status {
     display: inline-flex;
     justify-content: space-evenly;
     align-items: center;
     width: 50%;
-}
-  .project-img{
+  }
+
+  .project-img {
     width: 100%;
     height: 80%;
   }
-  .project-links{
-    background: rgba($primary-color , 0.8);
+
+  .project-links {
+    margin: 5%;
+    padding: 3%;
+    background: rgba($primary-color, 0.8);
     border-radius: 20px;
     min-width: 50vw;
-    ul{
+
+    ul {
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: row;
       flex-wrap: nowrap;
-      gap:10vw;
+      gap: 10vw;
       width: 100%;
       list-style: none;
-      a{
+
+      a {
         text-decoration: none;
-        color:$rose-fuchsia;
-        &:visited{
-          color:$rose-corail;
+        color: $rose-fuchsia;
+
+        &:visited {
+          color: $rose-corail;
         }
-        li{
-          padding:3%;
+
+        li {
+          padding: 3%;
           width: 10vw;
         }
       }
     }
   }
-.project-pres{
-  display: flex;
-  align-items: center;
-  flex-wrap: nowrap;
-  flex-direction: column;
-width: 100%;
-  height: 100%;
-  .project-pres-title{
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: center;
-    width: 100%;
-    margin: 2%;
-    font-size: 3.5rem;
-    color: $secondary-color;
-  }
-  }
-.project-pres-content{
-  background: rgba(0,0,0,0.02);
 
-}
+  .project-pres {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+
+    .project-pres-title {
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: center;
+      width: 100%;
+      margin: 2%;
+      font-size: 3.5rem;
+      color: $secondary-color;
+    }
+  }
+
+  .project-pres-content {
+    background: rgba(0, 0, 0, 0.02);
+
+  }
 
 }
