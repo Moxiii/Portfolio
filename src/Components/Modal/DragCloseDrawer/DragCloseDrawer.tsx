@@ -1,141 +1,143 @@
 import s from "./DragCloseDrawer.module.scss";
 import {
-  motion,
-  useDragControls,
-  useMotionValue,
-  useAnimate,
+    motion,
+    useDragControls,
+    useMotionValue,
+    useAnimate,
 } from "framer-motion";
 import React from "react";
-import { useMeasure } from "react-use";
+import {useMeasure} from "react-use";
+
 interface ModalPopUpProps {
-  isOpen: boolean;
-  children: React.JSX.Element;
-  setIsOpen: boolean;
+    isOpen: boolean;
+    children: React.JSX.Element;
+    setIsOpen: (open: boolean) => void;
 }
+
 export default function DragCloseDrawer({
-  isOpen,
-  setIsOpen,
-  children,
-}: ModalPopUpProps) {
-  const [scope, animate] = useAnimate();
-  const [drawerRef, { height }] = useMeasure();
-  const y = useMotionValue(0);
-  const controls = useDragControls();
-  const handleClose = async () => {
-    animate(scope.current, {
-      opacity: [1, 0],
-    });
-    const yStart = typeof y.get() === "number" ? y.get() : 0;
-    await animate("#drawer", {
-      y: [yStart, height],
-    });
-    setIsOpen(false);
-  };
+                                            isOpen,
+                                            setIsOpen,
+                                            children,
+                                        }: ModalPopUpProps) {
+    const [scope, animate] = useAnimate();
+    const [drawerRef, {height}] = useMeasure();
+    const y = useMotionValue(0);
+    const controls = useDragControls();
+    const handleClose = async () => {
+        animate(scope.current, {
+            opacity: [1, 0],
+        });
+        const yStart = typeof y.get() === "number" ? y.get() : 0;
+        await animate("#drawer", {
+            y: [yStart, height],
+        });
+        setIsOpen(false);
+    };
 
-  return (
+    return (
 
-      <>
+        <>
 
-        {isOpen && (
+            {isOpen && (
 
-            <motion.div
+                <motion.div
 
-                ref={scope}
+                    ref={scope}
 
-                initial={{ opacity: 0 }}
+                    initial={{opacity: 0}}
 
-                animate={{ opacity: 1 }}
+                    animate={{opacity: 1}}
 
-                onClick={handleClose}
+                    onClick={handleClose}
 
-                className={s.DragCloseDrawerContainer}
+                    className={s.DragCloseDrawerContainer}
 
-            >
+                >
 
-              <motion.div
+                    <motion.div
 
-                  id="drawer"
+                        id="drawer"
 
-                  ref={drawerRef}
+                        ref={drawerRef}
 
-                  onClick={(e) => e.stopPropagation()}
+                        onClick={(e) => e.stopPropagation()}
 
-                  initial={{ y: "100%" }}
+                        initial={{y: "100%"}}
 
-                  animate={{ y: "0%" }}
+                        animate={{y: "0%"}}
 
-                  transition={{
+                        transition={{
 
-                    ease: "easeInOut",
+                            ease: "easeInOut",
 
-                  }}
+                        }}
 
-                  className={s.DragCloseDrawerControls}
+                        className={s.DragCloseDrawerControls}
 
-                  style={{ y }}
+                        style={{y}}
 
-                  drag="y"
+                        drag="y"
 
-                  dragControls={controls}
+                        dragControls={controls}
 
-                  onDragEnd={() => {
+                        onDragEnd={() => {
 
-                    if (y.get() >= 100) {
+                            if (y.get() >= 100) {
 
-                      handleClose();
+                                handleClose();
 
-                    }
+                            }
 
-                  }}
+                        }}
 
-                  dragListener={false}
+                        dragListener={false}
 
-                  dragConstraints={{
+                        dragConstraints={{
 
-                    top: 0,
+                            top: 0,
 
-                    bottom: 0,
+                            bottom: 0,
 
-                  }}
+                        }}
 
-                  dragElastic={{
+                        dragElastic={{
 
-                    top: 0,
+                            top: 0,
 
-                    bottom: 0.5,
+                            bottom: 0.5,
 
-                  }}
+                        }}
 
-              >
+                    >
 
-                <div className={s.DragCloseDrawerHeader}>
+                        <div className={s.DragCloseDrawerHeader}>
 
-                  <button
+                            <button
 
-                      onPointerDown={(e) => {
+                                onPointerDown={(e) => {
 
-                        controls.start(e);
+                                    controls.start(e);
 
-                      }}
+                                }}
 
-                      className={s.DragCloseDrawerHeaderButton}
+                                className={s.DragCloseDrawerHeaderButton}
 
-                  ></button>
+                            ></button>
 
-                </div>
+                        </div>
 
-                <div className={s.DragCloseDrawerContent}>
+                        <div className={s.DragCloseDrawerContent}>
 
-                  {children}
+                            {children}
 
-                </div>
+                        </div>
 
-              </motion.div>
+                    </motion.div>
 
-            </motion.div>
+                </motion.div>
 
-        )}
+            )}
 
-      </>
-  );
+        </>
+    );
 }

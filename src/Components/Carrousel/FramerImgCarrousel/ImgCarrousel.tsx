@@ -1,8 +1,9 @@
-import {AnimatePresence, motion, usePresenceData, wrap} from "framer-motion"
-import {forwardRef, SVGProps, useState, JSX} from "react"
+import {AnimatePresence, motion} from "framer-motion"
+import {useState, JSX} from "react"
 import {faArrowLeft, faArrowRight} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import "./ImgCarrousel.scss";
+
 interface ImgCarouselProps {
     images: { src: string, description: string }[];
 }

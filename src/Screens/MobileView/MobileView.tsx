@@ -24,7 +24,7 @@ export default function MobileView(): JSX.Element {
     const emailRef = useRef<HTMLFormElement>(null)
     useEffect(() => {
         const fetchProjects = async () => {
-            const data: any = await getProjects();
+            const data = await getProjects();
             setProjects(data);
         };
         fetchProjects();

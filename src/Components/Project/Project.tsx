@@ -37,7 +37,7 @@ export default function ProjectDetails({project}: ProjectCardProps): JSX.Element
                 />
             </div>
             <div className="project-desc project">
-                {project.description?.map((line, index) => (
+                {Array.isArray(project.description) && project.description.map((line, index) => (
                     <p key={index}>{line}</p>
                 ))}
             </div>
