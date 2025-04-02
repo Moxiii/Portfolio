@@ -1,25 +1,20 @@
-name : Deployment
+name: Deployment
 run-name: ${{ github.actor }} is 🚀 deploy website on push
 on:
   push:
     branches:
       - main
-      - prod
+  pull_request:
+    branches:
+      - main
 jobs:
-  update_prod:
+  deploy_ftp:
     environment: SECRET
-    name: 🔧 Update Prod Branch
+    name: 🎉 Deploy
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
     steps:
       - name: 🚚 Get latest code
         uses: actions/checkout@v4
-
-      - name : 🔧 Check if prod branch exists and create if not
-        run : | 
-          git fetch origin
-          git branch -r | grep origin/prod || git checkout -b prod origin/main
-          git push origin prod
 
       - name: 🔧 Install dependencies and build
         uses: actions/setup-node@v4
@@ -33,26 +28,13 @@ jobs:
       - name: 🔧 Build
         run: |
           npm run build
-      - name: 🔧 Push dist folder to prod branch
-        run: |
-          git checkout prod
-          cp -r dist/* 
-          git add .
-          git commit -m "Deploy build to prod"
-          git push origin prod
-  deploy_ftp:
-      name: 📂 Sync files to FTP
-      runs-on: ubuntu-latest
-      if: false #mettre : github.ref == 'refs/heads/prod' par la suite
-      steps:
-        - name: 🚚 Get latest code
-          uses: actions/checkout@v4
-        - name: 📂 Sync files to FTP
-          uses: SamKirkland/FTP-DEPLOY-Action@v4.3.4
-          with:
-                server: ${{secrets.FTP_SERVER}}
-                username: ${{secrets.FTP_USERNAME}}
-                password: ${{secrets.FTP_PASSWORD}}
-                local-dir: dist/
-                server-dir: www/
-                dangerous-clean-slate: true
+
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-DEPLOY-Action@v4.3.4
+        with:
+          server: ${{secrets.FTP_SERVER}}
+          username: ${{secrets.FTP_USERNAME}}
+          password: ${{secrets.FTP_PASSWORD}}
+          local-dir: dist/
+          server-dir: www/
+          dangerous-clean-slate: true
