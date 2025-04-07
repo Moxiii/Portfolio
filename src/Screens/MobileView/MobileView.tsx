@@ -16,7 +16,6 @@ import {faJs, faLinkedin, faGithub} from "@fortawesome/free-brands-svg-icons";
 
 import cn from "clsx";
 
-
 export default function MobileView(): JSX.Element {
     const [projects, setProjects] = useState<Project[]>([]);
     const [dragCloseDrawerOpen, setDragCloseDrawerOpen] = useState(false);
@@ -45,8 +44,8 @@ export default function MobileView(): JSX.Element {
                 text={`Étudiant\nDéveloppeur\nIPI ${new Date().getFullYear()}`}
             />
             <section className={s.MobilePresentation}>
-                <h2>Passioné depuis le plus jeune age</h2>
-                <div className="text-container">
+                <div className={s.textContainer}>
+                    <h2>Passionné depuis le plus jeune age</h2>
                     <p>
                         A 5 ans la premiere manette de NES dans les mains , 8 ans plus tard je decouvre la programmation
                         avec
@@ -56,15 +55,17 @@ export default function MobileView(): JSX.Element {
                         relance
                         dans l'aventure du développement</p>
                 </div>
-                <h2>Ce que je souhaite faire dans le futur : </h2>
-                <div className="text-container">
+
+                <div className={s.textContainer}>
+                    <h2>Ce que je souhaite faire dans le futur : </h2>
                     <p>Un de mes objectifs principaux étant de me retrouver dans 5 ans dans les presentation des
                         Awwwards</p>
                     <p>Ou du moins pouvoir experimenté pleinement de creative web / WEBGL</p>
                 </div>
-                <h2>Comment je compte y parvenir : </h2>
-                <div className="text-container">
-                    <p>En recherchant des experience professionlles enrichissantes</p>
+
+                <div className={s.textContainer}>
+                    <h2>Comment je compte y parvenir : </h2>
+                    <p>En recherchant des experience professionnelles enrichissantes</p>
                     <p>En suivant la formation de ThreeJS journey</p>
 
                 </div>
